@@ -129,6 +129,17 @@ procedures:
       pages
     center_id: TJC01
     rf_radius_nm: 2.7
+    rounding_hypothesis:
+      status: CONDITIONAL
+      source_ref: USER_RF_PRECISION_ADJUDICATION_20261108
+      coordinate_half_unit_arcsec: 0.05
+      coordinate_interval: strict_open
+      radius_interval_nm: [2.65, 2.75]
+      radius_interval_closure: lower_inclusive_upper_exclusive
+      interpretation: nearest printed 0.1 arcsecond and 0.1 NM are research assumptions, not database precision
+      representative_rule: equal_weight_minimum_sum_squared_normalized_coordinate_adjustments
+      initialization: zero_adjustments
+      uniqueness: not_claimed
     points:
       TJC01:
         lat_deg: 39

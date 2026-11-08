@@ -222,12 +222,13 @@
     {
       "source_id": "AUTHORITY_DOC",
       "title": "M1_SINGLE_AUTHORITY.md",
-      "sha256": "56ab4b501ca5f12af163397634dbc73b4a15cc456db2c601f70e704a2b2b04e6",
+      "sha256": "e34684b9fb41fd182002b16623ba8cf7f36534f6fa4fdd80f28f93ba3e199934",
       "status": "SUPPORTED",
       "role": "scientific authority",
       "original_sha256": "1395060aca2e337d77e2b2583f7033648cb12ad17c9e6533613552eac619b814",
-      "change_note": "E13/E14 append and pair scenario clarification authorized by Round2 task; mathematical specification unchanged",
-      "hash_scope": "distributed UTF-8 document with LF line endings"
+      "change_note": "Only P16R-RF-PRECISION/E15 evidence adjudication added under user instruction. Mathematical definitions and G1-G5 acceptance conditions unchanged.",
+      "hash_scope": "distributed UTF-8 document with LF line endings",
+      "pre_rf_audit_document_sha256": "56ab4b501ca5f12af163397634dbc73b4a15cc456db2c601f70e704a2b2b04e6"
     },
     {
       "source_id": "EXECUTION_DOC",
@@ -342,6 +343,31 @@
       ],
       "status": "NOT_RETRIEVED_THIS_ROUND",
       "scope": "per authority appendix; not a measured operational input"
+    },
+    {
+      "source_id": "USER_RF_PRECISION_ADJUDICATION_20261108",
+      "evidence_id": "E15",
+      "title": "M1-16R RF程序水平几何：公布精度核定与最小实施任务",
+      "source_type": "user_supplied_research_adjudication",
+      "version": "2026-11-08",
+      "original_aip_refs": [
+        "H01_4Y01:ZBTJ.pdf:p23:EFF2024-10-31",
+        "H01_4Z18:ZBTJ.pdf:p42:EFF2024-10-31"
+      ],
+      "audit_record": "research_m1/docs/16R_RF_PRECISION_AUDIT.md",
+      "status": "CONDITIONAL",
+      "coordinate_half_unit_arcsec": 0.05,
+      "radius_interval_nm": [
+        2.65,
+        2.75
+      ],
+      "boundary_convention": "coordinate strict abs(delta)<0.05 arcsecond; radius lower inclusive upper exclusive",
+      "allows": "conditional representative compatible with the printed rounding intervals and common-circle/forward-tangent constraints",
+      "does_not_allow": "promoting representative coordinates/radius to published database values, claiming unique truth, or resolving vertical/performance/stochastic gates",
+      "cited_reference": "ICAO Doc 9905 2009 first edition sections4.1.14-4.1.16, as cited by user; not a 2021-edition certification",
+      "raw_source_sha256": "484482e46c7880fb8e4071e26c4af5d2c5d912109ba040ad22250726f129ce98",
+      "verification_method": "re-render and visually read raw AIP p23 and p42; independent analytic ENU constraints and numerical residual checks",
+      "database_unrounded_precision": "UNRESOLVED"
     }
   ],
   "page_inventory": [
@@ -910,5 +936,6 @@
   "excluded_sources": [
     "ZBTJ-9A and approach entries of ZBTJ-4Z15: RNP RWY16L, not the RNAV ILS/DME reference. No TJ958/TJ901/TJ957 mapping into the ILS path."
   ],
-  "redistribution": "No original AIP PDF, image, extracted full text, raw track or user absolute path is included."
+  "redistribution": "No original AIP PDF, image, extracted full text, raw track or user absolute path is included.",
+  "rf_precision_scope": "84.284m is an exact-display algorithm artifact, not proof of unavoidable program geometry conflict; conditional rounding feasibility verified."
 }

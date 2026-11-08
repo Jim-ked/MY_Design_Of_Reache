@@ -11,13 +11,14 @@ from m1_research.config_loader import load_study
 class AIPReferenceTests(unittest.TestCase):
     def test_16r_partial_reference_has_rf_rf_tf_events_and_single_sided_curvature(self):
         result = build_16r_reference(load_study())
-        self.assertEqual(result["status"], "PARTIAL_REFERENCE")
+        self.assertEqual(result["status"], "CONDITIONAL_REFERENCE_GEOMETRY")
         self.assertLess(result["events"]["TJ907"], result["events"]["TJ906"])
         self.assertLess(result["events"]["TJ906"], result["events"]["TJ903"])
         self.assertLess(result["events"]["TJ903"], result["events"]["RW16R"])
         boundary = result["path"].boundary_states()[2]
         self.assertNotEqual(boundary["left"]["curvature_1_m"], boundary["right"]["curvature_1_m"])
-        self.assertGreater(result["derived"]["tj903_endpoint_residual_m"], 0.0)
+        self.assertLess(result["derived"]["rf_tf_position_gap_m"], 1e-5)
+        self.assertTrue(result["horizontal_continuity"]["continuous"])
 
     def test_16l_partial_reference_preserves_faf_as_event_without_gp_capture_guess(self):
         result = build_16l_reference(load_study())

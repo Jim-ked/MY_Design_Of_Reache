@@ -15,11 +15,6 @@ def _point(frame: ENUFrame, value: dict[str, Any]) -> np.ndarray:
     return frame.to_enu(lat, lon)[:2]
 
 
-def _right_sweep(start: float, end: float) -> float:
-    # ENU angles increase counterclockwise. The coding page explicitly says R.
-    return (start - end) % (2.0 * math.pi)
-
-
 def _aip_frame(study: dict[str, Any]) -> ENUFrame:
     reference = study["airport"]["reference_frame"]
     if any(reference[key] is None for key in ("arp_latitude_deg", "arp_longitude_deg", "arp_elevation_m")):
@@ -29,58 +24,61 @@ def _aip_frame(study: dict[str, Any]) -> ENUFrame:
 
 
 def build_16r_reference(study: dict[str, Any] | None = None) -> dict[str, Any]:
+    """A conditional printed-precision representative, never database truth."""
+    from .rf_precision import solve_rf_precision
     study = load_study() if study is None else study
     frame = _aip_frame(study)
-    raw = study["procedures"][1]["reference_geometry"]["points"]
-    if study["procedures"][1]["reference_geometry"]["rf_direction"] != "right":
-        raise ValueError("source-defined right RF direction required")
-    center = _point(frame, raw["TJC01"])
-    points = {name: _point(frame, value) for name, value in raw.items() if name != "TJC01"}
-    radius_m = float(study["procedures"][1]["reference_geometry"]["rf_radius_nm"]) * 1852.0
-    def angle(name: str) -> float:
-        delta = points[name] - center
+    geometry = next(item["reference_geometry"] for item in study["procedures"]
+                    if item["procedure_id"] == "ZBTJ_RWY16R_RNP_Y_AR")
+    raw = geometry["points"]
+    hypothesis = geometry["rounding_hypothesis"]
+    if geometry["rf_direction"] != "right":
+        return {"status": "SOURCE_GEOMETRY_CONFLICT", "path": None,
+                "reason": "source-defined right RF direction required"}
+    solution = solve_rf_precision(raw, frame,
+        coordinate_half_unit_arcsec=hypothesis["coordinate_half_unit_arcsec"],
+        radius_interval_nm=hypothesis["radius_interval_nm"],
+        displayed_radius_nm=geometry["rf_radius_nm"])
+    output = {"status": solution["status"], "rounding_solution": solution,
+              "full_nominal_status": "UNRESOLVED", "reference_frame": "ZBTJ_ENU_ARP",
+              "path": None, "formal_status": solution["status"],
+              "segment_sources": {"RF1": ["H01_4Y01", "H01_4Z18"],
+                                  "RF2": ["H01_4Y01", "H01_4Z18"], "TF": ["H01_4Y01", "H01_4Z18"]},
+              "path_source": ["H01_4Y01", "H01_4Z18", "USER_RF_PRECISION_ADJUDICATION_20261108"],
+              "limitations": ["rounding hypothesis is conditional; representative not a unique database path",
+                              "LTP, vertical execution and cross-date frame compatibility remain unresolved"]}
+    if solution["status"] != "CONDITIONAL_REFERENCE_GEOMETRY":
+        return output
+    xy = {key: np.asarray(value) for key, value in solution["reconstructed_xy_m"].items()}
+    center, radius = xy["TJC01"], solution["radius_m"]
+    def angle(name):
+        delta = xy[name]-center
         return float(math.atan2(delta[1], delta[0]))
-    sweep_1 = _right_sweep(angle("TJ907"), angle("TJ906"))
-    sweep_2 = _right_sweep(angle("TJ906"), angle("TJ903"))
-    arc_1 = CircularArc(radius_m, sweep_1, tuple(center), angle("TJ907"), -1, "RF1")
-    arc_2 = CircularArc(radius_m, sweep_2, tuple(center), angle("TJ906"), -1, "RF2")
-    end_arc_2 = arc_2.evaluate(arc_2.length_m)[0]
-    # Preserve the encoded TF endpoints. A gap from the exact coded RF circle
-    # is an unresolved source inconsistency, not permission to move TJ903.
-    tf_vector = points["RW16R"] - points["TJ903"]
-    tf_length = float(np.linalg.norm(tf_vector))
-    tf_heading = float(math.atan2(tf_vector[0], tf_vector[1]))
-    tf = LineSegment(tf_length, tuple(points["TJ903"]), tf_heading, "TF")
+    arc_1 = CircularArc(radius, solution["right_sweeps_rad"][0], tuple(center), angle("TJ907"), -1, "RF1")
+    arc_2 = CircularArc(radius, solution["right_sweeps_rad"][1], tuple(center), angle("TJ906"), -1, "RF2")
+    delta = xy["RW16R"]-xy["TJ903"]
+    tf = LineSegment(float(np.linalg.norm(delta)), tuple(xy["TJ903"]), math.atan2(delta[0], delta[1]), "TF")
     path = ReferencePath([arc_1, arc_2, tf])
-    return {
-        "status": "PARTIAL_REFERENCE",
-        "reference_frame": "ZBTJ_ENU_ARP",
-        "path": path,
-        "events": {
-            "TJ907": 0.0,
-            "TJ906": arc_1.length_m,
-            "TJ903": arc_1.length_m + arc_2.length_m,
-            "RW16R": path.length_m,
-        },
-        "derived": {
-            "rf_radius_m": radius_m,
-            "rf1_length_m": arc_1.length_m,
-            "rf2_length_m": arc_2.length_m,
-            "tf_length_m": tf_length,
-            "tj903_endpoint_residual_m": float(np.linalg.norm(end_arc_2 - points["TJ903"])),
-            "radial_residuals_m": {name: float(np.linalg.norm(points[name] - center) - radius_m)
-                                   for name in ("TJ907", "TJ906", "TJ903")},
-            "rf_tf_position_gap_m": float(np.linalg.norm(end_arc_2 - points["TJ903"])),
-            "tf_endpoint_residual_m": float(np.linalg.norm(tf.evaluate(tf.length_m)[0] - points["RW16R"])),
-        },
-        "segment_sources": {"RF1": ["H01_4Y01", "H01_4Z18"],
-                            "RF2": ["H01_4Y01", "H01_4Z18"], "TF": ["H01_4Y01", "H01_4Z18"]},
-        "path_source": ["H01_4Y01", "H01_4Z18", "H01_2A_2025"],
-        "formal_status": "PARTIAL_REFERENCE",
-        "executable_continuous_path": False,
-        "limitations": ["coded radius and fix coordinates do not close; no radius fitting performed",
-                        "ARP page date compatibility unverified; no vertical execution model"],
-    }
+    try:
+        continuity = path.require_continuity()
+    except ValueError as exc:
+        output.update(status="SOURCE_GEOMETRY_CONFLICT", reason=str(exc))
+        return output
+    raw_center = _point(frame, raw["TJC01"])
+    raw_radii = {name: float(np.linalg.norm(_point(frame, raw[name])-raw_center))
+                 for name in ("TJ907", "TJ906", "TJ903")}
+    naive_gap = abs(geometry["rf_radius_nm"]*1852.-raw_radii["TJ903"])
+    output.update({"path": path, "horizontal_continuity": continuity,
+                   "continuous_reference_available": True,
+                   "events": {"TJ907": 0., "TJ906": arc_1.length_m,
+                              "TJ903": arc_1.length_m+arc_2.length_m, "RW16R": path.length_m},
+                   "derived": {"rf_radius_m": radius, "rf1_length_m": arc_1.length_m,
+                               "rf2_length_m": arc_2.length_m, "tf_length_m": tf.length_m,
+                               "rf_tf_position_gap_m": continuity["boundaries"][1]["position_gap_m"]},
+                   "printed_value_diagnostic": {"printed_center_distances_m": raw_radii,
+                       "exact_2p7_algorithm_gap_m": naive_gap,
+                       "interpretation": "an exact-display-value algorithm artifact, not an unavoidable AIP geometry conflict"}})
+    return output
 
 
 def build_16l_reference(study: dict[str, Any] | None = None) -> dict[str, Any]:

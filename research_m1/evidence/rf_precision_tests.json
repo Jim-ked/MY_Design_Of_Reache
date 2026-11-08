@@ -1,0 +1,32 @@
+{
+  "date": "2026-11-08",
+  "status": "PASS",
+  "count": 14,
+  "failures": [],
+  "command": "python -m unittest test_rf_precision test_reference_geometry test_cleanroom_independence test_aip_reference.AIPReferenceTests.test_16r_partial_reference_has_rf_rf_tf_events_and_single_sided_curvature -v",
+  "pythonpath": [
+    "research_m1/src",
+    "research_m1/tests"
+  ],
+  "scope": "16R horizontal properties, synthetic geometry and static isolation only",
+  "not_run": [
+    "16L",
+    "vertical profiles",
+    "aircraft performance",
+    "SE process experiments",
+    "E1",
+    "Flow",
+    "CPA",
+    "M2",
+    "TLS"
+  ],
+  "numpy": "2.4.6",
+  "scipy": "1.17.1",
+  "raw_geometry_fields_sha256_before": "1b1368aaa049395b59fd845fead4cdc11287e79fdcb6151722573ba628f2fa40",
+  "raw_geometry_fields_sha256_after": "1b1368aaa049395b59fd845fead4cdc11287e79fdcb6151722573ba628f2fa40",
+  "raw_fields_unchanged": true,
+  "non16R_configuration_unchanged": true,
+  "solver_uses_random_initialization": false,
+  "exit_code": 0,
+  "output": "test_all_ten_coordinate_adjustments_are_strictly_inside_half_last_digit (test_rf_precision.RFPrecisionTests.test_all_ten_coordinate_adjustments_are_strictly_inside_half_last_digit) ... ok\ntest_analytic_constraint_jacobian_matches_independent_difference (test_rf_precision.RFPrecisionTests.test_analytic_constraint_jacobian_matches_independent_difference) ... ok\ntest_downstream_state_request_rejects_disconnected_horizontal_path (test_rf_precision.RFPrecisionTests.test_downstream_state_request_rejects_disconnected_horizontal_path) ... ok\ntest_gap_or_tangent_corner_cannot_be_used_as_continuous_path (test_rf_precision.RFPrecisionTests.test_gap_or_tangent_corner_cannot_be_used_as_continuous_path) ... ok\ntest_inconsistent_fix_is_rejected_without_patch_or_relaxation (test_rf_precision.RFPrecisionTests.test_inconsistent_fix_is_rejected_without_patch_or_relaxation) ... ok\ntest_missing_source_point_is_rejected (test_rf_precision.RFPrecisionTests.test_missing_source_point_is_rejected) ... ok\ntest_radius_in_display_interval_and_three_points_on_same_circle (test_rf_precision.RFPrecisionTests.test_radius_in_display_interval_and_three_points_on_same_circle) ... ok\ntest_raw_aip_fields_are_not_mutated_or_promoted (test_rf_precision.RFPrecisionTests.test_raw_aip_fields_are_not_mutated_or_promoted) ... ok\ntest_reconstructed_latlon_projection_independently_agrees_with_enu (test_rf_precision.RFPrecisionTests.test_reconstructed_latlon_projection_independently_agrees_with_enu) ... ok\ntest_representative_selection_is_deterministic_and_not_a_fixed_witness (test_rf_precision.RFPrecisionTests.test_representative_selection_is_deterministic_and_not_a_fixed_witness) ... ok\ntest_rf_rf_tf_positions_and_forward_tangents_are_continuous (test_rf_precision.RFPrecisionTests.test_rf_rf_tf_positions_and_forward_tangents_are_continuous) ... ok\ntest_circle_and_line_have_expected_boundary_states (test_reference_geometry.ReferenceGeometryTests.test_circle_and_line_have_expected_boundary_states) ... ok\ntest_new_source_has_no_historical_import_or_alias (test_cleanroom_independence.CleanroomIndependenceTests.test_new_source_has_no_historical_import_or_alias) ... ok\ntest_16r_partial_reference_has_rf_rf_tf_events_and_single_sided_curvature (test_aip_reference.AIPReferenceTests.test_16r_partial_reference_has_rf_rf_tf_events_and_single_sided_curvature) ... ok\n\n----------------------------------------------------------------------\nRan 14 tests in 0.098s\n\nOK"
+}

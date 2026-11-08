@@ -114,6 +114,28 @@ class ReferencePath:
                 })
         return states
 
+    def require_continuity(self, position_tolerance_m=1e-5, tangent_tolerance=1e-8):
+        """Check every boundary before a caller constructs a continuous state.
+
+        Curvature may step. A position gap, reversed tangent or corner cannot
+        be interpreted as a single position-time execution path.
+        """
+        if not np.all(np.isfinite([position_tolerance_m, tangent_tolerance])) or min(position_tolerance_m, tangent_tolerance) <= 0:
+            raise ValueError("continuity check tolerances must be finite and positive")
+        boundaries = []
+        for first, second in zip(self.segments[:-1], self.segments[1:]):
+            pa, ta, _ = first.evaluate(first.length_m)
+            pb, tb, _ = second.evaluate(0.)
+            position_gap = float(np.linalg.norm(np.asarray(pb)-pa))
+            ta, tb = np.asarray(ta), np.asarray(tb)
+            tangent_gap = float(np.linalg.norm(ta/np.linalg.norm(ta)-tb/np.linalg.norm(tb)))
+            boundaries.append({"left": first.segment_id, "right": second.segment_id,
+                               "position_gap_m": position_gap, "tangent_vector_difference": tangent_gap})
+            if not np.isfinite(position_gap+tangent_gap) or position_gap > position_tolerance_m or tangent_gap > tangent_tolerance:
+                raise ValueError("SOURCE_GEOMETRY_CONFLICT: discontinuous boundary " + str(boundaries[-1]))
+        return {"continuous": True, "boundaries": boundaries,
+                "position_tolerance_m": position_tolerance_m, "tangent_vector_tolerance": tangent_tolerance}
+
 
 def constraint_status(constraints: list[Constraint]) -> str:
     """Return the conservative status for unresolved or conflicting limits."""

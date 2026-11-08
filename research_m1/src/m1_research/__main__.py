@@ -8,22 +8,28 @@ from .generator import inspect_study
 from .scenario_sync import synthetic_pair, synchronize_aircraft_states
 
 
-def reference_export():
+def reference_export(runway_only=None):
     study = load_study()
     output = {"status": "PARTIAL_REFERENCE", "units": {"length": "m", "angle": "rad"}}
     for runway, build in (("16R", build_16r_reference), ("16L", build_16l_reference)):
+        if runway_only is not None and runway != runway_only:
+            continue
         model = build(study)
         output[runway] = {key: value for key, value in model.items() if key != "path"}
-        output[runway]["one_sided_boundaries"] = model["path"].boundary_states()
+        output[runway]["one_sided_boundaries"] = model["path"].boundary_states() if model["path"] is not None else None
+    if runway_only is not None:
+        output["status"] = output[runway_only]["status"]
     return output
 
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("command", choices=["status", "reference", "synthetic-pair"])
+    parser.add_argument("command", choices=["status", "reference", "reference-16r", "synthetic-pair"])
     command = parser.parse_args().command
     if command == "reference":
         result = reference_export()
+    elif command == "reference-16r":
+        result = reference_export("16R")
     elif command == "synthetic-pair":
         study = load_study()
         schedule = synthetic_pair(study)

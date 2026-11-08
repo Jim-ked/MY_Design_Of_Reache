@@ -5,28 +5,187 @@
     "angle": "rad"
   },
   "16R": {
-    "status": "PARTIAL_REFERENCE",
-    "reference_frame": "ZBTJ_ENU_ARP",
-    "events": {
-      "TJ907": 0.0,
-      "TJ906": 7867.763378359311,
-      "TJ903": 15777.8871421032,
-      "RW16R": 19110.938942895817
-    },
-    "derived": {
-      "rf_radius_m": 5000.400000000001,
-      "rf1_length_m": 7867.763378359311,
-      "rf2_length_m": 7910.123763743889,
-      "tf_length_m": 3333.051800792618,
-      "tj903_endpoint_residual_m": 84.28426376654132,
-      "radial_residuals_m": {
-        "TJ907": -80.73800217323969,
-        "TJ906": -84.35319696629267,
-        "TJ903": -84.28426376654079
+    "status": "CONDITIONAL_REFERENCE_GEOMETRY",
+    "rounding_solution": {
+      "status": "CONDITIONAL_REFERENCE_GEOMETRY",
+      "raw_points": {
+        "TJC01": {
+          "lat_deg": 39,
+          "lat_min": 8,
+          "lat_sec": 43.2,
+          "lon_deg": 117,
+          "lon_min": 16,
+          "lon_sec": 12.9,
+          "source_ref": "H01_4Y01",
+          "status": "SOURCE_VERIFIED"
+        },
+        "TJ907": {
+          "lat_deg": 39,
+          "lat_min": 7,
+          "lat_sec": 32.3,
+          "lon_deg": 117,
+          "lon_min": 13,
+          "lon_sec": 9.4,
+          "source_ref": "H01_4Y01",
+          "status": "SOURCE_VERIFIED"
+        },
+        "TJ906": {
+          "lat_deg": 39,
+          "lat_min": 11,
+          "lat_sec": 6.2,
+          "lon_deg": 117,
+          "lon_min": 14,
+          "lon_sec": 42.4,
+          "source_ref": "H01_4Y01",
+          "status": "SOURCE_VERIFIED"
+        },
+        "TJ903": {
+          "lat_deg": 39,
+          "lat_min": 9,
+          "lat_sec": 52.0,
+          "lon_deg": 117,
+          "lon_min": 19,
+          "lon_sec": 17.6,
+          "source_ref": "H01_4Y01",
+          "status": "SOURCE_VERIFIED"
+        },
+        "RW16R": {
+          "lat_deg": 39,
+          "lat_min": 8,
+          "lat_sec": 14.5,
+          "lon_deg": 117,
+          "lon_min": 20,
+          "lon_sec": 17.5,
+          "source_ref": "H01_4Y01",
+          "status": "SOURCE_VERIFIED"
+        }
       },
-      "rf_tf_position_gap_m": 84.28426376654132,
-      "tf_endpoint_residual_m": 3.410605131648481e-13
+      "displayed_radius_nm": 2.7,
+      "assumptions": {
+        "status": "CONDITIONAL",
+        "coordinate_half_unit_arcsec": 0.05,
+        "coordinate_bounds": "strict abs(delta) < half_unit",
+        "radius_interval_nm": [
+          2.65,
+          2.75
+        ],
+        "radius_bounds": "lower inclusive; upper exclusive",
+        "basis": "nearest printed 0.1 arcsecond and nearest 0.1 NM are research hypotheses, not navigation database accuracy"
+      },
+      "selection_rule": "minimize 0.5 * sum((delta_arcsec / half_unit_arcsec)**2), equal weights; deterministic SLSQP from zero adjustments",
+      "initialization": "all ten normalized tails = zero",
+      "unique_database_path_claimed": false,
+      "numerical_checks": {
+        "position_tolerance_m": 1e-05,
+        "tangent_vector_tolerance": 1e-08
+      },
+      "residuals": {
+        "equal_radius_m": 3.41970007866621e-10,
+        "tangent_radial_projection_m": 4.449298181253661e-11,
+        "tangent_vector_difference": 9.041333491445128e-15,
+        "tangent_signed_angle_rad": 9.001554444816394e-15,
+        "coordinate_max_adjustment_arcsec": 0.04462187408289115,
+        "radius_lower_margin_m": 9.84795649064381,
+        "radius_upper_margin_m": 175.352043509356,
+        "interior_stationarity_norm": 1.677897116082278e-08
+      },
+      "normalized_adjustments": [
+        -0.892437481657823,
+        -0.5632771359444242,
+        0.3356768945889133,
+        0.5269450823680039,
+        0.41937917145887404,
+        -0.16074368348699172,
+        0.14701781784453183,
+        0.21247096295390433,
+        -0.009451741031646812,
+        -0.015395492108017095
+      ],
+      "objective": 0.8864389073103959,
+      "adjustments_arcsec": {
+        "TJC01": {
+          "latitude": -0.04462187408289115,
+          "longitude": -0.02816385679722121
+        },
+        "TJ907": {
+          "latitude": 0.016783844729445666,
+          "longitude": 0.026347254118400193
+        },
+        "TJ906": {
+          "latitude": 0.020968958572943702,
+          "longitude": -0.008037184174349586
+        },
+        "TJ903": {
+          "latitude": 0.007350890892226592,
+          "longitude": 0.010623548147695217
+        },
+        "RW16R": {
+          "latitude": -0.0004725870515823406,
+          "longitude": -0.0007697746054008549
+        }
+      },
+      "reconstructed_latlon_deg": {
+        "TJC01": [
+          39.14532093836831,
+          117.27024217670645
+        ],
+        "TJ907": [
+          39.12564355106798,
+          117.21928509645947
+        ],
+        "TJ906": [
+          39.18506138026626,
+          117.24510887855996
+        ],
+        "TJ903": [
+          39.16444648635858,
+          117.32155850654115
+        ],
+        "RW16R": [
+          39.13736097983693,
+          117.33819423061816
+        ]
+      },
+      "reconstructed_xy_m": {
+        "TJC01": [
+          -6558.785943470138,
+          2320.4078410222287
+        ],
+        "TJ907": [
+          -10967.015733910936,
+          140.78137333368701
+        ],
+        "TJ906": [
+          -8726.618050018335,
+          6734.449682894109
+        ],
+        "TJ903": [
+          -2121.971703841045,
+          4441.242777314844
+        ],
+        "RW16R": [
+          -684.4828875036868,
+          1433.997498348425
+        ]
+      },
+      "radius_m": 4917.647956490644,
+      "radius_nm": 2.655317471107259,
+      "right_sweeps_rad": [
+        1.5734700948685436,
+        1.5814160291455748
+      ],
+      "solver": {
+        "name": "scipy.optimize.minimize/SLSQP",
+        "success": true,
+        "message": "Optimization terminated successfully",
+        "iterations": 12,
+        "ftol": 1e-09,
+        "maxiter": 240
+      }
     },
+    "full_nominal_status": "UNRESOLVED",
+    "reference_frame": "ZBTJ_ENU_ARP",
+    "formal_status": "CONDITIONAL_REFERENCE_GEOMETRY",
     "segment_sources": {
       "RF1": [
         "H01_4Y01",
@@ -44,94 +203,140 @@
     "path_source": [
       "H01_4Y01",
       "H01_4Z18",
-      "H01_2A_2025"
+      "USER_RF_PRECISION_ADJUDICATION_20261108"
     ],
-    "formal_status": "PARTIAL_REFERENCE",
-    "executable_continuous_path": false,
     "limitations": [
-      "coded radius and fix coordinates do not close; no radius fitting performed",
-      "ARP page date compatibility unverified; no vertical execution model"
+      "rounding hypothesis is conditional; representative not a unique database path",
+      "LTP, vertical execution and cross-date frame compatibility remain unresolved"
     ],
+    "horizontal_continuity": {
+      "continuous": true,
+      "boundaries": [
+        {
+          "left": "RF1",
+          "right": "RF2",
+          "position_gap_m": 0.0,
+          "tangent_vector_difference": 2.0014830212433605e-16
+        },
+        {
+          "left": "RF2",
+          "right": "TF",
+          "position_gap_m": 1.8469965467605119e-10,
+          "tangent_vector_difference": 9.038095099810467e-15
+        }
+      ],
+      "position_tolerance_m": 1e-05,
+      "tangent_vector_tolerance": 1e-08
+    },
+    "continuous_reference_available": true,
+    "events": {
+      "TJ907": 0.0,
+      "TJ906": 7737.7719966294335,
+      "TJ903": 15514.619300718718,
+      "RW16R": 18847.77070216462
+    },
+    "derived": {
+      "rf_radius_m": 4917.647956490644,
+      "rf1_length_m": 7737.7719966294335,
+      "rf2_length_m": 7776.847304089284,
+      "tf_length_m": 3333.1514014459035,
+      "rf_tf_position_gap_m": 1.8469965467605119e-10
+    },
+    "printed_value_diagnostic": {
+      "printed_center_distances_m": {
+        "TJ907": 4919.661997826761,
+        "TJ906": 4916.046803033708,
+        "TJ903": 4916.11573623346
+      },
+      "exact_2p7_algorithm_gap_m": 84.28426376654079,
+      "interpretation": "an exact-display-value algorithm artifact, not an unavoidable AIP geometry conflict"
+    },
     "one_sided_boundaries": [
       {
         "s_m": 0.0,
-        "east_m": -11040.01557939818,
-        "north_m": 104.46313597507742,
-        "tangent_east": -0.4434285670750301,
-        "tangent_north": 0.8963097153895999,
-        "normal_east": -0.8963097153895999,
-        "normal_north": -0.4434285670750301,
-        "curvature_1_m": -0.00019998400127989758,
+        "east_m": -10967.015733910795,
+        "north_m": 140.78137333375662,
+        "tangent_east": -0.44322539697288693,
+        "tangent_north": 0.8964102004541374,
+        "normal_east": -0.8964102004541374,
+        "normal_north": -0.44322539697288693,
+        "curvature_1_m": -0.00020334924517728691,
         "segment_id": "RF1",
         "segment_index": 0
       },
       {
-        "s_m": 7867.763378359311,
+        "s_m": 7737.7719966294335,
         "left": {
-          "s_m": 7867.763378359311,
-          "east_m": -8763.631484323068,
-          "north_m": 6809.507535624431,
-          "tangent_east": 0.8974730407262163,
-          "tangent_north": 0.44106931560656015,
-          "normal_east": -0.44106931560656015,
-          "normal_north": 0.8974730407262163,
-          "curvature_1_m": -0.00019998400127989758,
+          "s_m": 7737.7719966294335,
+          "east_m": -8726.618050018322,
+          "north_m": 6734.449682894083,
+          "tangent_east": 0.8975920767256028,
+          "tangent_north": 0.4408270225376611,
+          "normal_east": -0.4408270225376611,
+          "normal_north": 0.8975920767256028,
+          "curvature_1_m": -0.00020334924517728691,
           "segment_id": "RF1",
           "segment_index": 0
         },
         "right": {
-          "s_m": 7867.763378359311,
-          "east_m": -8763.631484323068,
-          "north_m": 6809.507535624429,
-          "tangent_east": 0.8974730407262161,
-          "tangent_north": 0.4410693156065603,
-          "normal_east": -0.4410693156065603,
-          "normal_north": 0.8974730407262161,
-          "curvature_1_m": -0.00019998400127989758,
+          "s_m": 7737.7719966294335,
+          "east_m": -8726.618050018322,
+          "north_m": 6734.449682894083,
+          "tangent_east": 0.8975920767256027,
+          "tangent_north": 0.44082702253766126,
+          "normal_east": -0.44082702253766126,
+          "normal_north": 0.8975920767256027,
+          "curvature_1_m": -0.00020334924517728691,
           "segment_id": "RF2",
           "segment_index": 1
         }
       },
       {
-        "s_m": 15777.8871421032,
+        "s_m": 15514.619300718718,
         "left": {
-          "s_m": 15777.8871421032,
-          "east_m": -2046.1759067341545,
-          "north_m": 4477.349307265434,
-          "tangent_east": 0.43107870660114705,
-          "tangent_north": -0.9023143292196364,
-          "normal_east": 0.9023143292196364,
-          "normal_north": 0.43107870660114705,
-          "curvature_1_m": -0.00019998400127989758,
+          "s_m": 15514.619300718718,
+          "east_m": -2121.971703840878,
+          "north_m": 4441.242777314923,
+          "tangent_east": 0.4312701834407388,
+          "tangent_north": -0.9022228266204483,
+          "normal_east": 0.9022228266204483,
+          "normal_north": 0.4312701834407388,
+          "curvature_1_m": -0.00020334924517728691,
           "segment_id": "RF2",
           "segment_index": 1
         },
         "right": {
-          "s_m": 15777.8871421032,
-          "east_m": -2122.226805658432,
-          "north_m": 4441.016155854123,
-          "tangent_east": 0.43136515496617706,
-          "tangent_north": -0.9021774232826967,
-          "normal_east": 0.9021774232826967,
-          "normal_north": 0.43136515496617706,
+          "s_m": 15514.619300718718,
+          "east_m": -2121.971703841045,
+          "north_m": 4441.242777314844,
+          "tangent_east": 0.43127018344074697,
+          "tangent_north": -0.9022228266204444,
+          "normal_east": 0.9022228266204444,
+          "normal_north": 0.43127018344074697,
           "curvature_1_m": 0.0,
           "segment_id": "TF",
           "segment_index": 2
         }
       },
       {
-        "s_m": 19110.938942895817,
-        "east_m": -684.4643990992295,
-        "north_m": 1434.0120705472882,
-        "tangent_east": 0.43136515496617706,
-        "tangent_north": -0.9021774232826967,
-        "normal_east": 0.9021774232826967,
-        "normal_north": 0.43136515496617706,
+        "s_m": 18847.77070216462,
+        "east_m": -684.4828875036876,
+        "north_m": 1433.9974983484258,
+        "tangent_east": 0.43127018344074697,
+        "tangent_north": -0.9022228266204444,
+        "normal_east": 0.9022228266204444,
+        "normal_north": 0.43127018344074697,
         "curvature_1_m": 0.0,
         "segment_id": "TF",
         "segment_index": 2
       }
     ],
+    "prior_exact_display_value_audit": {
+      "base_commit": "5ca4af498f5918f2508adf92382318d2c99c7f6b",
+      "status": "SUPERSEDED_AS_PROGRAM_CONFLICT_EVIDENCE",
+      "exact_display_value_gap_m": 84.28426376654132,
+      "interpretation": "algorithm treating printed 2.7NM as exact; does not prove an unavoidable program gap"
+    },
     "conditional_height_audit": {
       "status": "UNRESOLVED",
       "assumptions": [
@@ -148,7 +353,8 @@
       "residual_m": 2.920536573288473,
       "LTP_coordinate_status": "UNRESOLVED",
       "displacement_m_from_chart": 400,
-      "attribution": "cannot uniquely assign residual to LTP/displacement, radius-vs-fix inconsistency, rounding or altitude constraint type; no correction performed"
+      "attribution": "cannot uniquely assign residual to LTP/displacement, radius-vs-fix inconsistency, rounding or altitude constraint type; no correction performed",
+      "applicability": "historical exact-display-geometry calculation only; not recalculated this horizontal-only task; cannot be applied to the new conditional reference"
     }
   },
   "16L": {
@@ -214,5 +420,6 @@
         "segment_index": 0
       }
     ]
-  }
+  },
+  "scope_note": "Only 16R horizontal reference updated; the saved 16L and prior vertical audit remain unevaluated historical records."
 }

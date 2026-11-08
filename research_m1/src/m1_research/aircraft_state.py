@@ -100,6 +100,7 @@ def state_from_reference_and_error(*, path: ReferencePath,
     """Construct nominal-plus-error state from one shared spatial/time model."""
     if horizontal_speed_mps <= 0 or not np.isfinite(horizontal_speed_mps):
         raise ValueError("horizontal speed must be positive and finite")
+    path.require_continuity()
     ref = path.evaluate(float(s_m))
     tangent = np.array([ref["tangent_east"], ref["tangent_north"]], dtype=float)
     normal = np.array([ref["normal_east"], ref["normal_north"]], dtype=float)

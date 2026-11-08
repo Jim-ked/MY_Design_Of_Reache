@@ -8,16 +8,20 @@
         "raw_aip_fields": "SOURCE_VERIFIED",
         "reference_geometry": "PARTIAL_REFERENCE",
         "height_and_fap_semantics": "UNRESOLVED",
-        "date_compatibility": "UNRESOLVED"
+        "date_compatibility": "UNRESOLVED",
+        "16R_RF_REFERENCE": "CONDITIONAL_REFERENCE_GEOMETRY",
+        "AIP_POINTS": "SOURCE_VERIFIED",
+        "ROUNDING_HYPOTHESIS": "CONDITIONAL",
+        "16R_FULL_NOMINAL": "UNRESOLVED"
       },
       "supported": [
         "Recovered raw 2024 RF coding/points and 2025 navaid data",
-        "16R coded RF/TF segments with raw-point residuals/gap retained",
+        "16R feasible conditional common-circle/tangent reference within explicit printed rounding cells; printed AIP fields unchanged",
         "16L LOC final only; RNAV access undefined; no RNP RWY16L fixes used"
       ],
       "blocking": [
         "cross-date compatibility not established",
-        "16R coded RF radius vs coordinates do not close",
+        "16R exact navigation database geometry remains unknown; printed-precision representative is conditional",
         "LTP identity, altitude constraint type and FAP semantics unresolved"
       ]
     },
