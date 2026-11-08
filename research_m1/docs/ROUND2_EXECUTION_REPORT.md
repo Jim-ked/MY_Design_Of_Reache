@@ -36,10 +36,27 @@ case_001同一场景的两机为aircraft_01/A320/16L、aircraft_02/MQ9A/16R；�
 
 目标：https://github.com/Jim-ked/MY_Design_Of_Reache ，分支main。已只读确认远端无heads/tags，独立克隆为空仓库；不复制旧.git、不推原本地分支、不使用force。发布仅使用下列白名单与根README/.gitignore/.gitattributes，拒绝PDF/图像/原始轨迹/凭据/缓存/Windows用户绝对路径。原始文件只登记指纹与获取说明，不再分发。
 
-发布提交SHA与远端核验：尚未推送，成功后本地本报告登记实际值；此状态不等于已发布。公开仓库中的同一报告记录发布前检查，最终GitHub SHA以本轮交付核验为准。
+### 实际发布结果：BLOCKED，未发布成功
+
+已在旧工作树外独立clone空仓库，并在独立目录隔离复测17/17通过；逐文件确认35项白名单、源文档指纹、无用户绝对路径/凭据/二进制源文件。独立代码载荷根提交为`eb48c6ed5781eb8bf2da7ee9d433984e36d92f60`，没有旧项目提交作为父节点。随后仅本报告补录发布失败记录，不修改经过测试的代码载荷。
+
+两次普通`git push -u origin main`均在连接阶段失败：`Failed to connect to github.com port 443 ... Could not connect to server`。已连接GitHub接口可读取目标仓库，核实visibility=public、default_branch=main；但首次README创建也返回`403 Resource not accessible by integration`，未写入成功。最终`git ls-remote origin refs/heads/main`持续无输出，已终止；改用GitHub branches API核验返回`[]`，没有main提交。**remote_sha=null，GitHub提交链接=null**，不能把本地SHA当成远端发布成功。任务书允许网络/认证失败时准确报告阻断，本轮按此停止；不是自动审批拒绝。
+
+网络与仓库写入权限恢复后，在独立发布目录直接执行以下命令即可，不连接原项目历史：
+
+```powershell
+git remote get-url origin
+git log --oneline --all
+git status --short
+git push -u origin main
+git ls-remote origin refs/heads/main
+```
+
+成功后须核对GitHub main的SHA及完整远端文件树。当前只提供本地可复现发布提交和真实失败信息，未声明GitHub发布完成。
 
 ### 文件白名单
 
+- `research_m1/evidence/publication_allowlist.json`
 - `research_m1/.gitignore`
 - `research_m1/README.md`
 - `research_m1/config/study.yaml`
