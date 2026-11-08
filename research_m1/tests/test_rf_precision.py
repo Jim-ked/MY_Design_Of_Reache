@@ -36,6 +36,45 @@ class RFPrecisionTests(unittest.TestCase):
             self.assertLess(abs(change["latitude"]), .05)
             self.assertLess(abs(change["longitude"]), .05)
 
+    def test_stale_radius_or_independently_widened_interval_is_rejected(self):
+        for field, value in (("rf_radius_nm", 2.8),
+                             ("radius_interval_nm", [2.6, 2.8])):
+            with self.subTest(field=field):
+                study = copy.deepcopy(self.study)
+                geometry = study["procedures"][1]["reference_geometry"]
+                target = geometry if field == "rf_radius_nm" else geometry["rounding_hypothesis"]
+                target[field] = value
+                result = build_16r_reference(study)
+                self.assertEqual(result["status"], "SOURCE_GEOMETRY_CONFLICT")
+                self.assertIsNone(result["path"])
+                self.assertIn("radius rounding", result["rounding_solution"]["reason"])
+
+    def test_missing_or_invalid_display_precision_rule_and_closure_are_rejected(self):
+        cases = (("radius_display_resolution_nm", None),
+                 ("radius_display_resolution_nm", 0.),
+                 ("radius_display_resolution_nm", float("inf")),
+                 ("radius_display_resolution_nm", .2),
+                 ("radius_rounding_rule", None),
+                 ("radius_rounding_rule", "truncate"),
+                 ("radius_interval_closure", "closed"))
+        for field, value in cases:
+            with self.subTest(field=field, value=value):
+                study = copy.deepcopy(self.study)
+                study["procedures"][1]["reference_geometry"]["rounding_hypothesis"][field] = value
+                result = build_16r_reference(study)
+                self.assertEqual(result["status"], "SOURCE_GEOMETRY_CONFLICT")
+                self.assertIsNone(result["path"])
+                self.assertIn("radius rounding", result["rounding_solution"]["reason"])
+
+    def test_interval_is_tied_to_printed_radius_resolution_and_rule(self):
+        solution = self.reference["rounding_solution"]
+        self.assertEqual(solution["displayed_radius_nm"], 2.7)
+        assumptions = solution["assumptions"]
+        self.assertEqual(assumptions["radius_display_resolution_nm"], .1)
+        self.assertEqual(assumptions["radius_rounding_rule"], "nearest_increment")
+        self.assertEqual(assumptions["radius_interval_nm"], [2.65, 2.75])
+        self.assertEqual(assumptions["radius_interval_closure"], "lower_inclusive_upper_exclusive")
+
     def test_reconstructed_latlon_projection_independently_agrees_with_enu(self):
         from m1_research.geodesy import parse_dms
         origin = self.study["airport"]["reference_frame"]

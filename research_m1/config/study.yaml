@@ -134,6 +134,8 @@ procedures:
       source_ref: USER_RF_PRECISION_ADJUDICATION_20261108
       coordinate_half_unit_arcsec: 0.05
       coordinate_interval: strict_open
+      radius_display_resolution_nm: 0.1
+      radius_rounding_rule: nearest_increment
       radius_interval_nm: [2.65, 2.75]
       radius_interval_closure: lower_inclusive_upper_exclusive
       interpretation: nearest printed 0.1 arcsecond and 0.1 NM are research assumptions, not database precision

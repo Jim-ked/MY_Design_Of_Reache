@@ -38,7 +38,10 @@ def build_16r_reference(study: dict[str, Any] | None = None) -> dict[str, Any]:
     solution = solve_rf_precision(raw, frame,
         coordinate_half_unit_arcsec=hypothesis["coordinate_half_unit_arcsec"],
         radius_interval_nm=hypothesis["radius_interval_nm"],
-        displayed_radius_nm=geometry["rf_radius_nm"])
+        displayed_radius_nm=geometry["rf_radius_nm"],
+        radius_display_resolution_nm=hypothesis.get("radius_display_resolution_nm"),
+        radius_rounding_rule=hypothesis.get("radius_rounding_rule"),
+        radius_interval_closure=hypothesis.get("radius_interval_closure"))
     output = {"status": solution["status"], "rounding_solution": solution,
               "full_nominal_status": "UNRESOLVED", "reference_frame": "ZBTJ_ENU_ARP",
               "path": None, "formal_status": solution["status"],

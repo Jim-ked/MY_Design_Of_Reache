@@ -5,6 +5,7 @@ are used. No optimized coordinate is promoted to a published source value.
 """
 import copy
 import math
+from decimal import Decimal, InvalidOperation
 
 import numpy as np
 from scipy.optimize import minimize
@@ -16,6 +17,27 @@ POINT_ORDER = ("TJC01", "TJ907", "TJ906", "TJ903", "RW16R")
 SELECTION_RULE = "minimize 0.5 * sum((delta_arcsec / half_unit_arcsec)**2), equal weights; deterministic SLSQP from zero adjustments"
 POSITION_TOL_M = 1e-5
 TANGENT_TOL = 1e-8
+
+
+def _validated_radius_interval(displayed, resolution, rule, closure, interval):
+    """Check the redundant interval against the adjudicated display rule.
+
+    Decimal arithmetic preserves the printed decimal precision; this is a
+    configuration consistency check, not a geometric fit or a tolerance.
+    """
+    try:
+        radius, step = Decimal(str(displayed)), Decimal(str(resolution))
+        if (not radius.is_finite() or not step.is_finite()
+                or radius <= 0 or step <= 0 or radius % step != 0):
+            raise ValueError("radius rounding requires a positive finite display value and resolution on the display grid")
+        if rule != "nearest_increment" or closure != "lower_inclusive_upper_exclusive":
+            raise ValueError("radius rounding rule or interval closure is unsupported")
+        expected = [radius-step/2, radius+step/2]
+        if [Decimal(str(value)) for value in interval] != expected:
+            raise ValueError("radius rounding interval disagrees with displayed radius, resolution and rule")
+        return [float(value) for value in expected]
+    except InvalidOperation as exc:
+        raise ValueError("radius rounding inputs must be valid decimal values") from exc
 
 
 def _project_with_jacobian(frame, latlon_deg, normalized, half_unit_arcsec):
@@ -67,7 +89,9 @@ def _constraints(xy, jac):
 
 
 def solve_rf_precision(raw_points, frame, *, coordinate_half_unit_arcsec,
-                       radius_interval_nm, displayed_radius_nm):
+                       radius_interval_nm, displayed_radius_nm,
+                       radius_display_resolution_nm, radius_rounding_rule,
+                       radius_interval_closure):
     """Return a checked conditional representative, or an explicit conflict.
 
     The representative is a deterministic local least-adjustment solution.
@@ -80,6 +104,9 @@ def solve_rf_precision(raw_points, frame, *, coordinate_half_unit_arcsec,
     assumptions = {"status": "CONDITIONAL", "coordinate_half_unit_arcsec": half,
                    "coordinate_bounds": "strict abs(delta) < half_unit",
                    "radius_interval_nm": interval, "radius_bounds": "lower inclusive; upper exclusive",
+                   "radius_display_resolution_nm": radius_display_resolution_nm,
+                   "radius_rounding_rule": radius_rounding_rule,
+                   "radius_interval_closure": radius_interval_closure,
                    "basis": "nearest printed 0.1 arcsecond and nearest 0.1 NM are research hypotheses, not navigation database accuracy"}
     result = {"status": "SOURCE_GEOMETRY_CONFLICT", "raw_points": copy.deepcopy(raw_points),
               "displayed_radius_nm": float(displayed_radius_nm), "assumptions": assumptions,
@@ -88,6 +115,9 @@ def solve_rf_precision(raw_points, frame, *, coordinate_half_unit_arcsec,
               "numerical_checks": {"position_tolerance_m": POSITION_TOL_M, "tangent_vector_tolerance": TANGENT_TOL},
               "residuals": {}}
     try:
+        interval = _validated_radius_interval(
+            displayed_radius_nm, radius_display_resolution_nm, radius_rounding_rule,
+            radius_interval_closure, interval)
         if len(interval) != 2 or not 0 < interval[0] < interval[1] or not half > 0:
             raise ValueError("invalid explicit rounding intervals")
         ll = np.array([parse_dms(raw_points[name]) for name in POINT_ORDER])
