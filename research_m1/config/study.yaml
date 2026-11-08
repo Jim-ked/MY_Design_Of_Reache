@@ -25,8 +25,8 @@ procedures:
   source_ref: H01
   review_status: PARTIAL_REFERENCE
   reference_geometry:
-    projection: WGS84 ECEF to ARP ENU at charted airport elevation; LOC final only;
-      RNAV access undefined
+    projection: WGS84 ECEF to ARP ENU at charted airport elevation; single conditional
+      LOC axis from projected IF station to threshold
     points:
       TJ954:
         lat_deg: 39
@@ -35,6 +35,24 @@ procedures:
         lon_deg: 117
         lon_min: 16
         lon_sec: 39.0
+        source_ref: H01_4Y01
+        status: SOURCE_VERIFIED
+      TJ919:
+        lat_deg: 39
+        lat_min: 13
+        lat_sec: 46.0
+        lon_deg: 117
+        lon_min: 9
+        lon_sec: 10.0
+        source_ref: H01_4Y01
+        status: SOURCE_VERIFIED
+      TJ960:
+        lat_deg: 39
+        lat_min: 18
+        lat_sec: 0.0
+        lon_deg: 117
+        lon_min: 23
+        lon_sec: 30.0
         source_ref: H01_4Y01
         status: SOURCE_VERIFIED
       LOC16L:
@@ -66,6 +84,8 @@ procedures:
         status: SOURCE_VERIFIED
     true_course_deg: 154.45
     course_source_ref: H01_AD2025:p12
+    magnetic_course_deg: 161.0
+    magnetic_course_source_ref: H01_5A
     runway_length_m: 3200.0
     loc_beyond_runway_end_m: 310.0
     im_before_threshold_m: 320.0
@@ -76,9 +96,20 @@ procedures:
     - H01_4Y01
     - H01_AD2025
     source_status: SOURCE_VERIFIED
+    source_status_scope: original published fields only; not projected station or conditional events
     compatibility_status: CROSS_DATE_UNVERIFIED
-    geometry_status: PARTIAL_REFERENCE
-    missing_interval: TJ954 RNAV access to LOC establishment
+    geometry_status: CONDITIONAL_LOC_REFERENCE
+    construction_source_ref: USER_16L_LOC_ADJUDICATION_20261108
+    entry_event_id: IF_REFERENCE_STATION
+    source_versions:
+      H01_4Y01: '2024-10-31'
+      H01_5A: '2024-10-31'
+      H01_AD2025: '2025-10-02'
+      H01_2A_2025: '2025-09-04'
+    program_topology:
+      iaf_to_if: [[TJ919, TJ954], [TJ960, TJ954]]
+      source_ref: H01_5A
+      geometry_scope: METADATA_ONLY_OUTSIDE_REFERENCE_SUPPORT
     dme_interpretation: CONDITIONAL_HORIZONTAL_DISTANCE_NOT_SLANT_RANGE
   constraints:
   - constraint_id: IF_HEIGHT
@@ -105,7 +136,17 @@ procedures:
     source_ref: H01_5A
     status: SOURCE_VERIFIED
   events:
-  - event_id: FAF
+  - event_id: TJ954_PUBLISHED
+    published_name: IF TJ954 / D9.2 ICU
+    s_m: null
+    status: SOURCE_VERIFIED_LABEL_ONLY
+  - event_id: IF_REFERENCE_STATION
+    published_name: null
+    s_m: null
+    status: CONDITIONAL_LOC_REFERENCE
+    definition: model entry at orthogonal projection of TJ954 onto conditional LOC axis
+    source_ref: USER_16L_LOC_ADJUDICATION_20261108
+  - event_id: FAF_D6P2_ICU
     published_name: D6.2 ICU
     s_m: null
     status: SOURCE_VERIFIED_LABEL_ONLY

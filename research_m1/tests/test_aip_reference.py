@@ -22,11 +22,12 @@ class AIPReferenceTests(unittest.TestCase):
 
     def test_16l_partial_reference_preserves_faf_as_event_without_gp_capture_guess(self):
         result = build_16l_reference(load_study())
-        self.assertEqual(result["status"], "PARTIAL_REFERENCE")
-        self.assertIsNone(result["events"]["IF"])
-        self.assertLess(result["events"]["FAF"], result["events"]["THR"])
+        self.assertEqual(result["status"], "CONDITIONAL_LOC_REFERENCE")
+        self.assertIsNone(result["events"]["TJ954_PUBLISHED"]["s_m"])
+        self.assertEqual(result["events"]["IF_REFERENCE_STATION"]["s_m"], 0.)
+        self.assertLess(result["events"]["FAF_D6P2_ICU"]["s_m"], result["events"]["THR"]["s_m"])
         self.assertIsNone(result["derived"]["published_fap_s_m"])
-        self.assertEqual(result["path"].evaluate(result["events"]["FAF"])["segment_id"], "LOC_FINAL")
+        self.assertEqual(result["path"].evaluate(result["events"]["FAF_D6P2_ICU"]["s_m"])["segment_id"], "LOC_REFERENCE")
         self.assertFalse(any(x in str(result) for x in ["TJ958", "TJ901", "TJ957"]))
 
     def test_true_azimuth_enu_axes(self):

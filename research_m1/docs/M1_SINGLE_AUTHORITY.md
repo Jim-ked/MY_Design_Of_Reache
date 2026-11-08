@@ -14,7 +14,7 @@
 |---|---|---|---|
 | P16R-LTP | RNP AR设计以**着陆入口点 LTP**为垂直参考，VPA/RDH与LTP高程和沿程距离相关[E02]；归档程序与旧Gate有32.439431 ft闭合残差[H02]。现有材料**不足以证明**旧软件RW16R与公布LTP同一点、用的是同一入口高程、已正确处理入口内移及高度限制类型。 | `SOURCE_RECONCILIATION_REQUIRED` | 从原始AIP重新取得LTP、跑道入口、移位及各点坐标/高程；独立解析公式核算。不自动修改TCH/VPA或把残差分摊到平滑段。 |
 | P16R-RF-PRECISION | 用户2026-11-08公布精度核定[E15]：精确化显示半径所致84.284m缺口不能证明程序必然矛盾。将坐标尾数严格限制在±0.05角秒、半径限制在[2.65,2.75)NM的研究舍入假设下，可求得共圆且RF—RF—TF同向相切的代表。原始AIP字段不改，计算代表不是未取整数据库值。 | `CONDITIONAL_REFERENCE_GEOMETRY` | 仅更新16R水平参考子项，记录确定性代表选择和残差；不升级G1总体及完整四维标称资格。 |
-| P16L-FAP | ICAO对ILS精密进近FAP定义是**名义下滑道与前一航段规定最低高度的交点**[E01]。旧Gate的D6.2 ICU定位点、600m/GP交点间隔42.773m仅是历史实现数值[H02]，不能单独证明程序冲突或完全相符。 | `CONSTRAINT_TYPE_REQUIRED` | 从ZBTJ-5A核对600m限制适用区间、DME和RDH定义、真实LTP；程序FAF（图示定位点）、FAP及执行GP捕获时刻分别存储。 |
+| P16L-FAP | ICAO对ILS精密进近FAP定义是**名义下滑道与前一航段规定最低高度的交点**[E01]。旧Gate的D6.2 ICU定位点、600m/GP交点间隔42.773m仅是历史实现数值[H02]，不能单独证明程序冲突或完全相符。本轮人工裁定[E16]仅接受IF投影站位→入口的单段条件LOC水平参考；公布TJ954与投影站位分开，约132m跨日期来源偏差明确保留，FAF为DME水平近似条件事件。 | `CONSTRAINT_TYPE_REQUIRED`；水平子项`CONDITIONAL_LOC_REFERENCE` | 不设计FAF转弯或截获曲线，进入时刻以IF_REFERENCE_STATION定义；保留两IAF至同一IF的元数据拓扑。从ZBTJ-5A继续核对600m限制适用区间、DME和RDH定义、真实LTP；FAP及GP_CAPTURE仍为空，G1与16L_FULL_NOMINAL不升级。 |
 | P16L-UNIT | MH/T 4019—2012第4.2.1节规定高程基准、第4.3.1节规定**高度以m标注、必要时并列ft**[E03]。 | `SUPPORTED` | 16L600m/2000ft仅作为同一公布标注，不能构造两条精确限制；须按航图的标注关系与高程基准读值。16m/52ft也不得拆成两个精确门限。 |
 | P-RF | FAA AC 90-101A为RNP AR运行提供适航及运行批准指导[E04]；RF需特定设备/运行能力；研究性MQ-9A不能自动视为获批。[E05]亦要求RF保持能力。 | `CONDITIONAL_SCENARIO` | 16R使用MQ-9A仅以明确的**假设具备相应导航能力**作为研究情景；输出注明未经实际运行批准核证。 |
 | PERF-A320 | Airbus解释VAPP由着陆构型VLS和风修正决定[E06]，不是机型固定进近速度；具体机重/构型及VLS需进一步取证。 | `PARTIAL` | 速度在机型、质量、构型、风条件明确后定义；禁止从历史有人机速度表直接抄值。 |
@@ -120,6 +120,7 @@
 | E11 | Rasmussen & Williams, *Gaussian Processes for Machine Learning* (2006), Ch4 §4.2: https://gaussianprocess.org/gpml/chapters/RW4.pdf | 概率数学理论 | SE核均方无限可微；**不能**证明该核真实符合具体航迹误差或满足机型速度上限 |
 | E12 | EUROCONTROL BADA官方项目：https://www.eurocontrol.int/model/bada | 建模方法背景 | BADA用于机型几何/运动学/动力学模拟；无授权数据不得杜撰A320模型包线 |
 | E15 | 用户2026-11-08《M1-16R RF程序水平几何：公布精度核定与最小实施任务》；原始ZBTJ.pdf p23 ZBTJ-4Y01、p42 ZBTJ-4Z18（EFF2024-10-31）；计算记录docs/16R_RF_PRECISION_AUDIT.md | 经用户裁定的条件舍入假设与独立数学审计 | 仅支持公布精度区间内可存在连续、同向相切代表；±0.05角秒和[2.65,2.75)NM不冒充数据库精度，不证明唯一真实导航数据库航迹，不解决LTP/垂直/跨日期/性能/统计问题。 |
+| E16 | 用户2026-11-08《M1_16L_简化参考几何与Codex实施任务_20261108.md》；原始ZBTJ.pdf p23/43（EFF2024-10-31）、天津滨海.pdf AD2.12/2.19 p12/17/18（EFF2025-10-02）；计算记录docs/16L_LOC_REFERENCE_AUDIT.md。裁定引用Doc8168 Vol II Part II Sec1 Ch1 §1.3.2（同E01链接）及ICAO APAC FPP 2025培训p33：https://www.icao.int/sites/default/files/APAC/APAC-FPP/FPP%20Training/FPP%20Training%20in%202025/PANS-OPS%20Procedure%20Design%20Initial%20Course%202025/Presentations/Day11-General-Criteria.pdf | 经用户裁定的条件水平工程参考 | 仅支持IF投影站位→THR单段LOC参考、来源偏差诊断及条件D6.2水平事件；不证明跨日期相容性、导航截获/真实执行、垂直或运行资格。规范定位由用户提供；2025链接本轮获取返回404，未冒充全文重新核证。 |
 
 ## 附录B 仍待解决的最小证据事项（与科学口径区别开）
 

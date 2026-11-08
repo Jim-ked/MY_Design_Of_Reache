@@ -116,7 +116,11 @@
       "extraction_method": "PDF text extraction with visual check on key pages",
       "status": "SOURCE_VERIFIED",
       "access": "authorized local source; raw documents not redistributed",
-      "configuration_use": "only facts transcribed into study.yaml; no old output inputs"
+      "configuration_use": "only facts transcribed into study.yaml; no old output inputs",
+      "additional_evidence_fields_this_round": [
+        "TJ919 N39 13 46.0 E117 09 10.0",
+        "TJ960 N39 18 00.0 E117 23 30.0"
+      ]
     },
     {
       "source_id": "H01_4Z18",
@@ -222,13 +226,14 @@
     {
       "source_id": "AUTHORITY_DOC",
       "title": "M1_SINGLE_AUTHORITY.md",
-      "sha256": "e34684b9fb41fd182002b16623ba8cf7f36534f6fa4fdd80f28f93ba3e199934",
+      "sha256": "2f9eaa507dae579fddb8575b714403122f081b4054af60b851b4eba9b46ac984",
       "status": "SUPPORTED",
       "role": "scientific authority",
       "original_sha256": "1395060aca2e337d77e2b2583f7033648cb12ad17c9e6533613552eac619b814",
-      "change_note": "Only P16R-RF-PRECISION/E15 evidence adjudication added under user instruction. Mathematical definitions and G1-G5 acceptance conditions unchanged.",
+      "change_note": "Only P16R-RF-PRECISION/E15 evidence adjudication added under user instruction. Mathematical definitions and G1-G5 acceptance conditions unchanged. Current update changes only existing P16L evidence adjudication and adds E16 under explicit user instruction; model definitions and gate acceptance criteria unchanged.",
       "hash_scope": "distributed UTF-8 document with LF line endings",
-      "pre_rf_audit_document_sha256": "56ab4b501ca5f12af163397634dbc73b4a15cc456db2c601f70e704a2b2b04e6"
+      "pre_rf_audit_document_sha256": "56ab4b501ca5f12af163397634dbc73b4a15cc456db2c601f70e704a2b2b04e6",
+      "pre_16l_adjudication_document_sha256": "e34684b9fb41fd182002b16623ba8cf7f36534f6fa4fdd80f28f93ba3e199934"
     },
     {
       "source_id": "EXECUTION_DOC",
@@ -368,6 +373,41 @@
       "raw_source_sha256": "484482e46c7880fb8e4071e26c4af5d2c5d912109ba040ad22250726f129ce98",
       "verification_method": "re-render and visually read raw AIP p23 and p42; independent analytic ENU constraints and numerical residual checks",
       "database_unrounded_precision": "UNRESOLVED"
+    },
+    {
+      "source_id": "USER_16L_LOC_ADJUDICATION_20261108",
+      "evidence_id": "E16",
+      "title": "M1_16L_简化参考几何与Codex实施任务_20261108.md",
+      "sha256": "a7dc5008066af619cf97426045a9e0f32524a3ad3cd77f4939868382186f6e9a",
+      "version": "2026-11-08",
+      "source_type": "user_supplied_research_adjudication",
+      "status": "CONDITIONAL",
+      "audit_record": "research_m1/docs/16L_LOC_REFERENCE_AUDIT.md",
+      "original_aip_refs": [
+        "H01_4Y01:ZBTJ.pdf:p23:EFF2024-10-31",
+        "H01_5A:ZBTJ.pdf:p43:EFF2024-10-31",
+        "H01_AD2025:AD2.12/AD2.19:p12,p17,p18:EFF2025-10-02"
+      ],
+      "verification_method": "local raw PDF hashes, visual review of p23/p43/ADp17/18 and AD2.12 bearing text; horizontal analytic checks",
+      "allows": "single conditional LOC axis from orthogonal published-IF station to inferred THR; retained cross-date diagnostic and conditional D6.2 horizontal event",
+      "does_not_allow": "published IF coordinate replacement, hiding offset in sigma, navigation capture geometry, FAP/GP capture guessing or full execution qualification",
+      "normative_citations": [
+        {
+          "document": "ICAO Doc8168 Vol II, Part II Sec1 Ch1 section1.3.2",
+          "url": "https://www.icao.int/sites/default/files/APAC/APAC-FPP/FPP%20Training/FPP%20Training%20in%202024/Pans-Ops%20Procedure%20Design%20Initial%20Course/Courseware/8168_v2_cons_en.pdf",
+          "status": "USER_CITED_NOT_RETRIEVED_THIS_ROUND"
+        },
+        {
+          "document": "ICAO APAC FPP 2025 ILS design training p33",
+          "url": "https://www.icao.int/sites/default/files/APAC/APAC-FPP/FPP%20Training/FPP%20Training%20in%202025/PANS-OPS%20Procedure%20Design%20Initial%20Course%202025/Presentations/Day11-General-Criteria.pdf",
+          "status": "RETRIEVAL_HTTP_404"
+        }
+      ],
+      "compatibility_status": "CROSS_DATE_UNVERIFIED",
+      "raw_source_sha256": [
+        "484482e46c7880fb8e4071e26c4af5d2c5d912109ba040ad22250726f129ce98",
+        "a71fc8268f1b965dcb7f2f6818a9b552616a15b4a5f38c497e965531ed44fd3b"
+      ]
     }
   ],
   "page_inventory": [
@@ -937,5 +977,6 @@
     "ZBTJ-9A and approach entries of ZBTJ-4Z15: RNP RWY16L, not the RNAV ILS/DME reference. No TJ958/TJ901/TJ957 mapping into the ILS path."
   ],
   "redistribution": "No original AIP PDF, image, extracted full text, raw track or user absolute path is included.",
-  "rf_precision_scope": "84.284m is an exact-display algorithm artifact, not proof of unavoidable program geometry conflict; conditional rounding feasibility verified."
+  "rf_precision_scope": "84.284m is an exact-display algorithm artifact, not proof of unavoidable program geometry conflict; conditional rounding feasibility verified.",
+  "16l_loc_reference_scope": "Conditional IF projection station to THR; 132m cross-date source difference not a navigation error or stochastic sigma. No full nominal qualification."
 }

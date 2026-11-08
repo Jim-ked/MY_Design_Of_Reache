@@ -358,17 +358,132 @@
     }
   },
   "16L": {
-    "status": "PARTIAL_REFERENCE",
+    "status": "CONDITIONAL_LOC_REFERENCE",
+    "full_nominal_status": "UNRESOLVED",
     "reference_frame": "ZBTJ_ENU_ARP",
-    "station_origin": "conditional FAF on LOC final only; global s from TJ954 unresolved",
-    "events": {
-      "IF": null,
-      "FAF": 0.0,
-      "THR": 11162.973054702199
+    "horizontal_continuity": {
+      "continuous": true,
+      "boundaries": [],
+      "position_tolerance_m": 1e-05,
+      "tangent_vector_tolerance": 1e-08
     },
+    "station_origin": "orthogonal TJ954 projection onto conditional LOC axis; not exact overflight of published TJ954",
+    "entry_event_id": "IF_REFERENCE_STATION",
+    "events": {
+      "TJ954_PUBLISHED": {
+        "s_m": null,
+        "published_point": {
+          "lat_deg": 39,
+          "lat_min": 16,
+          "lat_sec": 37.0,
+          "lon_deg": 117,
+          "lon_min": 16,
+          "lon_sec": 39.0,
+          "source_ref": "H01_4Y01",
+          "status": "SOURCE_VERIFIED"
+        },
+        "enu_projection": {
+          "xy_m": [
+            -5920.2931267902095,
+            16932.662119603378
+          ],
+          "status": "DERIVED_COORDINATE"
+        },
+        "status": "SOURCE_VERIFIED",
+        "on_reference_path": false,
+        "source_ref": "H01_4Y01"
+      },
+      "IF_REFERENCE_STATION": {
+        "s_m": 0.0,
+        "xy_m": [
+          -5801.185538174649,
+          16989.655952085122
+        ],
+        "status": "CONDITIONAL_LOC_REFERENCE",
+        "source_ref": [
+          "H01_4Y01",
+          "H01_5A",
+          "H01_AD2025",
+          "USER_16L_LOC_ADJUDICATION_20261108"
+        ],
+        "definition": "orthogonal projection of published TJ954; model entry station only"
+      },
+      "FAF_D6P2_ICU": {
+        "s_m": 5579.71714622792,
+        "xy_m": [
+          -3392.7771397819015,
+          11956.484743149236
+        ],
+        "published_label": "FAF D6.2 ICU",
+        "published_label_status": "SOURCE_VERIFIED_LABEL_ONLY",
+        "status": "CONDITIONAL_DME_HORIZONTAL_EVENT",
+        "source_ref": [
+          "H01_5A",
+          "H01_AD2025"
+        ],
+        "range_interpretation": "CONDITIONAL_HORIZONTAL_DISTANCE_NOT_SLANT_RANGE"
+      },
+      "THR": {
+        "s_m": 16742.69020093012,
+        "xy_m": [
+          1425.5671152045552,
+          1886.950192811451
+        ],
+        "status": "CONDITIONAL_LOC_REFERENCE",
+        "source_ref": "H01_AD2025:p12,p17"
+      },
+      "FAP": {
+        "s_m": null,
+        "status": "UNRESOLVED"
+      },
+      "GP_CAPTURE": {
+        "s_m": null,
+        "status": "UNRESOLVED"
+      }
+    },
+    "program_topology": {
+      "iaf_to_if": [
+        [
+          "TJ919",
+          "TJ954"
+        ],
+        [
+          "TJ960",
+          "TJ954"
+        ]
+      ],
+      "source_ref": "H01_5A",
+      "geometry_scope": "METADATA_ONLY_OUTSIDE_REFERENCE_SUPPORT"
+    },
+    "source_versions": {
+      "H01_4Y01": "2024-10-31",
+      "H01_5A": "2024-10-31",
+      "H01_AD2025": "2025-10-02",
+      "H01_2A_2025": "2025-09-04"
+    },
+    "compatibility_status": "CROSS_DATE_UNVERIFIED",
     "derived": {
-      "final_length_m": 11162.973054702199,
-      "IF_to_LOC_gap_length_m": null,
+      "reference_length_m": 16742.69020093012,
+      "faf_to_threshold_length_m": 11162.973054702199,
+      "faf_reference_s_m": 5579.71714622792,
+      "IF_PUBLISHED_TO_LOC_CROSS_TRACK_M": 132.04133673501937,
+      "if_published_to_loc_signed_left_m": -132.04133673501937,
+      "cross_track_interpretation": "CROSS_DATE_SOURCE_DIAGNOSTIC_NOT_NAVIGATION_ERROR_OR_SIGMA",
+      "loc_forward_unit_enu": [
+        0.4316362882338784,
+        -0.9020477341469687
+      ],
+      "dme_xy_m": [
+        1669.086545184198,
+        1650.0282330376517
+      ],
+      "loc_true_azimuth_at_antenna_rad": 2.6956610297052417,
+      "loc_course_arp_enu_rad": 2.6952866914578095,
+      "chart_magnetic_course_rad": 2.8099800957108707,
+      "course_correspondence": "2024 magnetic chart course and 2025 true runway bearing are separately published; not forced to exact conversion",
+      "dme_horizontal_radius_m": 11482.4,
+      "dme_interpretation": "CONDITIONAL_HORIZONTAL_DISTANCE_NOT_SLANT_RANGE",
+      "dme_missing_evidence": "antenna elevation and aircraft altitude unresolved; horizontal range event is not a slant-range fix",
       "threshold_from_loc_xy_m": [
         1425.5671152045552,
         1886.950192811451
@@ -378,45 +493,51 @@
       "published_gp_capture_s_m": null
     },
     "segment_sources": {
-      "LOC_FINAL": [
-        "H01_AD2025:p12,p17,p18",
-        "H01_5A"
+      "LOC_REFERENCE": [
+        "H01_4Y01",
+        "H01_5A",
+        "H01_AD2025",
+        "USER_16L_LOC_ADJUDICATION_20261108"
       ]
     },
     "path_source": [
-      "H01_AD2025",
+      "H01_4Y01",
       "H01_5A",
+      "H01_AD2025",
+      "USER_16L_LOC_ADJUDICATION_20261108",
       "H01_2A_2025"
     ],
-    "formal_status": "PARTIAL_REFERENCE",
+    "formal_status": "CONDITIONAL_LOC_REFERENCE",
     "limitations": [
-      "RNAV access geometry unknown; no constructed connector",
+      "conditional engineering reference, not navigation capture or actual execution trajectory",
+      "published TJ954 is off the conditional axis; source discrepancy retained, not a stochastic error",
       "2024/2025 page compatibility unresolved",
-      "DME horizontal approximation is conditional, not slant range"
+      "DME horizontal approximation is conditional, not slant range",
+      "FAP, GP capture, vertical constraints and aircraft performance remain unresolved"
     ],
     "one_sided_boundaries": [
       {
         "s_m": 0.0,
-        "east_m": -3392.7771397819015,
-        "north_m": 11956.484743149236,
+        "east_m": -5801.185538174649,
+        "north_m": 16989.655952085122,
         "tangent_east": 0.4316362882338785,
         "tangent_north": -0.9020477341469686,
         "normal_east": 0.9020477341469686,
         "normal_north": 0.4316362882338785,
         "curvature_1_m": 0.0,
-        "segment_id": "LOC_FINAL",
+        "segment_id": "LOC_REFERENCE",
         "segment_index": 0
       },
       {
-        "s_m": 11162.973054702199,
-        "east_m": 1425.567115204556,
+        "s_m": 16742.69020093012,
+        "east_m": 1425.567115204557,
         "north_m": 1886.9501928114532,
         "tangent_east": 0.4316362882338785,
         "tangent_north": -0.9020477341469686,
         "normal_east": 0.9020477341469686,
         "normal_north": 0.4316362882338785,
         "curvature_1_m": 0.0,
-        "segment_id": "LOC_FINAL",
+        "segment_id": "LOC_REFERENCE",
         "segment_index": 0
       }
     ]

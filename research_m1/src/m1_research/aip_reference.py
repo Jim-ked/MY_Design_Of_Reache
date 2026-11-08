@@ -1,6 +1,7 @@
 """Build partial reference geometry directly from the clean-room AIP fields."""
 
 import math
+import copy
 from typing import Any
 
 import numpy as np
@@ -85,6 +86,7 @@ def build_16r_reference(study: dict[str, Any] | None = None) -> dict[str, Any]:
 
 
 def build_16l_reference(study: dict[str, Any] | None = None) -> dict[str, Any]:
+    """One conditional LOC line; a projected IF station is not published TJ954."""
     study = load_study() if study is None else study
     frame = _aip_frame(study)
     geometry = study["procedures"][0]["reference_geometry"]
@@ -109,24 +111,70 @@ def build_16l_reference(study: dict[str, Any] | None = None) -> dict[str, Any]:
         raise ValueError("DME circle does not intersect the LOC axis")
     final_length = b + math.sqrt(discriminant)
     faf = threshold - u * final_length
-    path = ReferencePath([LineSegment(final_length, tuple(faf), math.atan2(u[0], u[1]), "LOC_FINAL")])
+    published_if = _point(frame, raw["TJ954"])
+    reference_length = -float(np.dot(published_if-threshold, u))
+    faf_s = reference_length-final_length
+    if not 0. < faf_s < reference_length or not np.isfinite(reference_length):
+        raise ValueError("SOURCE_GEOMETRY_CONFLICT: required IF_REFERENCE_STATION < FAF < THR order failed")
+    reference_if = threshold-reference_length*u
+    normal = np.array([-u[1], u[0]])
+    signed_offset = float(np.dot(published_if-reference_if, normal))
+    path = ReferencePath([LineSegment(reference_length, tuple(reference_if),
+                                      math.atan2(u[0], u[1]), "LOC_REFERENCE")])
+    continuity = path.require_continuity()
+    sources = ["H01_4Y01", "H01_5A", "H01_AD2025", "USER_16L_LOC_ADJUDICATION_20261108"]
     return {
-        "status": "PARTIAL_REFERENCE",
+        "status": "CONDITIONAL_LOC_REFERENCE",
+        "full_nominal_status": "UNRESOLVED",
         "reference_frame": "ZBTJ_ENU_ARP",
         "path": path,
-        "station_origin": "conditional FAF on LOC final only; global s from TJ954 unresolved",
-        "events": {"IF": None, "FAF": 0.0, "THR": final_length},
+        "horizontal_continuity": continuity,
+        "station_origin": "orthogonal TJ954 projection onto conditional LOC axis; not exact overflight of published TJ954",
+        "entry_event_id": "IF_REFERENCE_STATION",
+        "events": {
+            "TJ954_PUBLISHED": {"s_m": None, "published_point": copy.deepcopy(raw["TJ954"]),
+                "enu_projection": {"xy_m": published_if.tolist(), "status": "DERIVED_COORDINATE"},
+                "status": "SOURCE_VERIFIED", "on_reference_path": False, "source_ref": "H01_4Y01"},
+            "IF_REFERENCE_STATION": {"s_m": 0., "xy_m": reference_if.tolist(),
+                "status": "CONDITIONAL_LOC_REFERENCE", "source_ref": sources,
+                "definition": "orthogonal projection of published TJ954; model entry station only"},
+            "FAF_D6P2_ICU": {"s_m": faf_s, "xy_m": faf.tolist(),
+                "published_label": "FAF D6.2 ICU", "published_label_status": "SOURCE_VERIFIED_LABEL_ONLY",
+                "status": "CONDITIONAL_DME_HORIZONTAL_EVENT", "source_ref": ["H01_5A", "H01_AD2025"],
+                "range_interpretation": "CONDITIONAL_HORIZONTAL_DISTANCE_NOT_SLANT_RANGE"},
+            "THR": {"s_m": reference_length, "xy_m": threshold.tolist(),
+                "status": "CONDITIONAL_LOC_REFERENCE", "source_ref": "H01_AD2025:p12,p17"},
+            "FAP": {"s_m": None, "status": "UNRESOLVED"},
+            "GP_CAPTURE": {"s_m": None, "status": "UNRESOLVED"},
+        },
+        "program_topology": copy.deepcopy(geometry["program_topology"]),
+        "source_versions": copy.deepcopy(geometry["source_versions"]),
+        "compatibility_status": "CROSS_DATE_UNVERIFIED",
         "derived": {
-            "final_length_m": final_length,
-            "IF_to_LOC_gap_length_m": None,
+            "reference_length_m": reference_length,
+            "faf_to_threshold_length_m": final_length,
+            "faf_reference_s_m": faf_s,
+            "IF_PUBLISHED_TO_LOC_CROSS_TRACK_M": abs(signed_offset),
+            "if_published_to_loc_signed_left_m": signed_offset,
+            "cross_track_interpretation": "CROSS_DATE_SOURCE_DIAGNOSTIC_NOT_NAVIGATION_ERROR_OR_SIGMA",
+            "loc_forward_unit_enu": u.tolist(), "dme_xy_m": dme.tolist(),
+            "loc_true_azimuth_at_antenna_rad": azimuth,
+            "loc_course_arp_enu_rad": math.atan2(u[0], u[1]),
+            "chart_magnetic_course_rad": math.radians(geometry["magnetic_course_deg"]),
+            "course_correspondence": "2024 magnetic chart course and 2025 true runway bearing are separately published; not forced to exact conversion",
+            "dme_horizontal_radius_m": radius,
+            "dme_interpretation": "CONDITIONAL_HORIZONTAL_DISTANCE_NOT_SLANT_RANGE",
+            "dme_missing_evidence": "antenna elevation and aircraft altitude unresolved; horizontal range event is not a slant-range fix",
             "threshold_from_loc_xy_m": threshold.tolist(),
             "threshold_from_im_residual_m": float(np.linalg.norm(threshold - (im + u * geometry["im_before_threshold_m"]))),
             "published_fap_s_m": None,
             "published_gp_capture_s_m": None,
         },
-        "segment_sources": {"LOC_FINAL": ["H01_AD2025:p12,p17,p18", "H01_5A"]},
-        "path_source": ["H01_AD2025", "H01_5A", "H01_2A_2025"],
-        "formal_status": "PARTIAL_REFERENCE",
-        "limitations": ["RNAV access geometry unknown; no constructed connector",
-                        "2024/2025 page compatibility unresolved", "DME horizontal approximation is conditional, not slant range"],
+        "segment_sources": {"LOC_REFERENCE": sources},
+        "path_source": sources + ["H01_2A_2025"],
+        "formal_status": "CONDITIONAL_LOC_REFERENCE",
+        "limitations": ["conditional engineering reference, not navigation capture or actual execution trajectory",
+                        "published TJ954 is off the conditional axis; source discrepancy retained, not a stochastic error",
+                        "2024/2025 page compatibility unresolved", "DME horizontal approximation is conditional, not slant range",
+                        "FAP, GP capture, vertical constraints and aircraft performance remain unresolved"],
     }

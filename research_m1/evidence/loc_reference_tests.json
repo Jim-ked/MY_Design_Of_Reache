@@ -1,0 +1,58 @@
+{
+  "date": "2026-11-08",
+  "status": "PASS",
+  "main_base": "9c2d8e45830511aa34d23fb8a208c661a58ccb88",
+  "branch": "research/16l-loc-reference",
+  "runs": [
+    {
+      "command": "python -m unittest discover -s research_m1/tests -v",
+      "count": 36,
+      "exit_code": 0,
+      "status": "PASS",
+      "output": "test_conditional_faf_is_on_axis_and_uses_horizontal_dme_range (test_16l_loc_reference.LOCHorizontalReferenceTests.test_conditional_faf_is_on_axis_and_uses_horizontal_dme_range) ... ok\ntest_invalid_reference_event_order_is_rejected (test_16l_loc_reference.LOCHorizontalReferenceTests.test_invalid_reference_event_order_is_rejected) ... ok\ntest_one_line_from_reference_station_to_threshold (test_16l_loc_reference.LOCHorizontalReferenceTests.test_one_line_from_reference_station_to_threshold) ... ok\ntest_published_if_and_reference_projection_are_distinct_and_orthogonal (test_16l_loc_reference.LOCHorizontalReferenceTests.test_published_if_and_reference_projection_are_distinct_and_orthogonal) ... ok\ntest_topology_and_dates_remain_metadata_not_extra_segments (test_16l_loc_reference.LOCHorizontalReferenceTests.test_topology_and_dates_remain_metadata_not_extra_segments) ... ok\ntest_16l_partial_reference_preserves_faf_as_event_without_gp_capture_guess (test_aip_reference.AIPReferenceTests.test_16l_partial_reference_preserves_faf_as_event_without_gp_capture_guess) ... ok\ntest_16r_partial_reference_has_rf_rf_tf_events_and_single_sided_curvature (test_aip_reference.AIPReferenceTests.test_16r_partial_reference_has_rf_rf_tf_events_and_single_sided_curvature) ... ok\ntest_true_azimuth_enu_axes (test_aip_reference.AIPReferenceTests.test_true_azimuth_enu_axes) ... ok\ntest_new_source_has_no_historical_import_or_alias (test_cleanroom_independence.CleanroomIndependenceTests.test_new_source_has_no_historical_import_or_alias) ... ok\ntest_config_has_one_pair_and_no_fabricated_operational_time (test_dual_scenario.DualScenarioTests.test_config_has_one_pair_and_no_fabricated_operational_time) ... ok\ntest_enter_leave_and_relative_velocity_no_outside_evaluation (test_dual_scenario.DualScenarioTests.test_enter_leave_and_relative_velocity_no_outside_evaluation) ... ok\ntest_schedule_never_calls_outside_its_domain (test_dual_scenario.DualScenarioTests.test_schedule_never_calls_outside_its_domain) ... ok\ntest_circle_and_line_have_expected_boundary_states (test_reference_geometry.ReferenceGeometryTests.test_circle_and_line_have_expected_boundary_states) ... ok\ntest_all_ten_coordinate_adjustments_are_strictly_inside_half_last_digit (test_rf_precision.RFPrecisionTests.test_all_ten_coordinate_adjustments_are_strictly_inside_half_last_digit) ... ok\ntest_analytic_constraint_jacobian_matches_independent_difference (test_rf_precision.RFPrecisionTests.test_analytic_constraint_jacobian_matches_independent_difference) ... ok\ntest_downstream_state_request_rejects_disconnected_horizontal_path (test_rf_precision.RFPrecisionTests.test_downstream_state_request_rejects_disconnected_horizontal_path) ... ok\ntest_gap_or_tangent_corner_cannot_be_used_as_continuous_path (test_rf_precision.RFPrecisionTests.test_gap_or_tangent_corner_cannot_be_used_as_continuous_path) ... ok\ntest_inconsistent_fix_is_rejected_without_patch_or_relaxation (test_rf_precision.RFPrecisionTests.test_inconsistent_fix_is_rejected_without_patch_or_relaxation) ... ok\ntest_interval_is_tied_to_printed_radius_resolution_and_rule (test_rf_precision.RFPrecisionTests.test_interval_is_tied_to_printed_radius_resolution_and_rule) ... ok\ntest_missing_or_invalid_display_precision_rule_and_closure_are_rejected (test_rf_precision.RFPrecisionTests.test_missing_or_invalid_display_precision_rule_and_closure_are_rejected) ... ok\ntest_missing_source_point_is_rejected (test_rf_precision.RFPrecisionTests.test_missing_source_point_is_rejected) ... ok\ntest_radius_in_display_interval_and_three_points_on_same_circle (test_rf_precision.RFPrecisionTests.test_radius_in_display_interval_and_three_points_on_same_circle) ... ok\ntest_raw_aip_fields_are_not_mutated_or_promoted (test_rf_precision.RFPrecisionTests.test_raw_aip_fields_are_not_mutated_or_promoted) ... ok\ntest_reconstructed_latlon_projection_independently_agrees_with_enu (test_rf_precision.RFPrecisionTests.test_reconstructed_latlon_projection_independently_agrees_with_enu) ... ok\ntest_representative_selection_is_deterministic_and_not_a_fixed_witness (test_rf_precision.RFPrecisionTests.test_representative_selection_is_deterministic_and_not_a_fixed_witness) ... ok\ntest_rf_rf_tf_positions_and_forward_tangents_are_continuous (test_rf_precision.RFPrecisionTests.test_rf_rf_tf_positions_and_forward_tangents_are_continuous) ... ok\ntest_stale_radius_or_independently_widened_interval_is_rejected (test_rf_precision.RFPrecisionTests.test_stale_radius_or_independently_widened_interval_is_rejected) ... ok\ntest_circle_random_velocity_is_same_position_derivative (test_time_and_states.TimeAndStateTests.test_circle_random_velocity_is_same_position_derivative) ... ok\ntest_piecewise_linear_speed_uses_integral_and_inverse (test_time_and_states.TimeAndStateTests.test_piecewise_linear_speed_uses_integral_and_inverse) ... ok\ntest_random_state_uses_shared_path_and_derivative (test_time_and_states.TimeAndStateTests.test_random_state_uses_shared_path_and_derivative) ... ok\ntest_sync_does_not_extrapolate_activity (test_time_and_states.TimeAndStateTests.test_sync_does_not_extrapolate_activity) ... ok\ntest_time_inverse_and_vertical_units (test_time_and_states.TimeAndStateTests.test_time_inverse_and_vertical_units) ... ok\ntest_missing_science_inputs_return_explicit_blockers (test_uncertainty_and_status.UncertaintyAndStatusTests.test_missing_science_inputs_return_explicit_blockers) ... ok\ntest_se_covariance_derivative_blocks_match_kernel_differentiation (test_uncertainty_and_status.UncertaintyAndStatusTests.test_se_covariance_derivative_blocks_match_kernel_differentiation) ... ok\ntest_se_joint_derivative_is_reproducible (test_uncertainty_and_status.UncertaintyAndStatusTests.test_se_joint_derivative_is_reproducible) ... ok\ntest_study_is_self_contained_and_reference_only (test_uncertainty_and_status.UncertaintyAndStatusTests.test_study_is_self_contained_and_reference_only) ... ok\n\n----------------------------------------------------------------------\nRan 36 tests in 0.331s\n\nOK\n"
+    },
+    {
+      "command": "python -m unittest test_16l_loc_reference -v",
+      "count": 5,
+      "exit_code": 0,
+      "status": "PASS",
+      "output": "test_conditional_faf_is_on_axis_and_uses_horizontal_dme_range (test_16l_loc_reference.LOCHorizontalReferenceTests.test_conditional_faf_is_on_axis_and_uses_horizontal_dme_range) ... ok\ntest_invalid_reference_event_order_is_rejected (test_16l_loc_reference.LOCHorizontalReferenceTests.test_invalid_reference_event_order_is_rejected) ... ok\ntest_one_line_from_reference_station_to_threshold (test_16l_loc_reference.LOCHorizontalReferenceTests.test_one_line_from_reference_station_to_threshold) ... ok\ntest_published_if_and_reference_projection_are_distinct_and_orthogonal (test_16l_loc_reference.LOCHorizontalReferenceTests.test_published_if_and_reference_projection_are_distinct_and_orthogonal) ... ok\ntest_topology_and_dates_remain_metadata_not_extra_segments (test_16l_loc_reference.LOCHorizontalReferenceTests.test_topology_and_dates_remain_metadata_not_extra_segments) ... ok\n\n----------------------------------------------------------------------\nRan 5 tests in 0.439s\n\nOK\n"
+    }
+  ],
+  "scope": "all existing basic regressions plus conditional 16L horizontal geometry; no new vertical/performance/stochastic/risk experiments",
+  "reproduction_before_implementation": "new single-line test failed against previous FAF-origin PARTIAL_REFERENCE",
+  "not_run": [
+    "vertical research",
+    "aircraft performance experiments",
+    "stochastic statistics experiments",
+    "E1",
+    "Flow",
+    "CPA",
+    "M2",
+    "TLS",
+    "collision risk"
+  ],
+  "invariance_checks": {
+    "16r_config_function_solver_tests_and_saved_results_unchanged": true,
+    "16r_representative_radius_m": 4917.647956490644,
+    "existing_16l_source_fields_and_vertical_constraints_unchanged": true,
+    "nonprocedure_configuration_and_case001_unchanged": true,
+    "authority_naming_math_and_gate_acceptance_unchanged": true,
+    "g2_to_g5_and_existing_g1_substates_unchanged": true
+  },
+  "modified_files": [
+    "research_m1/README.md",
+    "research_m1/config/study.yaml",
+    "research_m1/docs/16L_LOC_REFERENCE_AUDIT.md",
+    "research_m1/docs/M1_SINGLE_AUTHORITY.md",
+    "research_m1/docs/evidence_review.md",
+    "research_m1/evidence/adjudication.json",
+    "research_m1/evidence/loc_reference_tests.json",
+    "research_m1/evidence/publication_allowlist.json",
+    "research_m1/evidence/reference_geometry_results.json",
+    "research_m1/evidence/source_manifest.json",
+    "research_m1/src/m1_research/aip_reference.py",
+    "research_m1/tests/test_16l_loc_reference.py",
+    "research_m1/tests/test_aip_reference.py"
+  ]
+}
