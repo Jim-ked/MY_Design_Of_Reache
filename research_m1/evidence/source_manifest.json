@@ -1,0 +1,914 @@
+{
+  "authority_id": "THESIS-M1-SSOT-2026-11-08",
+  "generated_date": "2026-11-08",
+  "sources": [
+    {
+      "source_id": "H01_FULL_AIP",
+      "title": "ZBTJ.pdf",
+      "sha256": "484482e46c7880fb8e4071e26c4af5d2c5d912109ba040ad22250726f129ce98",
+      "version": "mixed-date compiled 56-page file",
+      "pages": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56
+      ],
+      "evidence_fields": [
+        "page inventory"
+      ],
+      "original_units": [
+        "as on each page"
+      ],
+      "extraction_method": "all-page text metadata audit, key-page rendering",
+      "status": "SOURCE_VERIFIED",
+      "access": "authorized local source; raw documents not redistributed",
+      "configuration_use": "only facts transcribed into study.yaml; no old output inputs"
+    },
+    {
+      "source_id": "H01_2A_2025",
+      "title": "ZBTJ-2A.pdf",
+      "sha256": "c9b24eb27dc933bf192aa1eacf9adbec23b71586dde69b30f94ebd560d368a14",
+      "version": "2025-09-04",
+      "pages": [
+        2
+      ],
+      "evidence_fields": [
+        "ARP N390728 E1172046",
+        "airport elevation 1.8m",
+        "16R displacement 400m",
+        "DTHR elevation 1.6m"
+      ],
+      "original_units": [
+        "DMS",
+        "m"
+      ],
+      "extraction_method": "PDF text extraction with visual check on key pages",
+      "status": "SOURCE_VERIFIED",
+      "access": "authorized local source; raw documents not redistributed",
+      "configuration_use": "only facts transcribed into study.yaml; no old output inputs"
+    },
+    {
+      "source_id": "H01_4Y01",
+      "title": "ZBTJ-4Y01.pdf",
+      "sha256": "99e01a2bed267a02f2c83a945b1ae4438ad99e9b4af2230235faf7002bff37b7",
+      "version": "2024-10-31",
+      "pages": [
+        23
+      ],
+      "evidence_fields": [
+        "TJ907,TJ906,TJ903,RW16R,TJC01,TJ954 coordinates"
+      ],
+      "original_units": [
+        "DMS 0.1 arcsecond where printed"
+      ],
+      "extraction_method": "PDF text extraction with visual check on key pages",
+      "status": "SOURCE_VERIFIED",
+      "access": "authorized local source; raw documents not redistributed",
+      "configuration_use": "only facts transcribed into study.yaml; no old output inputs"
+    },
+    {
+      "source_id": "H01_4Z18",
+      "title": "ZBTJ-4Z18.pdf",
+      "sha256": "11ac3bfaa1f9d5448636c0304865e8382a4d04f070963d9c8d8326e926ca0e07",
+      "version": "2024-10-31",
+      "pages": [
+        42
+      ],
+      "evidence_fields": [
+        "RF[TJC01,2.7] R; RF R; TF RW16R",
+        "3 degree /52ft"
+      ],
+      "original_units": [
+        "NM",
+        "ft",
+        "kt",
+        "degree"
+      ],
+      "extraction_method": "PDF text extraction with visual check on key pages",
+      "status": "SOURCE_VERIFIED",
+      "access": "authorized local source; raw documents not redistributed",
+      "configuration_use": "only facts transcribed into study.yaml; no old output inputs"
+    },
+    {
+      "source_id": "H01_5A",
+      "title": "ZBTJ-5A.pdf",
+      "sha256": "cb3fc5129d47f135300c8bfcfa894263e85d8638ca2da3e5ce78806648c65878",
+      "version": "2024-10-31",
+      "pages": [
+        43
+      ],
+      "evidence_fields": [
+        "IF TJ954; FAF D6.2 ICU",
+        "600/2000ft; GP3deg; RDH16/52",
+        "RNAV intermediate/LOC final; connection not metrically defined"
+      ],
+      "original_units": [
+        "m",
+        "ft",
+        "NM",
+        "degree"
+      ],
+      "extraction_method": "PDF text extraction with visual check on key pages",
+      "status": "SOURCE_VERIFIED",
+      "access": "authorized local source; raw documents not redistributed",
+      "configuration_use": "only facts transcribed into study.yaml; no old output inputs"
+    },
+    {
+      "source_id": "H01_9E",
+      "title": "ZBTJ-9E.pdf",
+      "sha256": "ad60b0a5e6eef221e328ac1d05b95be8db2793017c2c5fc46f808e68b9caa57b",
+      "version": "2024-10-03",
+      "pages": [
+        53
+      ],
+      "evidence_fields": [
+        "3000ft TJ907",
+        "FAP2000ft TJ906",
+        "TCH52ft; 400m displaced entry",
+        "RF navigation qualification note"
+      ],
+      "original_units": [
+        "ft",
+        "NM",
+        "m",
+        "degree"
+      ],
+      "extraction_method": "PDF text extraction with visual check on key pages",
+      "status": "SOURCE_VERIFIED",
+      "access": "authorized local source; raw documents not redistributed",
+      "configuration_use": "only facts transcribed into study.yaml; no old output inputs"
+    },
+    {
+      "source_id": "H01_AD2025",
+      "title": "ZBTJ AD textual aerodrome data (天津滨海.pdf)",
+      "sha256": "a71fc8268f1b965dcb7f2f6818a9b552616a15b4a5f38c497e965531ed44fd3b",
+      "version": "2025-10-02",
+      "pages": [
+        1,
+        12,
+        13,
+        17,
+        18
+      ],
+      "evidence_fields": [
+        "ARP and elevations",
+        "true runway bearing154.45deg; runway length3200m",
+        "LOC16L coordinate and310m beyond end",
+        "IM16L coordinate320m before entry",
+        "DME16L coordinate distinct from GP"
+      ],
+      "original_units": [
+        "DMS",
+        "m",
+        "degree"
+      ],
+      "extraction_method": "PDF text extraction with visual check on key pages",
+      "status": "SOURCE_VERIFIED",
+      "access": "authorized local source; raw documents not redistributed",
+      "configuration_use": "only facts transcribed into study.yaml; no old output inputs"
+    },
+    {
+      "source_id": "AUTHORITY_DOC",
+      "title": "M1_SINGLE_AUTHORITY.md",
+      "sha256": "56ab4b501ca5f12af163397634dbc73b4a15cc456db2c601f70e704a2b2b04e6",
+      "status": "SUPPORTED",
+      "role": "scientific authority",
+      "original_sha256": "1395060aca2e337d77e2b2583f7033648cb12ad17c9e6533613552eac619b814",
+      "change_note": "E13/E14 append and pair scenario clarification authorized by Round2 task; mathematical specification unchanged",
+      "hash_scope": "distributed UTF-8 document with LF line endings"
+    },
+    {
+      "source_id": "EXECUTION_DOC",
+      "title": "CODEX_M1_CLEANROOM_TASK.md",
+      "sha256": "84f663ebcdceda8a9638adcdd96fb5e1a5319895ca42a4b14955c08bab7dd5a3",
+      "status": "SUPPORTED",
+      "role": "execution only",
+      "hash_scope": "distributed UTF-8 document with LF line endings"
+    },
+    {
+      "source_id": "ROUND2_TASK",
+      "title": "CODEX_M1_ROUND2_CLEANROOM_GITHUB_20261108.md",
+      "sha256": "1fb7f5cbc03e6cfc9e6fb024d55af7ffca8b41a92536aa16d62cf66b83d4b3a4",
+      "status": "SUPPORTED",
+      "role": "execution only",
+      "hash_scope": "distributed UTF-8 document with LF line endings"
+    },
+    {
+      "source_id": "E01",
+      "urls": [
+        "https://www.icao.int/sites/default/files/APAC/APAC-FPP/FPP%20Training/FPP%20Training%20in%202024/Pans-Ops%20Procedure%20Design%20Initial%20Course/Courseware/8168_v2_cons_en.pdf"
+      ],
+      "status": "NOT_RETRIEVED_THIS_ROUND",
+      "scope": "per authority appendix; not a measured operational input"
+    },
+    {
+      "source_id": "E02",
+      "urls": [
+        "https://www.icao.int/meetings/pbn-symposium/documents/9905_cons_en.pdf",
+        "https://store.icao.int/en/required-navigation-performance-authorization-required-rnp-ar-doc-9905"
+      ],
+      "status": "NOT_RETRIEVED_THIS_ROUND",
+      "scope": "per authority appendix; not a measured operational input"
+    },
+    {
+      "source_id": "E03",
+      "urls": [
+        "https://www.caac.gov.cn/XXGK/XXGK/BZGF/HYBZ/202111/P020240719331529051959.pdf",
+        "https://www.caac.gov.cn/XXGK/XXGK/BZGF/HYBZ/202111/t20211109_209970.html"
+      ],
+      "status": "NOT_RETRIEVED_THIS_ROUND",
+      "scope": "per authority appendix; not a measured operational input"
+    },
+    {
+      "source_id": "E04",
+      "urls": [
+        "https://www.faa.gov/airports/resources/advisory_circulars/index.cfm/go/document.information/documentNumber/90-101A"
+      ],
+      "status": "NOT_RETRIEVED_THIS_ROUND",
+      "scope": "per authority appendix; not a measured operational input"
+    },
+    {
+      "source_id": "E05",
+      "urls": [
+        "https://tc.canada.ca/en/aviation/reference-centre/advisory-circulars/advisory-circular-ac-no-700-027"
+      ],
+      "status": "NOT_RETRIEVED_THIS_ROUND",
+      "scope": "per authority appendix; not a measured operational input"
+    },
+    {
+      "source_id": "E06",
+      "urls": [
+        "https://safetyfirst.airbus.com/control-your-speed-during-descent-approach-and-landing/"
+      ],
+      "status": "NOT_RETRIEVED_THIS_ROUND",
+      "scope": "per authority appendix; not a measured operational input"
+    },
+    {
+      "source_id": "E07",
+      "urls": [
+        "https://www.navair.navy.mil/product/MQ-9A-Reaper"
+      ],
+      "status": "NOT_RETRIEVED_THIS_ROUND",
+      "scope": "per authority appendix; not a measured operational input"
+    },
+    {
+      "source_id": "E08",
+      "urls": [
+        "https://static.e-publishing.af.mil/production/1/af_a3/publication/afman11-2mq-9v3/afman11-2mq-9v3.pdf"
+      ],
+      "status": "NOT_RETRIEVED_THIS_ROUND",
+      "scope": "per authority appendix; not a measured operational input"
+    },
+    {
+      "source_id": "E09",
+      "urls": [
+        "https://www.researchgate.net/publication/332670811_APPROACH_TO_THE_INTRODUCTION_OF_RPAS_IN_BADA_3_AIRCRAFT_PERFORMANCE_MODEL_EUROCONTROL"
+      ],
+      "status": "NOT_RETRIEVED_THIS_ROUND",
+      "scope": "per authority appendix; not a measured operational input"
+    },
+    {
+      "source_id": "E10",
+      "urls": [
+        "https://www.faa.gov/documentLibrary/media/Advisory_Circular/AC_90-105A_Ed_Update_2.pdf"
+      ],
+      "status": "NOT_RETRIEVED_THIS_ROUND",
+      "scope": "per authority appendix; not a measured operational input"
+    },
+    {
+      "source_id": "E11",
+      "urls": [
+        "https://gaussianprocess.org/gpml/chapters/RW4.pdf"
+      ],
+      "status": "NOT_RETRIEVED_THIS_ROUND",
+      "scope": "per authority appendix; not a measured operational input"
+    },
+    {
+      "source_id": "E12",
+      "urls": [
+        "https://www.eurocontrol.int/model/bada"
+      ],
+      "status": "NOT_RETRIEVED_THIS_ROUND",
+      "scope": "per authority appendix; not a measured operational input"
+    }
+  ],
+  "page_inventory": [
+    {
+      "pdf_page": 1,
+      "chart_labels": [
+        "ZBTJ AD2.22"
+      ],
+      "effective_dates": [
+        "2024-12-26"
+      ],
+      "extraction_status": "text_extracted_metadata_only"
+    },
+    {
+      "pdf_page": 2,
+      "chart_labels": [
+        "ZBTJ-2A2025"
+      ],
+      "effective_dates": [
+        "2025-9-4"
+      ],
+      "extraction_status": "text_extracted_metadata_only"
+    },
+    {
+      "pdf_page": 3,
+      "chart_labels": [
+        "ZBTJ-2B"
+      ],
+      "effective_dates": [
+        "2025-9-4"
+      ],
+      "extraction_status": "text_extracted_metadata_only"
+    },
+    {
+      "pdf_page": 4,
+      "chart_labels": [
+        "ZBTJ-2C2022"
+      ],
+      "effective_dates": [
+        "2022-2-24"
+      ],
+      "extraction_status": "text_extracted_metadata_only"
+    },
+    {
+      "pdf_page": 5,
+      "chart_labels": [
+        "ZBTJ-2D"
+      ],
+      "effective_dates": [
+        "2022-2-24"
+      ],
+      "extraction_status": "text_extracted_metadata_only"
+    },
+    {
+      "pdf_page": 6,
+      "chart_labels": [
+        "ZBTJ-2E"
+      ],
+      "effective_dates": [
+        "2025-9-4"
+      ],
+      "extraction_status": "text_extracted_metadata_only"
+    },
+    {
+      "pdf_page": 7,
+      "chart_labels": [
+        "ZBTJ-3A"
+      ],
+      "effective_dates": [
+        "2024-10-31"
+      ],
+      "extraction_status": "text_extracted_metadata_only"
+    },
+    {
+      "pdf_page": 8,
+      "chart_labels": [
+        "ZBTJ-3B"
+      ],
+      "effective_dates": [
+        "2024-10-31"
+      ],
+      "extraction_status": "text_extracted_metadata_only"
+    },
+    {
+      "pdf_page": 9,
+      "chart_labels": [
+        "ZBTJ-3C"
+      ],
+      "effective_dates": [
+        "2024-10-31"
+      ],
+      "extraction_status": "text_extracted_metadata_only"
+    },
+    {
+      "pdf_page": 10,
+      "chart_labels": [
+        "ZBTJ-3D"
+      ],
+      "effective_dates": [
+        "2024-10-31"
+      ],
+      "extraction_status": "text_extracted_metadata_only"
+    },
+    {
+      "pdf_page": 11,
+      "chart_labels": [
+        "ZBTJ-3E"
+      ],
+      "effective_dates": [
+        "2024-10-31"
+      ],
+      "extraction_status": "text_extracted_metadata_only"
+    },
+    {
+      "pdf_page": 12,
+      "chart_labels": [
+        "ZBTJ-3F"
+      ],
+      "effective_dates": [
+        "2024-10-31"
+      ],
+      "extraction_status": "text_extracted_metadata_only"
+    },
+    {
+      "pdf_page": 13,
+      "chart_labels": [
+        "ZBTJ-3G2024"
+      ],
+      "effective_dates": [
+        "2024-10-31"
+      ],
+      "extraction_status": "text_extracted_metadata_only"
+    },
+    {
+      "pdf_page": 14,
+      "chart_labels": [
+        "ZBTJ-3H"
+      ],
+      "effective_dates": [
+        "2024-10-31"
+      ],
+      "extraction_status": "text_extracted_metadata_only"
+    },
+    {
+      "pdf_page": 15,
+      "chart_labels": [
+        "ZBTJ-3J2024"
+      ],
+      "effective_dates": [
+        "2024-10-31"
+      ],
+      "extraction_status": "text_extracted_metadata_only"
+    },
+    {
+      "pdf_page": 16,
+      "chart_labels": [
+        "ZBTJ-4A"
+      ],
+      "effective_dates": [
+        "2024-10-31"
+      ],
+      "extraction_status": "text_extracted_metadata_only"
+    },
+    {
+      "pdf_page": 17,
+      "chart_labels": [
+        "ZBTJ-4B"
+      ],
+      "effective_dates": [
+        "2024-10-31"
+      ],
+      "extraction_status": "text_extracted_metadata_only"
+    },
+    {
+      "pdf_page": 18,
+      "chart_labels": [
+        "ZBTJ-4C2024"
+      ],
+      "effective_dates": [
+        "2024-10-31"
+      ],
+      "extraction_status": "text_extracted_metadata_only"
+    },
+    {
+      "pdf_page": 19,
+      "chart_labels": [
+        "ZBTJ-4D"
+      ],
+      "effective_dates": [
+        "2024-10-31"
+      ],
+      "extraction_status": "text_extracted_metadata_only"
+    },
+    {
+      "pdf_page": 20,
+      "chart_labels": [
+        "ZBTJ-4E2024"
+      ],
+      "effective_dates": [
+        "2024-10-31"
+      ],
+      "extraction_status": "text_extracted_metadata_only"
+    },
+    {
+      "pdf_page": 21,
+      "chart_labels": [
+        "ZBTJ-4F"
+      ],
+      "effective_dates": [
+        "2024-10-31"
+      ],
+      "extraction_status": "text_extracted_metadata_only"
+    },
+    {
+      "pdf_page": 22,
+      "chart_labels": [
+        "ZBTJ-4G2024"
+      ],
+      "effective_dates": [
+        "2024-10-31"
+      ],
+      "extraction_status": "text_extracted_metadata_only"
+    },
+    {
+      "pdf_page": 23,
+      "chart_labels": [
+        "ZBTJ-4Y01"
+      ],
+      "effective_dates": [
+        "2024-10-31"
+      ],
+      "extraction_status": "text_extracted_metadata_only"
+    },
+    {
+      "pdf_page": 24,
+      "chart_labels": [
+        "ZBTJ-4Y02"
+      ],
+      "effective_dates": [
+        "2024-10-31"
+      ],
+      "extraction_status": "text_extracted_metadata_only"
+    },
+    {
+      "pdf_page": 25,
+      "chart_labels": [
+        "ZBTJ-4Z012024"
+      ],
+      "effective_dates": [
+        "2024-10-31"
+      ],
+      "extraction_status": "text_extracted_metadata_only"
+    },
+    {
+      "pdf_page": 26,
+      "chart_labels": [
+        "ZBTJ-4Z02"
+      ],
+      "effective_dates": [
+        "2024-10-31"
+      ],
+      "extraction_status": "text_extracted_metadata_only"
+    },
+    {
+      "pdf_page": 27,
+      "chart_labels": [
+        "ZBTJ-4Z032024"
+      ],
+      "effective_dates": [
+        "2024-10-31"
+      ],
+      "extraction_status": "text_extracted_metadata_only"
+    },
+    {
+      "pdf_page": 28,
+      "chart_labels": [
+        "ZBTJ-4Z04"
+      ],
+      "effective_dates": [
+        "2024-10-31"
+      ],
+      "extraction_status": "text_extracted_metadata_only"
+    },
+    {
+      "pdf_page": 29,
+      "chart_labels": [
+        "ZBTJ-4Z052024"
+      ],
+      "effective_dates": [
+        "2024-10-31"
+      ],
+      "extraction_status": "text_extracted_metadata_only"
+    },
+    {
+      "pdf_page": 30,
+      "chart_labels": [
+        "ZBTJ-4Z06"
+      ],
+      "effective_dates": [
+        "2024-10-31"
+      ],
+      "extraction_status": "text_extracted_metadata_only"
+    },
+    {
+      "pdf_page": 31,
+      "chart_labels": [
+        "ZBTJ-4Z072024"
+      ],
+      "effective_dates": [
+        "2024-10-31"
+      ],
+      "extraction_status": "text_extracted_metadata_only"
+    },
+    {
+      "pdf_page": 32,
+      "chart_labels": [
+        "ZBTJ-4Z08"
+      ],
+      "effective_dates": [
+        "2024-10-31"
+      ],
+      "extraction_status": "text_extracted_metadata_only"
+    },
+    {
+      "pdf_page": 33,
+      "chart_labels": [
+        "ZBTJ-4Z092024"
+      ],
+      "effective_dates": [
+        "2024-10-31"
+      ],
+      "extraction_status": "text_extracted_metadata_only"
+    },
+    {
+      "pdf_page": 34,
+      "chart_labels": [
+        "ZBTJ-4Z10"
+      ],
+      "effective_dates": [
+        "2024-10-31"
+      ],
+      "extraction_status": "text_extracted_metadata_only"
+    },
+    {
+      "pdf_page": 35,
+      "chart_labels": [
+        "ZBTJ-4Z112024"
+      ],
+      "effective_dates": [
+        "2024-10-31"
+      ],
+      "extraction_status": "text_extracted_metadata_only"
+    },
+    {
+      "pdf_page": 36,
+      "chart_labels": [
+        "ZBTJ-4Z12"
+      ],
+      "effective_dates": [
+        "2024-10-31"
+      ],
+      "extraction_status": "text_extracted_metadata_only"
+    },
+    {
+      "pdf_page": 37,
+      "chart_labels": [
+        "ZBTJ-4Z132024"
+      ],
+      "effective_dates": [
+        "2024-10-31"
+      ],
+      "extraction_status": "text_extracted_metadata_only"
+    },
+    {
+      "pdf_page": 38,
+      "chart_labels": [
+        "ZBTJ-4Z14"
+      ],
+      "effective_dates": [
+        "2024-10-31"
+      ],
+      "extraction_status": "text_extracted_metadata_only"
+    },
+    {
+      "pdf_page": 39,
+      "chart_labels": [
+        "ZBTJ-4Z152024"
+      ],
+      "effective_dates": [
+        "2024-10-31"
+      ],
+      "extraction_status": "text_extracted_metadata_only"
+    },
+    {
+      "pdf_page": 40,
+      "chart_labels": [
+        "ZBTJ-4Z16"
+      ],
+      "effective_dates": [
+        "2024-10-31"
+      ],
+      "extraction_status": "text_extracted_metadata_only"
+    },
+    {
+      "pdf_page": 41,
+      "chart_labels": [
+        "ZBTJ-4Z172024"
+      ],
+      "effective_dates": [
+        "2024-10-31"
+      ],
+      "extraction_status": "text_extracted_metadata_only"
+    },
+    {
+      "pdf_page": 42,
+      "chart_labels": [
+        "ZBTJ-4Z18"
+      ],
+      "effective_dates": [
+        "2024-10-31"
+      ],
+      "extraction_status": "text_extracted_metadata_only"
+    },
+    {
+      "pdf_page": 43,
+      "chart_labels": [
+        "ZBTJ-5A2024"
+      ],
+      "effective_dates": [
+        "2024-10-31"
+      ],
+      "extraction_status": "text_extracted_metadata_only"
+    },
+    {
+      "pdf_page": 44,
+      "chart_labels": [
+        "ZBTJ-5B"
+      ],
+      "effective_dates": [
+        "2024-10-31"
+      ],
+      "extraction_status": "text_extracted_metadata_only"
+    },
+    {
+      "pdf_page": 45,
+      "chart_labels": [
+        "ZBTJ-5C"
+      ],
+      "effective_dates": [
+        "2024-10-31"
+      ],
+      "extraction_status": "text_extracted_metadata_only"
+    },
+    {
+      "pdf_page": 46,
+      "chart_labels": [
+        "ZBTJ-5D"
+      ],
+      "effective_dates": [
+        "2024-10-31"
+      ],
+      "extraction_status": "text_extracted_metadata_only"
+    },
+    {
+      "pdf_page": 47,
+      "chart_labels": [
+        "ZBTJ-6A2024"
+      ],
+      "effective_dates": [
+        "2024-10-31"
+      ],
+      "extraction_status": "text_extracted_metadata_only"
+    },
+    {
+      "pdf_page": 48,
+      "chart_labels": [
+        "ZBTJ-6B"
+      ],
+      "effective_dates": [
+        "2024-10-31"
+      ],
+      "extraction_status": "text_extracted_metadata_only"
+    },
+    {
+      "pdf_page": 49,
+      "chart_labels": [
+        "ZBTJ-9A2024"
+      ],
+      "effective_dates": [
+        "2024-10-31"
+      ],
+      "extraction_status": "text_extracted_metadata_only"
+    },
+    {
+      "pdf_page": 50,
+      "chart_labels": [
+        "ZBTJ-9B"
+      ],
+      "effective_dates": [
+        "2024-10-31"
+      ],
+      "extraction_status": "text_extracted_metadata_only"
+    },
+    {
+      "pdf_page": 51,
+      "chart_labels": [
+        "ZBTJ-9C"
+      ],
+      "effective_dates": [
+        "2024-10-31"
+      ],
+      "extraction_status": "text_extracted_metadata_only"
+    },
+    {
+      "pdf_page": 52,
+      "chart_labels": [
+        "ZBTJ-9D"
+      ],
+      "effective_dates": [
+        "2024-10-31"
+      ],
+      "extraction_status": "text_extracted_metadata_only"
+    },
+    {
+      "pdf_page": 53,
+      "chart_labels": [
+        "ZBTJ-9E2024"
+      ],
+      "effective_dates": [
+        "2024-10-3"
+      ],
+      "extraction_status": "text_extracted_metadata_only"
+    },
+    {
+      "pdf_page": 54,
+      "chart_labels": [
+        "ZBTJ AD2.26A1"
+      ],
+      "effective_dates": [
+        "2022-5-19"
+      ],
+      "extraction_status": "text_extracted_metadata_only"
+    },
+    {
+      "pdf_page": 55,
+      "chart_labels": [
+        "ZBTJ AD2.26A2"
+      ],
+      "effective_dates": [
+        "2022-12-29"
+      ],
+      "extraction_status": "text_extracted_metadata_only"
+    },
+    {
+      "pdf_page": 56,
+      "chart_labels": [
+        "ZBTJ AD2.26D"
+      ],
+      "effective_dates": [
+        "2022-5-19"
+      ],
+      "extraction_status": "text_extracted_metadata_only"
+    }
+  ],
+  "date_policy": "Mixed 2024-10-03 / 2024-10-31 / 2025-09-04 / 2025-10-02 pages are separate evidence; coexistence in one local folder does not prove compatible AIRAC. Cross-date reference calculations conditional only.",
+  "excluded_sources": [
+    "ZBTJ-9A and approach entries of ZBTJ-4Z15: RNP RWY16L, not the RNAV ILS/DME reference. No TJ958/TJ901/TJ957 mapping into the ILS path."
+  ],
+  "redistribution": "No original AIP PDF, image, extracted full text, raw track or user absolute path is included."
+}

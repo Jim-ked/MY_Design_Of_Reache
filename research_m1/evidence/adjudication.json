@@ -1,0 +1,90 @@
+{
+  "authority_id": "THESIS-M1-SSOT-2026-11-08",
+  "formal_model_status": "PARTIAL_REFERENCE",
+  "gates": {
+    "G1_PROGRAM": {
+      "status": "UNRESOLVED",
+      "substates": {
+        "raw_aip_fields": "SOURCE_VERIFIED",
+        "reference_geometry": "PARTIAL_REFERENCE",
+        "height_and_fap_semantics": "UNRESOLVED",
+        "date_compatibility": "UNRESOLVED"
+      },
+      "supported": [
+        "Recovered raw 2024 RF coding/points and 2025 navaid data",
+        "16R coded RF/TF segments with raw-point residuals/gap retained",
+        "16L LOC final only; RNAV access undefined; no RNP RWY16L fixes used"
+      ],
+      "blocking": [
+        "cross-date compatibility not established",
+        "16R coded RF radius vs coordinates do not close",
+        "LTP identity, altitude constraint type and FAP semantics unresolved"
+      ]
+    },
+    "G2_AIRCRAFT": {
+      "status": "UNRESOLVED",
+      "substates": {
+        "aircraft_identity": "SOURCE_VERIFIED",
+        "performance": "UNRESOLVED",
+        "navigation_qualification": "CONDITIONAL"
+      },
+      "blocking": [
+        "scenario-specific mass/configuration and validated maneuver package unavailable"
+      ]
+    },
+    "G3_NOMINAL": {
+      "status": "CONDITIONAL",
+      "substates": {
+        "reference_geometry": "PARTIAL_REFERENCE",
+        "synthetic_kinematics": "CONDITIONAL_NOMINAL",
+        "formal_vertical_execution": "UNRESOLVED"
+      },
+      "blocking": [
+        "no formal speed/height solution emitted"
+      ]
+    },
+    "G4_STOCHASTIC": {
+      "status": "UNRESOLVED",
+      "substates": {
+        "method": "SUPPORTED",
+        "parameters": "STATISTICS_UNCALIBRATED",
+        "joint_derivative_math": "SUPPORTED"
+      },
+      "blocking": [
+        "sigma/tau and envelope calibration unavailable"
+      ]
+    },
+    "G5_HANDOFF": {
+      "status": "UNRESOLVED",
+      "substates": {
+        "dual_absolute_time_sync": "SUPPORTED",
+        "formal_qualification": "UNRESOLVED",
+        "m2_use": "M2_NOT_QUALIFIED"
+      },
+      "blocking": [
+        "G1/G2/G4 unresolved"
+      ]
+    }
+  },
+  "conditional_assumptions": [
+    "MQ9A navigation qualification is represented only as conditional_navigation_assumption.",
+    "SE process is an exploratory mathematical method; it is not a measured error distribution."
+  ],
+  "forbidden_claims": [
+    "NOMINAL_QUALIFIED",
+    "M2_READY",
+    "qualified",
+    "collision_probability"
+  ],
+  "dual_scenario": {
+    "scenario_id": "case_001",
+    "assignments": [
+      "aircraft_01/A320/16L",
+      "aircraft_02/MQ9A/16R"
+    ],
+    "delta_t_entry_s": null,
+    "delta_definition": "aircraft_02 minus aircraft_01",
+    "status": "CONDITIONAL",
+    "synthetic_demo_delta_t_entry_s": 7.0
+  }
+}

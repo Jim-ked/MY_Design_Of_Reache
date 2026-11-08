@@ -1,0 +1,354 @@
+schema:
+  authority_id: THESIS-M1-SSOT-2026-11-08
+  schema_version: 1.0-cleanroom
+  units: SI
+airport:
+  airport_id: ZBTJ
+  reference_frame:
+    id: ZBTJ_ENU_ARP
+    horizontal_datum: WGS84
+    vertical_datum: null
+    arp_latitude_deg: 39.12444444444444
+    arp_longitude_deg: 117.34611111111111
+    arp_elevation_m: 1.8
+    source_ref: H01_2A_2025
+    review_status: PARTIAL_REFERENCE
+    required_evidence: 2024-compatible ARP/threshold page before formal combination
+      with the 2024 procedure pages.
+    source_status: SOURCE_VERIFIED
+    compatibility_status: CROSS_DATE_NOT_COMBINED
+    vertical_required_evidence: MSL datum/geoid separation not supplied; chart elevation
+      used as local projection convention only, not ellipsoid altitude.
+procedures:
+- procedure_id: ZBTJ_RWY16L_RNAV_ILS_DME
+  runway_id: 16L
+  source_ref: H01
+  review_status: PARTIAL_REFERENCE
+  reference_geometry:
+    projection: WGS84 ECEF to ARP ENU at charted airport elevation; LOC final only;
+      RNAV access undefined
+    points:
+      TJ954:
+        lat_deg: 39
+        lat_min: 16
+        lat_sec: 37.0
+        lon_deg: 117
+        lon_min: 16
+        lon_sec: 39.0
+        source_ref: H01_4Y01
+        status: SOURCE_VERIFIED
+      LOC16L:
+        lat_deg: 39
+        lat_min: 6
+        lat_sec: 46.5
+        lon_deg: 117
+        lon_min: 22
+        lon_sec: 48.4
+        source_ref: H01_AD2025
+        status: SOURCE_VERIFIED
+      DME16L:
+        lat_deg: 39
+        lat_min: 8
+        lat_sec: 21.5
+        lon_deg: 117
+        lon_min: 21
+        lon_sec: 55.5
+        source_ref: H01_AD2025
+        status: SOURCE_VERIFIED
+      IM16L:
+        lat_deg: 39
+        lat_min: 8
+        lat_sec: 38.6
+        lon_deg: 117
+        lon_min: 21
+        lon_sec: 39.6
+        source_ref: H01_AD2025
+        status: SOURCE_VERIFIED
+    true_course_deg: 154.45
+    course_source_ref: H01_AD2025:p12
+    runway_length_m: 3200.0
+    loc_beyond_runway_end_m: 310.0
+    im_before_threshold_m: 320.0
+    faf_dme_nm: 6.2
+    faf_source_ref: H01_5A
+    source_ref:
+    - H01_5A
+    - H01_4Y01
+    - H01_AD2025
+    source_status: SOURCE_VERIFIED
+    compatibility_status: CROSS_DATE_UNVERIFIED
+    geometry_status: PARTIAL_REFERENCE
+    missing_interval: TJ954 RNAV access to LOC establishment
+    dme_interpretation: CONDITIONAL_HORIZONTAL_DISTANCE_NOT_SLANT_RANGE
+  constraints:
+  - constraint_id: IF_HEIGHT
+    kind: published_height_annotation
+    value: 600
+    unit: m
+    interval_s_m: null
+    source_ref: H01_5A
+    status: UNRESOLVED
+  - constraint_id: GP_SLOPE
+    kind: published_vpa
+    value: -3
+    unit: deg
+    interval_s_m: null
+    source_ref: H01_5A
+    status: SOURCE_VERIFIED
+  - constraint_id: RDH
+    kind: published_rdh
+    value: 16
+    unit: m
+    companion_value: 52
+    companion_unit: ft
+    interval_s_m: null
+    source_ref: H01_5A
+    status: SOURCE_VERIFIED
+  events:
+  - event_id: FAF
+    published_name: D6.2 ICU
+    s_m: null
+    status: SOURCE_VERIFIED_LABEL_ONLY
+  - event_id: FAP
+    published_name: null
+    s_m: null
+    status: UNRESOLVED
+  - event_id: GP_CAPTURE
+    published_name: null
+    s_m: null
+    status: UNRESOLVED
+  required_evidence:
+  - ZBTJ-5A page with 600 m restriction type and interval.
+  - DME reference, LTP elevation and FAP definition.
+- procedure_id: ZBTJ_RWY16R_RNP_Y_AR
+  runway_id: 16R
+  source_ref: H01
+  review_status: PARTIAL_REFERENCE
+  reference_geometry:
+    projection: WGS84 geodetic points with RF center and radius from the 2024 chart/coding
+      pages
+    center_id: TJC01
+    rf_radius_nm: 2.7
+    points:
+      TJC01:
+        lat_deg: 39
+        lat_min: 8
+        lat_sec: 43.2
+        lon_deg: 117
+        lon_min: 16
+        lon_sec: 12.9
+        source_ref: H01_4Y01
+        status: SOURCE_VERIFIED
+      TJ907:
+        lat_deg: 39
+        lat_min: 7
+        lat_sec: 32.3
+        lon_deg: 117
+        lon_min: 13
+        lon_sec: 9.4
+        source_ref: H01_4Y01
+        status: SOURCE_VERIFIED
+      TJ906:
+        lat_deg: 39
+        lat_min: 11
+        lat_sec: 6.2
+        lon_deg: 117
+        lon_min: 14
+        lon_sec: 42.4
+        source_ref: H01_4Y01
+        status: SOURCE_VERIFIED
+      TJ903:
+        lat_deg: 39
+        lat_min: 9
+        lat_sec: 52.0
+        lon_deg: 117
+        lon_min: 19
+        lon_sec: 17.6
+        source_ref: H01_4Y01
+        status: SOURCE_VERIFIED
+      RW16R:
+        lat_deg: 39
+        lat_min: 8
+        lat_sec: 14.5
+        lon_deg: 117
+        lon_min: 20
+        lon_sec: 17.5
+        source_ref: H01_4Y01
+        status: SOURCE_VERIFIED
+    segment_types:
+    - RF1
+    - RF2
+    - TF
+    source_ref: H01_4Y01
+    source_status: SOURCE_VERIFIED
+    compatibility_status: CROSS_DATE_UNVERIFIED
+    rf_direction: right
+    radius_source_ref: H01_4Z18
+  constraints:
+  - constraint_id: TJ907_HEIGHT
+    kind: published_height_annotation
+    value: 3000
+    unit: ft
+    interval_s_m: null
+    source_ref: H01_9E
+    status: SOURCE_VERIFIED
+  - constraint_id: TJ906_HEIGHT
+    kind: published_height_annotation
+    value: 2000
+    unit: ft
+    interval_s_m: null
+    source_ref: H01_9E
+    status: SOURCE_VERIFIED
+  - constraint_id: GP_SLOPE
+    kind: published_vpa
+    value: -3
+    unit: deg
+    interval_s_m: null
+    source_ref: H01_9E
+    status: SOURCE_VERIFIED
+  - constraint_id: TCH
+    kind: published_tch
+    value: 52
+    unit: ft
+    interval_s_m: null
+    source_ref: H01_9E
+    status: SOURCE_VERIFIED
+  events:
+  - event_id: TJ907
+    published_name: IF
+    s_m: null
+    status: SOURCE_VERIFIED
+  - event_id: LTP
+    published_name: null
+    s_m: null
+    status: UNRESOLVED
+  - event_id: TJ906
+    published_name: null
+    s_m: null
+    status: UNRESOLVED
+  - event_id: TJ903
+    published_name: null
+    s_m: null
+    status: UNRESOLVED
+  required_evidence:
+  - RNP AR LTP coordinates, elevation, displaced threshold and runway-end convention.
+  - Published 2000 ft restriction type and VPA/TCH relationship.
+aircraft:
+- aircraft_id: aircraft_01
+  aircraft_class: manned
+  aircraft_type: A320
+  mass_kg: null
+  configuration: null
+  navigation_qualification: null
+  performance_evidence: null
+  status: UNRESOLVED
+  required_evidence:
+  - Scenario mass, landing configuration, VLS/VAPP and descent/turning capability.
+- aircraft_id: aircraft_02
+  aircraft_class: rpas
+  aircraft_type: MQ9A
+  mass_kg: null
+  configuration: null
+  navigation_qualification: conditional_navigation_assumption
+  performance_evidence: null
+  status: UNRESOLVED
+  required_evidence:
+  - Specific MQ-9A variant, configuration, approach IAS and maneuver capability.
+  - Evidence for RNP AR capability; not inferred from a public maximum-speed figure.
+operations:
+  atmospheric_model:
+    temperature_model: null
+    pressure_model: null
+    wind_east_mps: null
+    wind_north_mps: null
+    source_ref: null
+    status: UNRESOLVED
+  entry_time:
+    absolute_time_scale: scenario_relative_s
+    case_values_source: synthetic_interface_test_only
+    status: CONDITIONAL
+  vertical_execution:
+    constraint_solver: null
+    transition_parameters: null
+    status: UNRESOLVED
+  synthetic_demo:
+    status: CONDITIONAL_ASSUMPTION
+    source_ref: synthetic_equation_and_interface_test_only
+    t_entry_s:
+      aircraft_01: 0.0
+      aircraft_02: 7.0
+    duration_s:
+      aircraft_01: 20.0
+      aircraft_02: 16.0
+    horizontal_speed_mps:
+      aircraft_01: 12.0
+      aircraft_02: 9.0
+    altitude_msl_m:
+      aircraft_01: 100.0
+      aircraft_02: 130.0
+    scope: synthetic straight paths; not Tianjin geometry or aircraft performance
+      evidence
+uncertainty:
+  process_family: squared_exponential_time_gp
+  axes:
+    N:
+      sigma_m: null
+      tau_s: null
+      envelope: null
+      source_ref: null
+      status: STATISTICS_UNCALIBRATED
+    Z:
+      sigma_m: null
+      tau_s: null
+      envelope: null
+      source_ref: null
+      status: STATISTICS_UNCALIBRATED
+  independence:
+    aircraft_processes: independent_by_default
+    shared_processes: null
+    source_ref: THESIS-M1-SSOT-2026-11-08
+  required_evidence:
+  - Timestamped trajectory residuals with coordinate and altitude datums.
+  - Per-axis sigma, correlation time and envelope calibration.
+scenarios:
+- scenario_id: case_001
+  assignments:
+  - aircraft_id: aircraft_01
+    procedure_id: ZBTJ_RWY16L_RNAV_ILS_DME
+    t_entry_s: null
+    entry_status: UNRESOLVED
+    source_ref: null
+  - aircraft_id: aircraft_02
+    procedure_id: ZBTJ_RWY16R_RNP_Y_AR
+    t_entry_s: null
+    entry_status: UNRESOLVED
+    source_ref: null
+  time_reference: scenario_relative_s
+  delta_t_entry_definition: t_entry_s(aircraft_02) - t_entry_s(aircraft_01); positive
+    means aircraft_02 enters later
+  delta_t_entry_s: null
+  model_status: PARTIAL_REFERENCE
+  required_evidence: operational entry times or explicitly selected scenario assumptions
+provenance:
+  authority_document:
+    id: THESIS-M1-SSOT-2026-11-08
+    local_copy: research_m1/docs/M1_SINGLE_AUTHORITY.md
+    source_ref: user_supplied_download
+  execution_document:
+    local_copy: research_m1/docs/CODEX_M1_CLEANROOM_TASK.md
+    source_ref: user_supplied_download
+  generated_model_status: PARTIAL_REFERENCE
+  formal_scene_output_allowed: false
+  forbidden_outputs:
+  - M2_READY
+  - qualified
+  - collision_probability
+  aip_snapshot:
+    procedure_pages:
+    - H01_4Y01
+    - H01_4Z18
+    - H01_5A
+    - H01_9E
+    airport_page: H01_2A_2025
+    date_policy: Each page date retained separately; common-frame cross-date calculations
+      are conditional, not a reconciled AIRAC snapshot.

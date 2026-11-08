@@ -1,0 +1,22 @@
+test_16l_partial_reference_preserves_faf_as_event_without_gp_capture_guess (test_aip_reference.AIPReferenceTests.test_16l_partial_reference_preserves_faf_as_event_without_gp_capture_guess) ... ok
+test_16r_partial_reference_has_rf_rf_tf_events_and_single_sided_curvature (test_aip_reference.AIPReferenceTests.test_16r_partial_reference_has_rf_rf_tf_events_and_single_sided_curvature) ... ok
+test_true_azimuth_enu_axes (test_aip_reference.AIPReferenceTests.test_true_azimuth_enu_axes) ... ok
+test_new_source_has_no_historical_import_or_alias (test_cleanroom_independence.CleanroomIndependenceTests.test_new_source_has_no_historical_import_or_alias) ... ok
+test_config_has_one_pair_and_no_fabricated_operational_time (test_dual_scenario.DualScenarioTests.test_config_has_one_pair_and_no_fabricated_operational_time) ... ok
+test_enter_leave_and_relative_velocity_no_outside_evaluation (test_dual_scenario.DualScenarioTests.test_enter_leave_and_relative_velocity_no_outside_evaluation) ... ok
+test_schedule_never_calls_outside_its_domain (test_dual_scenario.DualScenarioTests.test_schedule_never_calls_outside_its_domain) ... ok
+test_circle_and_line_have_expected_boundary_states (test_reference_geometry.ReferenceGeometryTests.test_circle_and_line_have_expected_boundary_states) ... ok
+test_circle_random_velocity_is_same_position_derivative (test_time_and_states.TimeAndStateTests.test_circle_random_velocity_is_same_position_derivative) ... ok
+test_piecewise_linear_speed_uses_integral_and_inverse (test_time_and_states.TimeAndStateTests.test_piecewise_linear_speed_uses_integral_and_inverse) ... ok
+test_random_state_uses_shared_path_and_derivative (test_time_and_states.TimeAndStateTests.test_random_state_uses_shared_path_and_derivative) ... ok
+test_sync_does_not_extrapolate_activity (test_time_and_states.TimeAndStateTests.test_sync_does_not_extrapolate_activity) ... ok
+test_time_inverse_and_vertical_units (test_time_and_states.TimeAndStateTests.test_time_inverse_and_vertical_units) ... ok
+test_missing_science_inputs_return_explicit_blockers (test_uncertainty_and_status.UncertaintyAndStatusTests.test_missing_science_inputs_return_explicit_blockers) ... ok
+test_se_covariance_derivative_blocks_match_kernel_differentiation (test_uncertainty_and_status.UncertaintyAndStatusTests.test_se_covariance_derivative_blocks_match_kernel_differentiation) ... ok
+test_se_joint_derivative_is_reproducible (test_uncertainty_and_status.UncertaintyAndStatusTests.test_se_joint_derivative_is_reproducible) ... ok
+test_study_is_self_contained_and_reference_only (test_uncertainty_and_status.UncertaintyAndStatusTests.test_study_is_self_contained_and_reference_only) ... ok
+
+----------------------------------------------------------------------
+Ran 17 tests in 0.533s
+
+OK

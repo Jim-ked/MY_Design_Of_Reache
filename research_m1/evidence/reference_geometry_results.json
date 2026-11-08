@@ -1,0 +1,218 @@
+{
+  "status": "PARTIAL_REFERENCE",
+  "units": {
+    "length": "m",
+    "angle": "rad"
+  },
+  "16R": {
+    "status": "PARTIAL_REFERENCE",
+    "reference_frame": "ZBTJ_ENU_ARP",
+    "events": {
+      "TJ907": 0.0,
+      "TJ906": 7867.763378359311,
+      "TJ903": 15777.8871421032,
+      "RW16R": 19110.938942895817
+    },
+    "derived": {
+      "rf_radius_m": 5000.400000000001,
+      "rf1_length_m": 7867.763378359311,
+      "rf2_length_m": 7910.123763743889,
+      "tf_length_m": 3333.051800792618,
+      "tj903_endpoint_residual_m": 84.28426376654132,
+      "radial_residuals_m": {
+        "TJ907": -80.73800217323969,
+        "TJ906": -84.35319696629267,
+        "TJ903": -84.28426376654079
+      },
+      "rf_tf_position_gap_m": 84.28426376654132,
+      "tf_endpoint_residual_m": 3.410605131648481e-13
+    },
+    "segment_sources": {
+      "RF1": [
+        "H01_4Y01",
+        "H01_4Z18"
+      ],
+      "RF2": [
+        "H01_4Y01",
+        "H01_4Z18"
+      ],
+      "TF": [
+        "H01_4Y01",
+        "H01_4Z18"
+      ]
+    },
+    "path_source": [
+      "H01_4Y01",
+      "H01_4Z18",
+      "H01_2A_2025"
+    ],
+    "formal_status": "PARTIAL_REFERENCE",
+    "executable_continuous_path": false,
+    "limitations": [
+      "coded radius and fix coordinates do not close; no radius fitting performed",
+      "ARP page date compatibility unverified; no vertical execution model"
+    ],
+    "one_sided_boundaries": [
+      {
+        "s_m": 0.0,
+        "east_m": -11040.01557939818,
+        "north_m": 104.46313597507742,
+        "tangent_east": -0.4434285670750301,
+        "tangent_north": 0.8963097153895999,
+        "normal_east": -0.8963097153895999,
+        "normal_north": -0.4434285670750301,
+        "curvature_1_m": -0.00019998400127989758,
+        "segment_id": "RF1",
+        "segment_index": 0
+      },
+      {
+        "s_m": 7867.763378359311,
+        "left": {
+          "s_m": 7867.763378359311,
+          "east_m": -8763.631484323068,
+          "north_m": 6809.507535624431,
+          "tangent_east": 0.8974730407262163,
+          "tangent_north": 0.44106931560656015,
+          "normal_east": -0.44106931560656015,
+          "normal_north": 0.8974730407262163,
+          "curvature_1_m": -0.00019998400127989758,
+          "segment_id": "RF1",
+          "segment_index": 0
+        },
+        "right": {
+          "s_m": 7867.763378359311,
+          "east_m": -8763.631484323068,
+          "north_m": 6809.507535624429,
+          "tangent_east": 0.8974730407262161,
+          "tangent_north": 0.4410693156065603,
+          "normal_east": -0.4410693156065603,
+          "normal_north": 0.8974730407262161,
+          "curvature_1_m": -0.00019998400127989758,
+          "segment_id": "RF2",
+          "segment_index": 1
+        }
+      },
+      {
+        "s_m": 15777.8871421032,
+        "left": {
+          "s_m": 15777.8871421032,
+          "east_m": -2046.1759067341545,
+          "north_m": 4477.349307265434,
+          "tangent_east": 0.43107870660114705,
+          "tangent_north": -0.9023143292196364,
+          "normal_east": 0.9023143292196364,
+          "normal_north": 0.43107870660114705,
+          "curvature_1_m": -0.00019998400127989758,
+          "segment_id": "RF2",
+          "segment_index": 1
+        },
+        "right": {
+          "s_m": 15777.8871421032,
+          "east_m": -2122.226805658432,
+          "north_m": 4441.016155854123,
+          "tangent_east": 0.43136515496617706,
+          "tangent_north": -0.9021774232826967,
+          "normal_east": 0.9021774232826967,
+          "normal_north": 0.43136515496617706,
+          "curvature_1_m": 0.0,
+          "segment_id": "TF",
+          "segment_index": 2
+        }
+      },
+      {
+        "s_m": 19110.938942895817,
+        "east_m": -684.4643990992295,
+        "north_m": 1434.0120705472882,
+        "tangent_east": 0.43136515496617706,
+        "tangent_north": -0.9021774232826967,
+        "normal_east": 0.9021774232826967,
+        "normal_north": 0.43136515496617706,
+        "curvature_1_m": 0.0,
+        "segment_id": "TF",
+        "segment_index": 2
+      }
+    ],
+    "conditional_height_audit": {
+      "status": "UNRESOLVED",
+      "assumptions": [
+        "RW16R equated with LTP only for algebraic audit, not demonstrated",
+        "TJ906 2000ft treated as exact only conditionally",
+        "discontinuous RF/TF coded geometry; sum of segment lengths is NOT proved execution arc length",
+        "THR1.6m from cross-date AD2025; not 5ft as separate exact value"
+      ],
+      "distance_sum_m": 11243.175564536506,
+      "ltp_elevation_used_m": 1.6,
+      "TCH_ft": 52,
+      "assumed_TJ906_m": 609.6,
+      "required_TJ906_m": 606.6794634267115,
+      "residual_m": 2.920536573288473,
+      "LTP_coordinate_status": "UNRESOLVED",
+      "displacement_m_from_chart": 400,
+      "attribution": "cannot uniquely assign residual to LTP/displacement, radius-vs-fix inconsistency, rounding or altitude constraint type; no correction performed"
+    }
+  },
+  "16L": {
+    "status": "PARTIAL_REFERENCE",
+    "reference_frame": "ZBTJ_ENU_ARP",
+    "station_origin": "conditional FAF on LOC final only; global s from TJ954 unresolved",
+    "events": {
+      "IF": null,
+      "FAF": 0.0,
+      "THR": 11162.973054702199
+    },
+    "derived": {
+      "final_length_m": 11162.973054702199,
+      "IF_to_LOC_gap_length_m": null,
+      "threshold_from_loc_xy_m": [
+        1425.5671152045552,
+        1886.950192811451
+      ],
+      "threshold_from_im_residual_m": 1.7123037709903723,
+      "published_fap_s_m": null,
+      "published_gp_capture_s_m": null
+    },
+    "segment_sources": {
+      "LOC_FINAL": [
+        "H01_AD2025:p12,p17,p18",
+        "H01_5A"
+      ]
+    },
+    "path_source": [
+      "H01_AD2025",
+      "H01_5A",
+      "H01_2A_2025"
+    ],
+    "formal_status": "PARTIAL_REFERENCE",
+    "limitations": [
+      "RNAV access geometry unknown; no constructed connector",
+      "2024/2025 page compatibility unresolved",
+      "DME horizontal approximation is conditional, not slant range"
+    ],
+    "one_sided_boundaries": [
+      {
+        "s_m": 0.0,
+        "east_m": -3392.7771397819015,
+        "north_m": 11956.484743149236,
+        "tangent_east": 0.4316362882338785,
+        "tangent_north": -0.9020477341469686,
+        "normal_east": 0.9020477341469686,
+        "normal_north": 0.4316362882338785,
+        "curvature_1_m": 0.0,
+        "segment_id": "LOC_FINAL",
+        "segment_index": 0
+      },
+      {
+        "s_m": 11162.973054702199,
+        "east_m": 1425.567115204556,
+        "north_m": 1886.9501928114532,
+        "tangent_east": 0.4316362882338785,
+        "tangent_north": -0.9020477341469686,
+        "normal_east": 0.9020477341469686,
+        "normal_north": 0.4316362882338785,
+        "curvature_1_m": 0.0,
+        "segment_id": "LOC_FINAL",
+        "segment_index": 0
+      }
+    ]
+  }
+}
