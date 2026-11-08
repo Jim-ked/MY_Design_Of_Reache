@@ -468,7 +468,7 @@
       "faf_reference_s_m": 5579.71714622792,
       "IF_PUBLISHED_TO_LOC_CROSS_TRACK_M": 132.04133673501937,
       "if_published_to_loc_signed_left_m": -132.04133673501937,
-      "cross_track_interpretation": "CROSS_DATE_SOURCE_DIAGNOSTIC_NOT_NAVIGATION_ERROR_OR_SIGMA",
+      "cross_track_interpretation": "CONDITIONAL_AXIS_TO_PUBLISHED_FIX_DIAGNOSTIC_NOT_TSE_OR_SIGMA",
       "loc_forward_unit_enu": [
         0.4316362882338784,
         -0.9020477341469687
@@ -477,10 +477,18 @@
         1669.086545184198,
         1650.0282330376517
       ],
-      "loc_true_azimuth_at_antenna_rad": 2.6956610297052417,
+      "assumed_loc_axis_true_azimuth_rad": 2.6956610297052417,
       "loc_course_arp_enu_rad": 2.6952866914578095,
       "chart_magnetic_course_rad": 2.8099800957108707,
-      "course_correspondence": "2024 magnetic chart course and 2025 true runway bearing are separately published; not forced to exact conversion",
+      "course_correspondence": "154.45 deg is runway true bearing used as a conditional LOC axis, not a measured LOC track; magnetic epoch/rounding not forced to exact conversion",
+      "magnetic_variation": {
+        "west_deg": 7.0,
+        "measurement_year": 2019,
+        "annual_change_printed": "4 arcmin 27 arcsec",
+        "source_ref": "H01_AD2025:AD2.2:p1",
+        "status": "SOURCE_VERIFIED",
+        "use": "metadata only; no epoch extrapolation or exact magnetic-to-true conversion"
+      },
       "dme_horizontal_radius_m": 11482.4,
       "dme_interpretation": "CONDITIONAL_HORIZONTAL_DISTANCE_NOT_SLANT_RANGE",
       "dme_missing_evidence": "antenna elevation and aircraft altitude unresolved; horizontal range event is not a slant-range fix",
@@ -510,7 +518,7 @@
     "formal_status": "CONDITIONAL_LOC_REFERENCE",
     "limitations": [
       "conditional engineering reference, not navigation capture or actual execution trajectory",
-      "published TJ954 is off the conditional axis; source discrepancy retained, not a stochastic error",
+      "published TJ954 is off the selected conditional axis; cause not uniquely attributable to AIRAC, not TSE or sigma",
       "2024/2025 page compatibility unresolved",
       "DME horizontal approximation is conditional, not slant range",
       "FAP, GP capture, vertical constraints and aircraft performance remain unresolved"

@@ -18,7 +18,7 @@
 
 ## 16L：仅LOC部分，不借用RNP RWY16L
 
-**本轮人工裁定更新（E16）**：以下“仅FAF→THR、TJ954站位未知”保留为第二轮历史说明。本轮条件水平参考已更新为IF_REFERENCE_STATION→THR单段LOC直线；原始TJ954、约132.041m跨日期偏差和条件FAF分别保存，未设计FAF转弯/导航捕获曲线。详见[16L实施审计](16L_LOC_REFERENCE_AUDIT.md)。FAP、GP_CAPTURE、垂直/性能/统计及G1总体未决状态不变。
+**本轮人工裁定更新（E16）**：以下“仅FAF→THR、TJ954站位未知”保留为第二轮历史说明。本轮条件水平参考已更新为IF_REFERENCE_STATION→THR单段LOC直线；原始TJ954、约132.041m条件轴线/公布点偏差（不能仅归因于跨AIRAC）和条件FAF分别保存，未设计FAF转弯/导航捕获曲线。详见[16L实施审计](16L_LOC_REFERENCE_AUDIT.md)。FAP、GP_CAPTURE、垂直/性能/统计及G1总体未决状态不变。
 
 5A确认TJ954、D6.2 ICU/FAF、600m/2000ft、GP3°、RDH16/52。4Z15的TJ958/TJ901/TJ957进近条目属于RNP RWY16L，已排除，绝不接入本程序。RNAV接入/LOC建立区间几何保持未知。
 

@@ -56,7 +56,7 @@ class LOCHorizontalReferenceTests(unittest.TestCase):
         self.assertAlmostEqual(self.model["derived"]["IF_PUBLISHED_TO_LOC_CROSS_TRACK_M"],
                                np.linalg.norm(difference), delta=1e-7)
         self.assertEqual(self.model["derived"]["cross_track_interpretation"],
-                         "CROSS_DATE_SOURCE_DIAGNOSTIC_NOT_NAVIGATION_ERROR_OR_SIGMA")
+                         "CONDITIONAL_AXIS_TO_PUBLISHED_FIX_DIAGNOSTIC_NOT_TSE_OR_SIGMA")
 
     def test_conditional_faf_is_on_axis_and_uses_horizontal_dme_range(self):
         events = self.model["events"]

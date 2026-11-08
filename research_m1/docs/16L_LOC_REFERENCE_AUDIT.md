@@ -8,7 +8,7 @@
 |---|---|---|
 | H01_4Y01：ZBTJ.pdf | 2024-10-31，p23 | 原始TJ954 N39°16′37.0″ E117°16′39.0″保留；新增TJ919、TJ960坐标仅用于程序元数据，已视觉复核 |
 | H01_5A：ZBTJ.pdf | 2024-10-31，p43 | IF TJ954/D9.2 ICU、FAF D6.2 ICU、161°磁航向；TJ919/TJ960→TJ954拓扑。未重判高度限制 |
-| H01_AD2025：天津滨海.pdf | 2025-10-02，AD2.12/p12、AD2.19/p17–18 | 真方位154.45°、3200m跑道、LOC坐标与末端外310m、DME/IM各自坐标；真向与磁向分别登记，不强制精确互换 |
+| H01_AD2025：天津滨海.pdf | 2025-10-02，AD2.12/p12、AD2.19/p17–18 | 跑道真方位154.45°（用于条件轴向，不是已测LOC精确航迹角）、3200m跑道、LOC坐标与末端外310m、DME/IM各自坐标；真向与磁向分别登记，不强制精确互换 |
 | H01_2A_2025 | 2025-09-04 | 保持新包既有ARP ENU；不建立另一套坐标基准 |
 | E16：用户本轮实施说明 | 2026-11-08 | 条件水平工程选择；不是数据库坐标、实飞导航捕获、运行批准或跨AIRAC相容性证明 |
 | 用户引用Doc8168 §1.3.2及ICAO APAC FPP 2025 p33 | 规范定位由用户提供 | 作为已裁定方案的背景来源，本轮未重新核证规范全文；2025培训链接获取返回HTTP404，未作为新取得的一手证据 |
@@ -17,7 +17,7 @@
 
 ## 参考定义及结果
 
-保留新包独立WGS84→ECEF→ARP ENU实现。以LOC处公布真向构造当地单位向量，再变换至ARP ENU并归一化为u。由LOC位置及3200+310m沿向距离得到条件入口Q；对公布TJ954投影P，计算L=−(P−Q)·u、P_IF_ref=Q−Lu。参考仅为c(s)=P_IF_ref+s*u，0≤s≤L；不改变公布TJ954，不建立连接线、FAF转弯或截获曲线。
+保留新包独立WGS84→ECEF→ARP ENU实现。将跑道公布真方位作为条件LOC轴向，在LOC处构造当地单位向量，再变换至ARP ENU并归一化为u。由LOC位置及3200+310m沿向距离得到条件入口Q；对公布TJ954投影P，计算L=−(P−Q)·u、P_IF_ref=Q−Lu。参考仅为c(s)=P_IF_ref+s*u，0≤s≤L；不改变公布TJ954，不建立连接线、FAF转弯或截获曲线。
 
 条件FAF以DME坐标为圆心、6.2NM为水平半径，与LOC轴线求进近侧交点。它不是斜距解，不猜测DME天线标高或飞行高度。模型进入时刻对应IF_REFERENCE_STATION，不宣称精确飞越公布TJ954。
 
@@ -25,7 +25,7 @@
 |---|---:|---|
 | TJ954_PUBLISHED | 原始坐标不变；不赋参考曲线s | 原始字段SOURCE_VERIFIED；ENU投影另标DERIVED_COORDINATE |
 | IF_REFERENCE_STATION | s=0m | CONDITIONAL_LOC_REFERENCE |
-| IF_PUBLISHED_TO_LOC_CROSS_TRACK_M | 132.041m；左法向带符号−132.041m | 跨日期来源诊断，不是数值误差、正常导航偏差或sigma |
+| IF_PUBLISHED_TO_LOC_CROSS_TRACK_M | 132.041m；左法向带符号−132.041m | 所选条件轴线/公布TJ954偏差，原因未唯一判定；不是TSE、数值误差或sigma |
 | THR | s=16742.690m | 条件LOC参考入口，不证明精确LTP |
 | FAF_D6P2_ICU | s=5579.717m；距入口11162.973m | CONDITIONAL_DME_HORIZONTAL_EVENT，水平距离非斜距 |
 | FAP | null | UNRESOLVED |
@@ -43,3 +43,11 @@
 16L水平状态为CONDITIONAL_LOC_REFERENCE；16L_FULL_NOMINAL和G1_PROGRAM仍UNRESOLVED。16R仍CONDITIONAL_REFERENCE_GEOMETRY。G2–G5状态不变，不宣称程序、机型性能或随机统计资格通过。未开展垂直曲线、性能、随机统计、E1/Flow/CPA/M2/TLS或碰撞风险实验。实现完成后停止，留待人工审计。
 
 改动仅为research_m1中的aip_reference.py、study.yaml、16L旧测试断言与新增test_16l_loc_reference.py，以及README、M1_SINGLE_AUTHORITY、evidence_review、本报告、source_manifest、reference_geometry_results、adjudication、loc_reference_tests和publication_allowlist。完整13项路径见测试记录modified_files；公开白名单增加本报告、专项测试及测试记录三项，不发布原始AIP、图像或个人路径。
+
+## 合并前来源解释收口
+
+154.45°来自AD2.12跑道真方位，并非已直接测得的LOC航迹角。AD2.2/p1磁差为7°W（2019），年变率印为4′27″；不猜方向、不外推到2024/2025，也不把161°磁向与真向强制精确相等。按整数度显示舍入理解，154.45+7=161.45°与161°显示精度相容。132.041m仅为所选条件轴线和公布TJ954间偏差，可能涉及轴向假设、取整与版本等因素，不能唯一归因于跨AIRAC。
+
+独立核对：公布IF至DME水平距9.21347NM，与D9.2按最近0.1NM显示的条件区间[9.15,9.25)相容；IF站至入口16.74269km位于图示16.7km的条件区间[16.65,16.75)。条件FAF至入口11.16297km与图示11.1km中央值差62.973m，单独按±50m并不闭合；将D6.2的±0.05NM显示区间传播至LOC交点后，与图示11.1km区间有重叠。这是公开精度下可相容的检查，不证明精确FAF或唯一舍入规则。
+
+公布RW16R相对条件16L入口位于右侧约2098.85m、沿向−502.19m，与ZBTJ-2A双平行跑道相对布局方向一致；图上无可直接认证该间距的精确尺寸，本轮仅作拓扑/量级复核，不把RW16R自动当移位LTP。未发现程序选择错误，条件路径全部坐标/长度不改。具体检查值和有限区间见loc_reference_tests.json的source_explanation_closeout。

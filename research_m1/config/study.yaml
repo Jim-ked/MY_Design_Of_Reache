@@ -86,6 +86,14 @@ procedures:
     course_source_ref: H01_AD2025:p12
     magnetic_course_deg: 161.0
     magnetic_course_source_ref: H01_5A
+    axis_orientation_basis: runway true bearing used as conditional LOC axis; not measured LOC track
+    magnetic_variation:
+      west_deg: 7.0
+      measurement_year: 2019
+      annual_change_printed: 4 arcmin 27 arcsec
+      source_ref: H01_AD2025:AD2.2:p1
+      status: SOURCE_VERIFIED
+      use: metadata only; no epoch extrapolation or exact magnetic-to-true conversion
     runway_length_m: 3200.0
     loc_beyond_runway_end_m: 310.0
     im_before_threshold_m: 320.0

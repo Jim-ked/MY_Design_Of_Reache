@@ -221,19 +221,24 @@
       "extraction_method": "PDF text extraction with visual check on key pages",
       "status": "SOURCE_VERIFIED",
       "access": "authorized local source; raw documents not redistributed",
-      "configuration_use": "only facts transcribed into study.yaml; no old output inputs"
+      "configuration_use": "only facts transcribed into study.yaml; no old output inputs",
+      "additional_source_clarification": {
+        "AD2.2_p1": "7 deg W (2019), annual change printed 4 arcmin 27 arcsec; no epoch extrapolation",
+        "AD2.12_p12": "154.45 deg is runway true bearing, not measured LOC track"
+      }
     },
     {
       "source_id": "AUTHORITY_DOC",
       "title": "M1_SINGLE_AUTHORITY.md",
-      "sha256": "2f9eaa507dae579fddb8575b714403122f081b4054af60b851b4eba9b46ac984",
+      "sha256": "e993583045b8351f862aab1ce2a53a96943a20894167f9f378ec70243c0f3a3b",
       "status": "SUPPORTED",
       "role": "scientific authority",
       "original_sha256": "1395060aca2e337d77e2b2583f7033648cb12ad17c9e6533613552eac619b814",
       "change_note": "Only P16R-RF-PRECISION/E15 evidence adjudication added under user instruction. Mathematical definitions and G1-G5 acceptance conditions unchanged. Current update changes only existing P16L evidence adjudication and adds E16 under explicit user instruction; model definitions and gate acceptance criteria unchanged.",
       "hash_scope": "distributed UTF-8 document with LF line endings",
       "pre_rf_audit_document_sha256": "56ab4b501ca5f12af163397634dbc73b4a15cc456db2c601f70e704a2b2b04e6",
-      "pre_16l_adjudication_document_sha256": "e34684b9fb41fd182002b16623ba8cf7f36534f6fa4fdd80f28f93ba3e199934"
+      "pre_16l_adjudication_document_sha256": "e34684b9fb41fd182002b16623ba8cf7f36534f6fa4fdd80f28f93ba3e199934",
+      "pre_16l_source_closeout_sha256": "2f9eaa507dae579fddb8575b714403122f081b4054af60b851b4eba9b46ac984"
     },
     {
       "source_id": "EXECUTION_DOC",
@@ -978,5 +983,5 @@
   ],
   "redistribution": "No original AIP PDF, image, extracted full text, raw track or user absolute path is included.",
   "rf_precision_scope": "84.284m is an exact-display algorithm artifact, not proof of unavoidable program geometry conflict; conditional rounding feasibility verified.",
-  "16l_loc_reference_scope": "Conditional IF projection station to THR; 132m cross-date source difference not a navigation error or stochastic sigma. No full nominal qualification."
+  "16l_loc_reference_scope": "Selected conditional axis to published TJ954 discrepancy; cause not uniquely attributable to AIRAC; not TSE or sigma."
 }
