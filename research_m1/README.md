@@ -11,6 +11,7 @@ $env:PYTHONPATH = (Resolve-Path research_m1/src).Path
 python -m m1_research status
 python -m m1_research reference
 python -m m1_research reference-16r
+python -m m1_research nominal-conditional --delta-entry-s 0
 python -m m1_research synthetic-pair
 ```
 
@@ -21,3 +22,5 @@ The single runtime configuration is `config/study.yaml`. Unknown scientific para
 `reference` additionally includes the `CONDITIONAL_LOC_REFERENCE` for 16L: one LOC line from `IF_REFERENCE_STATION` to THR. Published TJ954 is retained separately with its offset from the selected conditional axis (cause unresolved); `FAF_D6P2_ICU` is a conditional horizontal-range event, while FAP and GP_CAPTURE remain unresolved. See `docs/16L_LOC_REFERENCE_AUDIT.md`. This reference is not a LOC capture or aircraft execution trajectory. Vertical, performance, stochastic and cross-date evidence limits remain. `synthetic-pair` is an explicitly synthetic interface demonstration, not aircraft performance evidence or a Tianjin simulation. Neither command declares M2 readiness.
 
 No historical project implementation is required at runtime. No original AIP or track data is redistributed. Refer to the source manifest for evidence fingerprints and allowed scope. M1/M2 scientific qualification remains open.
+
+`nominal-conditional` requires an explicit entry-time difference (16R minus 16L, seconds). It uses the accepted conditional paths, user-adjudicated quadratic/linear height examples and constant 145/115 kt **GS**, independently of `synthetic_demo`. It exports analytic position/velocity states on a shared one-second grid plus exact endpoints. Output is `CONDITIONAL_NOMINAL` and `FORMAL_NOT_QUALIFIED`; formal generation remains blocked. See `docs/CONDITIONAL_NOMINAL_REVIEW.md` for parameter sources, height residuals and limitations. No stochastic process is sampled.

@@ -1,0 +1,873 @@
+{
+  "status": "CONDITIONAL_NOMINAL",
+  "qualification_status": "FORMAL_NOT_QUALIFIED",
+  "scenario_id": "case_001",
+  "time_scale": "scenario_relative_s",
+  "delta_t_entry_s": 0.0,
+  "delta_definition": "t_R_entry minus t_L_entry",
+  "scope": "user-adjudicated conditional numerical example; not formal compliance, performance certification or M2 risk input",
+  "diagnostics": {
+    "aircraft_01": {
+      "duration_s": 224.44955955667098,
+      "constant_horizontal_gs_mps": 74.59444444444445,
+      "entry_s": 0.0,
+      "exit_s": 224.44955955667098,
+      "reference_status": "CONDITIONAL_LOC_REFERENCE",
+      "reference_events": {
+        "TJ954_PUBLISHED": {
+          "s_m": null,
+          "published_point": {
+            "lat_deg": 39,
+            "lat_min": 16,
+            "lat_sec": 37.0,
+            "lon_deg": 117,
+            "lon_min": 16,
+            "lon_sec": 39.0,
+            "source_ref": "H01_4Y01",
+            "status": "SOURCE_VERIFIED"
+          },
+          "enu_projection": {
+            "xy_m": [
+              -5920.2931267902095,
+              16932.662119603378
+            ],
+            "status": "DERIVED_COORDINATE"
+          },
+          "status": "SOURCE_VERIFIED",
+          "on_reference_path": false,
+          "source_ref": "H01_4Y01"
+        },
+        "IF_REFERENCE_STATION": {
+          "s_m": 0.0,
+          "xy_m": [
+            -5801.185538174649,
+            16989.655952085122
+          ],
+          "status": "CONDITIONAL_LOC_REFERENCE",
+          "source_ref": [
+            "H01_4Y01",
+            "H01_5A",
+            "H01_AD2025",
+            "USER_16L_LOC_ADJUDICATION_20261108"
+          ],
+          "definition": "orthogonal projection of published TJ954; model entry station only"
+        },
+        "FAF_D6P2_ICU": {
+          "s_m": 5579.71714622792,
+          "xy_m": [
+            -3392.7771397819015,
+            11956.484743149236
+          ],
+          "published_label": "FAF D6.2 ICU",
+          "published_label_status": "SOURCE_VERIFIED_LABEL_ONLY",
+          "status": "CONDITIONAL_DME_HORIZONTAL_EVENT",
+          "source_ref": [
+            "H01_5A",
+            "H01_AD2025"
+          ],
+          "range_interpretation": "CONDITIONAL_HORIZONTAL_DISTANCE_NOT_SLANT_RANGE"
+        },
+        "THR": {
+          "s_m": 16742.69020093012,
+          "xy_m": [
+            1425.5671152045552,
+            1886.950192811451
+          ],
+          "status": "CONDITIONAL_LOC_REFERENCE",
+          "source_ref": "H01_AD2025:p12,p17"
+        },
+        "FAP": {
+          "s_m": null,
+          "status": "UNRESOLVED"
+        },
+        "GP_CAPTURE": {
+          "s_m": null,
+          "status": "UNRESOLVED"
+        }
+      },
+      "profile_boundaries_m": [
+        4905.261092244734,
+        5579.71714622792
+      ],
+      "profile_parameters": {
+        "initial_height_m": 620.0,
+        "threshold_height_m": 17.3,
+        "join_s_m": 5579.71714622792,
+        "join_height_m": 602.3266279933691,
+        "final_slope": -0.05240777928304121,
+        "transition_length_m": 674.456053983186,
+        "transition_start_s_m": 4905.261092244734,
+        "transition_duration_s": 9.041639213299582,
+        "height_constraint_status": "600 m annotation type unresolved; 620 m is an explicit research example"
+      },
+      "extrema_at_analytic_one_sided_cuts": {
+        "path_angle_rate_rad_s": {
+          "s_m": 4905.261092244734,
+          "side": "right",
+          "height_m": 620.0,
+          "dh_ds": -0.0,
+          "d2h_ds2_per_m": -7.770377176323443e-05,
+          "path_angle_rad": -0.0,
+          "vertical_speed_mps": -0.0,
+          "path_angle_rate_rad_s": -0.005796269685916382,
+          "vertical_accel_mps2": -0.432369517071107,
+          "horizontal_curvature_per_m": 0.0,
+          "zero_wind_gs_bank_proxy_rad": 0.0
+        },
+        "vertical_accel_mps2": {
+          "s_m": 4905.261092244734,
+          "side": "right",
+          "height_m": 620.0,
+          "dh_ds": -0.0,
+          "d2h_ds2_per_m": -7.770377176323443e-05,
+          "path_angle_rad": -0.0,
+          "vertical_speed_mps": -0.0,
+          "path_angle_rate_rad_s": -0.005796269685916382,
+          "vertical_accel_mps2": -0.432369517071107,
+          "horizontal_curvature_per_m": 0.0,
+          "zero_wind_gs_bank_proxy_rad": 0.0
+        },
+        "zero_wind_gs_bank_proxy_rad": {
+          "s_m": 0.0,
+          "side": "left",
+          "height_m": 620.0,
+          "dh_ds": -0.0,
+          "d2h_ds2_per_m": 0.0,
+          "path_angle_rad": -0.0,
+          "vertical_speed_mps": -0.0,
+          "path_angle_rate_rad_s": 0.0,
+          "vertical_accel_mps2": 0.0,
+          "horizontal_curvature_per_m": 0.0,
+          "zero_wind_gs_bank_proxy_rad": 0.0
+        }
+      },
+      "one_sided_kinematics": [
+        {
+          "s_m": 0.0,
+          "side": "left",
+          "height_m": 620.0,
+          "dh_ds": -0.0,
+          "d2h_ds2_per_m": 0.0,
+          "path_angle_rad": -0.0,
+          "vertical_speed_mps": -0.0,
+          "path_angle_rate_rad_s": 0.0,
+          "vertical_accel_mps2": 0.0,
+          "horizontal_curvature_per_m": 0.0,
+          "zero_wind_gs_bank_proxy_rad": 0.0
+        },
+        {
+          "s_m": 0.0,
+          "side": "right",
+          "height_m": 620.0,
+          "dh_ds": -0.0,
+          "d2h_ds2_per_m": 0.0,
+          "path_angle_rad": -0.0,
+          "vertical_speed_mps": -0.0,
+          "path_angle_rate_rad_s": 0.0,
+          "vertical_accel_mps2": 0.0,
+          "horizontal_curvature_per_m": 0.0,
+          "zero_wind_gs_bank_proxy_rad": 0.0
+        },
+        {
+          "s_m": 4905.261092244734,
+          "side": "left",
+          "height_m": 620.0,
+          "dh_ds": -0.0,
+          "d2h_ds2_per_m": 0.0,
+          "path_angle_rad": -0.0,
+          "vertical_speed_mps": -0.0,
+          "path_angle_rate_rad_s": 0.0,
+          "vertical_accel_mps2": 0.0,
+          "horizontal_curvature_per_m": 0.0,
+          "zero_wind_gs_bank_proxy_rad": 0.0
+        },
+        {
+          "s_m": 4905.261092244734,
+          "side": "right",
+          "height_m": 620.0,
+          "dh_ds": -0.0,
+          "d2h_ds2_per_m": -7.770377176323443e-05,
+          "path_angle_rad": -0.0,
+          "vertical_speed_mps": -0.0,
+          "path_angle_rate_rad_s": -0.005796269685916382,
+          "vertical_accel_mps2": -0.432369517071107,
+          "horizontal_curvature_per_m": 0.0,
+          "zero_wind_gs_bank_proxy_rad": 0.0
+        },
+        {
+          "s_m": 5579.71714622792,
+          "side": "left",
+          "height_m": 602.3266279933691,
+          "dh_ds": -0.05240777928304124,
+          "d2h_ds2_per_m": -7.770377176323443e-05,
+          "path_angle_rad": -0.05235987755982992,
+          "vertical_speed_mps": -3.909329180185526,
+          "path_angle_rate_rad_s": -0.005780393400009803,
+          "vertical_accel_mps2": -0.432369517071107,
+          "horizontal_curvature_per_m": 0.0,
+          "zero_wind_gs_bank_proxy_rad": 0.0
+        },
+        {
+          "s_m": 5579.71714622792,
+          "side": "right",
+          "height_m": 602.3266279933691,
+          "dh_ds": -0.05240777928304121,
+          "d2h_ds2_per_m": 0.0,
+          "path_angle_rad": -0.05235987755982989,
+          "vertical_speed_mps": -3.9093291801855243,
+          "path_angle_rate_rad_s": 0.0,
+          "vertical_accel_mps2": 0.0,
+          "horizontal_curvature_per_m": 0.0,
+          "zero_wind_gs_bank_proxy_rad": 0.0
+        },
+        {
+          "s_m": 16742.69020093012,
+          "side": "left",
+          "height_m": 17.3,
+          "dh_ds": -0.05240777928304121,
+          "d2h_ds2_per_m": 0.0,
+          "path_angle_rad": -0.05235987755982989,
+          "vertical_speed_mps": -3.9093291801855243,
+          "path_angle_rate_rad_s": 0.0,
+          "vertical_accel_mps2": 0.0,
+          "horizontal_curvature_per_m": 0.0,
+          "zero_wind_gs_bank_proxy_rad": 0.0
+        },
+        {
+          "s_m": 16742.69020093012,
+          "side": "right",
+          "height_m": 17.3,
+          "dh_ds": -0.05240777928304121,
+          "d2h_ds2_per_m": 0.0,
+          "path_angle_rad": -0.05235987755982989,
+          "vertical_speed_mps": -3.9093291801855243,
+          "path_angle_rate_rad_s": 0.0,
+          "vertical_accel_mps2": 0.0,
+          "horizontal_curvature_per_m": 0.0,
+          "zero_wind_gs_bank_proxy_rad": 0.0
+        }
+      ],
+      "connection_checks": [
+        {
+          "s_m": 4905.261092244734,
+          "time_abs_s": 65.75906729753869,
+          "left": {
+            "aircraft_id": "aircraft_01",
+            "scenario_id": "case_001",
+            "procedure_id": "ZBTJ_RWY16L_RNAV_ILS_DME",
+            "aircraft_type": "A320",
+            "time_abs_s": 65.75906729753869,
+            "s_m": 4905.261092244734,
+            "east_m": -3683.8968475000715,
+            "north_m": 12564.876298426476,
+            "altitude_msl_m": 620.0,
+            "velocity_e_mps": 32.19766912286826,
+            "velocity_n_mps": -67.28774959106305,
+            "velocity_u_mps": -0.0,
+            "active": true,
+            "model_status": "CONDITIONAL_NOMINAL",
+            "provenance_id": "USER_CONDITIONAL_NOMINAL_20261108"
+          },
+          "right": {
+            "aircraft_id": "aircraft_01",
+            "scenario_id": "case_001",
+            "procedure_id": "ZBTJ_RWY16L_RNAV_ILS_DME",
+            "aircraft_type": "A320",
+            "time_abs_s": 65.75906729753869,
+            "s_m": 4905.261092244734,
+            "east_m": -3683.8968475000715,
+            "north_m": 12564.876298426476,
+            "altitude_msl_m": 620.0,
+            "velocity_e_mps": 32.19766912286826,
+            "velocity_n_mps": -67.28774959106305,
+            "velocity_u_mps": -0.0,
+            "active": true,
+            "model_status": "CONDITIONAL_NOMINAL",
+            "provenance_id": "USER_CONDITIONAL_NOMINAL_20261108"
+          },
+          "left_height_derivatives": {
+            "height_m": 620.0,
+            "dh_ds": -0.0,
+            "d2h_ds2_per_m": 0.0
+          },
+          "right_height_derivatives": {
+            "height_m": 620.0,
+            "dh_ds": -0.0,
+            "d2h_ds2_per_m": -7.770377176323443e-05
+          },
+          "position_gap_m": 0.0,
+          "velocity_gap_mps": 0.0,
+          "c1_consistent": true
+        },
+        {
+          "s_m": 5579.71714622792,
+          "time_abs_s": 74.80070651083828,
+          "left": {
+            "aircraft_id": "aircraft_01",
+            "scenario_id": "case_001",
+            "procedure_id": "ZBTJ_RWY16L_RNAV_ILS_DME",
+            "aircraft_type": "A320",
+            "time_abs_s": 74.80070651083828,
+            "s_m": 5579.71714622792,
+            "east_m": -3392.7771397819006,
+            "north_m": 11956.484743149238,
+            "altitude_msl_m": 602.3266279933691,
+            "velocity_e_mps": 32.19766912286826,
+            "velocity_n_mps": -67.28774959106305,
+            "velocity_u_mps": -3.909329180185526,
+            "active": true,
+            "model_status": "CONDITIONAL_NOMINAL",
+            "provenance_id": "USER_CONDITIONAL_NOMINAL_20261108"
+          },
+          "right": {
+            "aircraft_id": "aircraft_01",
+            "scenario_id": "case_001",
+            "procedure_id": "ZBTJ_RWY16L_RNAV_ILS_DME",
+            "aircraft_type": "A320",
+            "time_abs_s": 74.80070651083828,
+            "s_m": 5579.71714622792,
+            "east_m": -3392.7771397819006,
+            "north_m": 11956.484743149238,
+            "altitude_msl_m": 602.3266279933691,
+            "velocity_e_mps": 32.19766912286826,
+            "velocity_n_mps": -67.28774959106305,
+            "velocity_u_mps": -3.9093291801855243,
+            "active": true,
+            "model_status": "CONDITIONAL_NOMINAL",
+            "provenance_id": "USER_CONDITIONAL_NOMINAL_20261108"
+          },
+          "left_height_derivatives": {
+            "height_m": 602.3266279933691,
+            "dh_ds": -0.05240777928304124,
+            "d2h_ds2_per_m": -7.770377176323443e-05
+          },
+          "right_height_derivatives": {
+            "height_m": 602.3266279933691,
+            "dh_ds": -0.05240777928304121,
+            "d2h_ds2_per_m": 0.0
+          },
+          "position_gap_m": 0.0,
+          "velocity_gap_mps": 1.7763568394002505e-15,
+          "c1_consistent": true
+        }
+      ],
+      "bank_interpretation": "zero-wind groundspeed-based requirement proxy, not aircraft performance qualification",
+      "parameters_and_sources": {
+        "groundspeed": {
+          "value": 145.0,
+          "unit": "kt",
+          "speed_type": "horizontal_GS",
+          "status": "EXPLORATORY_INPUT_NOT_IAS_OR_VAPP",
+          "source_ref": "USER_CONDITIONAL_NOMINAL_20261108"
+        },
+        "initial_height": {
+          "value": 620.0,
+          "unit": "m",
+          "status": "RESEARCH_EXAMPLE_NOT_PUBLISHED_HEIGHT",
+          "source_ref": "USER_CONDITIONAL_NOMINAL_20261108"
+        },
+        "threshold_elevation": {
+          "value": 1.3,
+          "unit": "m",
+          "status": "CONDITIONAL_MSL_USE_CROSS_DATE_UNRESOLVED",
+          "source_ref": "H01_AD2025:AD2.12:p12"
+        },
+        "threshold_clearance": {
+          "value": 16.0,
+          "unit": "m",
+          "kind": "RDH",
+          "status": "CONDITIONAL_USE_OF_PUBLISHED_ANNOTATION",
+          "source_ref": "H01_5A"
+        },
+        "final_descent_angle": {
+          "value": 3.0,
+          "unit": "deg",
+          "status": "CONDITIONAL_USE_OF_PUBLISHED_ANNOTATION",
+          "source_ref": [
+            "H01_5A",
+            "H01_9E",
+            "USER_CONDITIONAL_NOMINAL_20261108"
+          ]
+        }
+      }
+    },
+    "aircraft_02": {
+      "duration_s": 318.5837849929225,
+      "constant_horizontal_gs_mps": 59.16111111111111,
+      "entry_s": 0.0,
+      "exit_s": 318.5837849929225,
+      "reference_status": "CONDITIONAL_REFERENCE_GEOMETRY",
+      "reference_events": {
+        "TJ907": 0.0,
+        "TJ906": 7737.7719966294335,
+        "TJ903": 15514.619300718718,
+        "RW16R": 18847.77070216462
+      },
+      "profile_boundaries_m": [
+        7737.7719966294335
+      ],
+      "profile_parameters": {
+        "initial_height_m": 914.4000000000001,
+        "threshold_height_m": 17.4496,
+        "join_s_m": 7737.7719966294335,
+        "join_height_m": 599.6999599945616,
+        "final_slope": -0.05240777928304121,
+        "rf1_linear_coefficient": -0.02893347505800723,
+        "rf1_quadratic_coefficient_per_m": -1.51686455967295e-06,
+        "tj906_height_ft": 1967.5195537879317,
+        "tj906_minus_2000_ft": -32.48044621206827,
+        "height_constraint_status": "2000 ft restriction type/rounding unresolved; no compliance claim"
+      },
+      "extrema_at_analytic_one_sided_cuts": {
+        "path_angle_rate_rad_s": {
+          "s_m": 0.0,
+          "side": "left",
+          "height_m": 914.4000000000001,
+          "dh_ds": -0.02893347505800723,
+          "d2h_ds2_per_m": -3.0337291193459e-06,
+          "path_angle_rad": -0.028925405263543404,
+          "vertical_speed_mps": -1.7117365327373277,
+          "path_angle_rate_rad_s": -0.0001793286612429692,
+          "vertical_accel_mps2": -0.010618164371682018,
+          "horizontal_curvature_per_m": -0.00020334924517728691,
+          "zero_wind_gs_bank_proxy_rad": 0.07244922535666011
+        },
+        "vertical_accel_mps2": {
+          "s_m": 0.0,
+          "side": "left",
+          "height_m": 914.4000000000001,
+          "dh_ds": -0.02893347505800723,
+          "d2h_ds2_per_m": -3.0337291193459e-06,
+          "path_angle_rad": -0.028925405263543404,
+          "vertical_speed_mps": -1.7117365327373277,
+          "path_angle_rate_rad_s": -0.0001793286612429692,
+          "vertical_accel_mps2": -0.010618164371682018,
+          "horizontal_curvature_per_m": -0.00020334924517728691,
+          "zero_wind_gs_bank_proxy_rad": 0.07244922535666011
+        },
+        "zero_wind_gs_bank_proxy_rad": {
+          "s_m": 0.0,
+          "side": "left",
+          "height_m": 914.4000000000001,
+          "dh_ds": -0.02893347505800723,
+          "d2h_ds2_per_m": -3.0337291193459e-06,
+          "path_angle_rad": -0.028925405263543404,
+          "vertical_speed_mps": -1.7117365327373277,
+          "path_angle_rate_rad_s": -0.0001793286612429692,
+          "vertical_accel_mps2": -0.010618164371682018,
+          "horizontal_curvature_per_m": -0.00020334924517728691,
+          "zero_wind_gs_bank_proxy_rad": 0.07244922535666011
+        }
+      },
+      "one_sided_kinematics": [
+        {
+          "s_m": 0.0,
+          "side": "left",
+          "height_m": 914.4000000000001,
+          "dh_ds": -0.02893347505800723,
+          "d2h_ds2_per_m": -3.0337291193459e-06,
+          "path_angle_rad": -0.028925405263543404,
+          "vertical_speed_mps": -1.7117365327373277,
+          "path_angle_rate_rad_s": -0.0001793286612429692,
+          "vertical_accel_mps2": -0.010618164371682018,
+          "horizontal_curvature_per_m": -0.00020334924517728691,
+          "zero_wind_gs_bank_proxy_rad": 0.07244922535666011
+        },
+        {
+          "s_m": 0.0,
+          "side": "right",
+          "height_m": 914.4000000000001,
+          "dh_ds": -0.02893347505800723,
+          "d2h_ds2_per_m": -3.0337291193459e-06,
+          "path_angle_rad": -0.028925405263543404,
+          "vertical_speed_mps": -1.7117365327373277,
+          "path_angle_rate_rad_s": -0.0001793286612429692,
+          "vertical_accel_mps2": -0.010618164371682018,
+          "horizontal_curvature_per_m": -0.00020334924517728691,
+          "zero_wind_gs_bank_proxy_rad": 0.07244922535666011
+        },
+        {
+          "s_m": 7737.7719966294335,
+          "side": "left",
+          "height_m": 599.6999599945616,
+          "dh_ds": -0.05240777928304121,
+          "d2h_ds2_per_m": -3.0337291193459e-06,
+          "path_angle_rad": -0.05235987755982989,
+          "vertical_speed_mps": -3.1005024532505883,
+          "path_angle_rate_rad_s": -0.0001789871837275348,
+          "vertical_accel_mps2": -0.010618164371682018,
+          "horizontal_curvature_per_m": -0.00020334924517728691,
+          "zero_wind_gs_bank_proxy_rad": 0.07244922535666011
+        },
+        {
+          "s_m": 7737.7719966294335,
+          "side": "right",
+          "height_m": 599.6999599945616,
+          "dh_ds": -0.05240777928304121,
+          "d2h_ds2_per_m": 0.0,
+          "path_angle_rad": -0.05235987755982989,
+          "vertical_speed_mps": -3.1005024532505883,
+          "path_angle_rate_rad_s": 0.0,
+          "vertical_accel_mps2": 0.0,
+          "horizontal_curvature_per_m": -0.00020334924517728691,
+          "zero_wind_gs_bank_proxy_rad": 0.07244922535666011
+        },
+        {
+          "s_m": 15514.619300718718,
+          "side": "left",
+          "height_m": 192.13266296393635,
+          "dh_ds": -0.05240777928304121,
+          "d2h_ds2_per_m": 0.0,
+          "path_angle_rad": -0.05235987755982989,
+          "vertical_speed_mps": -3.1005024532505883,
+          "path_angle_rate_rad_s": 0.0,
+          "vertical_accel_mps2": 0.0,
+          "horizontal_curvature_per_m": -0.00020334924517728691,
+          "zero_wind_gs_bank_proxy_rad": 0.07244922535666011
+        },
+        {
+          "s_m": 15514.619300718718,
+          "side": "right",
+          "height_m": 192.13266296393635,
+          "dh_ds": -0.05240777928304121,
+          "d2h_ds2_per_m": 0.0,
+          "path_angle_rad": -0.05235987755982989,
+          "vertical_speed_mps": -3.1005024532505883,
+          "path_angle_rate_rad_s": 0.0,
+          "vertical_accel_mps2": 0.0,
+          "horizontal_curvature_per_m": 0.0,
+          "zero_wind_gs_bank_proxy_rad": 0.0
+        },
+        {
+          "s_m": 18847.77070216462,
+          "side": "left",
+          "height_m": 17.4496,
+          "dh_ds": -0.05240777928304121,
+          "d2h_ds2_per_m": 0.0,
+          "path_angle_rad": -0.05235987755982989,
+          "vertical_speed_mps": -3.1005024532505883,
+          "path_angle_rate_rad_s": 0.0,
+          "vertical_accel_mps2": 0.0,
+          "horizontal_curvature_per_m": 0.0,
+          "zero_wind_gs_bank_proxy_rad": 0.0
+        },
+        {
+          "s_m": 18847.77070216462,
+          "side": "right",
+          "height_m": 17.4496,
+          "dh_ds": -0.05240777928304121,
+          "d2h_ds2_per_m": 0.0,
+          "path_angle_rad": -0.05235987755982989,
+          "vertical_speed_mps": -3.1005024532505883,
+          "path_angle_rate_rad_s": 0.0,
+          "vertical_accel_mps2": 0.0,
+          "horizontal_curvature_per_m": 0.0,
+          "zero_wind_gs_bank_proxy_rad": 0.0
+        }
+      ],
+      "connection_checks": [
+        {
+          "s_m": 7737.7719966294335,
+          "time_abs_s": 130.79152590790665,
+          "left": {
+            "aircraft_id": "aircraft_02",
+            "scenario_id": "case_001",
+            "procedure_id": "ZBTJ_RWY16R_RNP_Y_AR",
+            "aircraft_type": "MQ9A",
+            "time_abs_s": 130.79152590790665,
+            "s_m": 7737.7719966294335,
+            "east_m": -8726.618050018322,
+            "north_m": 6734.449682894083,
+            "altitude_msl_m": 599.6999599945616,
+            "velocity_e_mps": 53.10254458361636,
+            "velocity_n_mps": 26.07981646113085,
+            "velocity_u_mps": -3.1005024532505883,
+            "active": true,
+            "model_status": "CONDITIONAL_NOMINAL",
+            "provenance_id": "USER_CONDITIONAL_NOMINAL_20261108"
+          },
+          "right": {
+            "aircraft_id": "aircraft_02",
+            "scenario_id": "case_001",
+            "procedure_id": "ZBTJ_RWY16R_RNP_Y_AR",
+            "aircraft_type": "MQ9A",
+            "time_abs_s": 130.79152590790665,
+            "s_m": 7737.7719966294335,
+            "east_m": -8726.618050018322,
+            "north_m": 6734.449682894083,
+            "altitude_msl_m": 599.6999599945616,
+            "velocity_e_mps": 53.10254458361635,
+            "velocity_n_mps": 26.07981646113086,
+            "velocity_u_mps": -3.1005024532505883,
+            "active": true,
+            "model_status": "CONDITIONAL_NOMINAL",
+            "provenance_id": "USER_CONDITIONAL_NOMINAL_20261108"
+          },
+          "left_height_derivatives": {
+            "height_m": 599.6999599945616,
+            "dh_ds": -0.05240777928304121,
+            "d2h_ds2_per_m": -3.0337291193459e-06
+          },
+          "right_height_derivatives": {
+            "height_m": 599.6999599945616,
+            "dh_ds": -0.05240777928304121,
+            "d2h_ds2_per_m": 0.0
+          },
+          "position_gap_m": 0.0,
+          "velocity_gap_mps": 1.2809491335957507e-14,
+          "c1_consistent": true
+        },
+        {
+          "s_m": 15514.619300718718,
+          "time_abs_s": 262.24354156534594,
+          "left": {
+            "aircraft_id": "aircraft_02",
+            "scenario_id": "case_001",
+            "procedure_id": "ZBTJ_RWY16R_RNP_Y_AR",
+            "aircraft_type": "MQ9A",
+            "time_abs_s": 262.24354156534594,
+            "s_m": 15514.619300718718,
+            "east_m": -2121.971703840878,
+            "north_m": 4441.242777314923,
+            "altitude_msl_m": 192.13266296393635,
+            "velocity_e_mps": 25.51442324144682,
+            "velocity_n_mps": -53.376504892673076,
+            "velocity_u_mps": -3.1005024532505883,
+            "active": true,
+            "model_status": "CONDITIONAL_NOMINAL",
+            "provenance_id": "USER_CONDITIONAL_NOMINAL_20261108"
+          },
+          "right": {
+            "aircraft_id": "aircraft_02",
+            "scenario_id": "case_001",
+            "procedure_id": "ZBTJ_RWY16R_RNP_Y_AR",
+            "aircraft_type": "MQ9A",
+            "time_abs_s": 262.24354156534594,
+            "s_m": 15514.619300718718,
+            "east_m": -2121.971703841045,
+            "north_m": 4441.242777314844,
+            "altitude_msl_m": 192.13266296393635,
+            "velocity_e_mps": 25.514423241447304,
+            "velocity_n_mps": -53.37650489267285,
+            "velocity_u_mps": -3.1005024532505883,
+            "active": true,
+            "model_status": "CONDITIONAL_NOMINAL",
+            "provenance_id": "USER_CONDITIONAL_NOMINAL_20261108"
+          },
+          "left_height_derivatives": {
+            "height_m": 192.13266296393635,
+            "dh_ds": -0.05240777928304121,
+            "d2h_ds2_per_m": 0.0
+          },
+          "right_height_derivatives": {
+            "height_m": 192.13266296393635,
+            "dh_ds": -0.05240777928304121,
+            "d2h_ds2_per_m": 0.0
+          },
+          "position_gap_m": 1.8469965467605119e-10,
+          "velocity_gap_mps": 5.339954392427426e-13,
+          "c1_consistent": true
+        }
+      ],
+      "bank_interpretation": "zero-wind groundspeed-based requirement proxy, not aircraft performance qualification",
+      "parameters_and_sources": {
+        "groundspeed": {
+          "value": 115.0,
+          "unit": "kt",
+          "speed_type": "horizontal_GS",
+          "status": "EXPLORATORY_INPUT_NOT_KIAS",
+          "source_ref": "USER_CONDITIONAL_NOMINAL_20261108"
+        },
+        "initial_height": {
+          "value": 3000.0,
+          "unit": "ft",
+          "status": "CONDITIONAL_USE_OF_PUBLISHED_ANNOTATION",
+          "source_ref": "H01_9E"
+        },
+        "threshold_elevation": {
+          "value": 1.6,
+          "unit": "m",
+          "status": "CONDITIONAL_MSL_USE_LTP_IDENTITY_UNRESOLVED",
+          "source_ref": "H01_2A_2025"
+        },
+        "threshold_clearance": {
+          "value": 52.0,
+          "unit": "ft",
+          "kind": "TCH",
+          "status": "CONDITIONAL_USE_OF_PUBLISHED_ANNOTATION",
+          "source_ref": "H01_9E"
+        },
+        "final_descent_angle": {
+          "value": 3.0,
+          "unit": "deg",
+          "status": "CONDITIONAL_USE_OF_PUBLISHED_ANNOTATION",
+          "source_ref": [
+            "H01_5A",
+            "H01_9E",
+            "USER_CONDITIONAL_NOMINAL_20261108"
+          ]
+        }
+      }
+    }
+  },
+  "formal_generation_allowed": false,
+  "grid_summary": {
+    "row_count": 321,
+    "ordinary_step_s": 1.0,
+    "exact_entry_exit_endpoints_included": true,
+    "first_time_s": 0.0,
+    "last_time_s": 318.5837849929225,
+    "overlap_row_count": 226,
+    "relative_states_only_when_both_active": true
+  },
+  "endpoint_rows": [
+    {
+      "time_abs_s": 0.0,
+      "states": {
+        "aircraft_01": {
+          "aircraft_id": "aircraft_01",
+          "scenario_id": "case_001",
+          "procedure_id": "ZBTJ_RWY16L_RNAV_ILS_DME",
+          "aircraft_type": "A320",
+          "time_abs_s": 0.0,
+          "s_m": 0.0,
+          "east_m": -5801.185538174649,
+          "north_m": 16989.655952085122,
+          "altitude_msl_m": 620.0,
+          "velocity_e_mps": 32.19766912286826,
+          "velocity_n_mps": -67.28774959106305,
+          "velocity_u_mps": -0.0,
+          "active": true,
+          "model_status": "CONDITIONAL_NOMINAL",
+          "provenance_id": "USER_CONDITIONAL_NOMINAL_20261108"
+        },
+        "aircraft_02": {
+          "aircraft_id": "aircraft_02",
+          "scenario_id": "case_001",
+          "procedure_id": "ZBTJ_RWY16R_RNP_Y_AR",
+          "aircraft_type": "MQ9A",
+          "time_abs_s": 0.0,
+          "s_m": 0.0,
+          "east_m": -10967.015733910795,
+          "north_m": 140.78137333375662,
+          "altitude_msl_m": 914.4000000000001,
+          "velocity_e_mps": -26.221706957579293,
+          "velocity_n_mps": 53.03262347020061,
+          "velocity_u_mps": -1.7117365327373277,
+          "active": true,
+          "model_status": "CONDITIONAL_NOMINAL",
+          "provenance_id": "USER_CONDITIONAL_NOMINAL_20261108"
+        }
+      },
+      "relative_state": {
+        "definition": "second minus first in evaluator order",
+        "delta_position_m": [
+          -5165.830195736146,
+          -16848.874578751365,
+          294.4000000000001
+        ],
+        "delta_velocity_mps": [
+          -58.419376080447556,
+          120.32037306126367,
+          -1.7117365327373277
+        ]
+      },
+      "pair_active": true,
+      "active_aircraft_ids": [
+        "aircraft_01",
+        "aircraft_02"
+      ]
+    },
+    {
+      "time_abs_s": 224.44955955667098,
+      "states": {
+        "aircraft_01": {
+          "aircraft_id": "aircraft_01",
+          "scenario_id": "case_001",
+          "procedure_id": "ZBTJ_RWY16L_RNAV_ILS_DME",
+          "aircraft_type": "A320",
+          "time_abs_s": 224.44955955667098,
+          "s_m": 16742.69020093012,
+          "east_m": 1425.567115204557,
+          "north_m": 1886.9501928114532,
+          "altitude_msl_m": 17.3,
+          "velocity_e_mps": 32.19766912286826,
+          "velocity_n_mps": -67.28774959106305,
+          "velocity_u_mps": -3.9093291801855243,
+          "active": true,
+          "model_status": "CONDITIONAL_NOMINAL",
+          "provenance_id": "USER_CONDITIONAL_NOMINAL_20261108"
+        },
+        "aircraft_02": {
+          "aircraft_id": "aircraft_02",
+          "scenario_id": "case_001",
+          "procedure_id": "ZBTJ_RWY16R_RNP_Y_AR",
+          "aircraft_type": "MQ9A",
+          "time_abs_s": 224.44955955667098,
+          "s_m": 13278.685331772162,
+          "east_m": -3504.1448461806694,
+          "north_m": 6174.29278880243,
+          "altitude_msl_m": 309.31299689994177,
+          "velocity_e_mps": 46.36365140862373,
+          "velocity_n_mps": -36.748454334309855,
+          "velocity_u_mps": -3.1005024532505883,
+          "active": true,
+          "model_status": "CONDITIONAL_NOMINAL",
+          "provenance_id": "USER_CONDITIONAL_NOMINAL_20261108"
+        }
+      },
+      "relative_state": {
+        "definition": "second minus first in evaluator order",
+        "delta_position_m": [
+          -4929.7119613852265,
+          4287.342595990976,
+          292.01299689994175
+        ],
+        "delta_velocity_mps": [
+          14.165982285755469,
+          30.539295256753192,
+          0.8088267269349361
+        ]
+      },
+      "pair_active": true,
+      "active_aircraft_ids": [
+        "aircraft_01",
+        "aircraft_02"
+      ]
+    },
+    {
+      "time_abs_s": 318.5837849929225,
+      "states": {
+        "aircraft_01": {
+          "aircraft_id": "aircraft_01",
+          "time_abs_s": 318.5837849929225,
+          "active": false,
+          "position_m": null,
+          "velocity_mps": null
+        },
+        "aircraft_02": {
+          "aircraft_id": "aircraft_02",
+          "scenario_id": "case_001",
+          "procedure_id": "ZBTJ_RWY16R_RNP_Y_AR",
+          "aircraft_type": "MQ9A",
+          "time_abs_s": 318.5837849929225,
+          "s_m": 18847.77070216462,
+          "east_m": -684.4828875036876,
+          "north_m": 1433.9974983484258,
+          "altitude_msl_m": 17.4496,
+          "velocity_e_mps": 25.514423241447304,
+          "velocity_n_mps": -53.37650489267285,
+          "velocity_u_mps": -3.1005024532505883,
+          "active": true,
+          "model_status": "CONDITIONAL_NOMINAL",
+          "provenance_id": "USER_CONDITIONAL_NOMINAL_20261108"
+        }
+      },
+      "relative_state": null,
+      "pair_active": false,
+      "active_aircraft_ids": [
+        "aircraft_02"
+      ]
+    }
+  ]
+}

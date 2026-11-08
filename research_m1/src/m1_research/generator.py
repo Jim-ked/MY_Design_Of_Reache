@@ -46,6 +46,7 @@ def generate_formal_scenario(scenario_id: str) -> dict[str, Any]:
     report = inspect_study()
     return {
         "status": "PARTIAL_REFERENCE",
+        "qualification_status": "FORMAL_NOT_QUALIFIED",
         "scenario_id": scenario_id,
         "trajectory": None,
         "reason": report["reason"],
@@ -54,4 +55,20 @@ def generate_formal_scenario(scenario_id: str) -> dict[str, Any]:
             "G2_AIRCRAFT unresolved",
             "G4_STOCHASTIC unresolved",
         ],
+    }
+
+
+def generate_conditional_nominal(*, delta_entry_s: float) -> dict[str, Any]:
+    """Explicit deterministic example, isolated from formal and synthetic paths."""
+    from .conditional_nominal import build_conditional_flights, common_time_grid
+    from .scenario_sync import synchronize_aircraft_states
+    flights = build_conditional_flights(load_study(), delta_entry_s=delta_entry_s)
+    return {
+        "status": "CONDITIONAL_NOMINAL", "qualification_status": "FORMAL_NOT_QUALIFIED",
+        "scenario_id": "case_001", "time_scale": "scenario_relative_s",
+        "delta_t_entry_s": float(delta_entry_s), "delta_definition": "t_R_entry minus t_L_entry",
+        "scope": "user-adjudicated conditional numerical example; not formal compliance, performance certification or M2 risk input",
+        "diagnostics": {aid: f.diagnostics() for aid,f in flights.items()},
+        "rows": synchronize_aircraft_states(flights,common_time_grid(flights)),
+        "formal_generation_allowed": False,
     }

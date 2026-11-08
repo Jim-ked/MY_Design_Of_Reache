@@ -4,7 +4,7 @@ import json
 
 from .aip_reference import build_16r_reference, build_16l_reference
 from .config_loader import load_study
-from .generator import inspect_study
+from .generator import inspect_study, generate_conditional_nominal
 from .scenario_sync import synthetic_pair, synchronize_aircraft_states
 
 
@@ -24,12 +24,23 @@ def reference_export(runway_only=None):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("command", choices=["status", "reference", "reference-16r", "synthetic-pair"])
-    command = parser.parse_args().command
+    parser.add_argument("command", choices=["status", "reference", "reference-16r", "synthetic-pair", "nominal-conditional"])
+    parser.add_argument("--delta-entry-s", type=float, help="explicit t_R_entry minus t_L_entry, scenario-relative seconds")
+    args = parser.parse_args()
+    command = args.command
+    if command == "nominal-conditional" and args.delta_entry_s is None:
+        parser.error("nominal-conditional requires --delta-entry-s")
+    if command != "nominal-conditional" and args.delta_entry_s is not None:
+        parser.error("--delta-entry-s applies only to nominal-conditional")
     if command == "reference":
         result = reference_export()
     elif command == "reference-16r":
         result = reference_export("16R")
+    elif command == "nominal-conditional":
+        try:
+            result = generate_conditional_nominal(delta_entry_s=args.delta_entry_s)
+        except ValueError as exc:
+            parser.error(str(exc))
     elif command == "synthetic-pair":
         study = load_study()
         schedule = synthetic_pair(study)

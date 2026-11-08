@@ -333,6 +333,63 @@ operations:
     constraint_solver: null
     transition_parameters: null
     status: UNRESOLVED
+  conditional_nominal:
+    status: CONDITIONAL_NOMINAL
+    source_ref: USER_CONDITIONAL_NOMINAL_20261108
+    scope: explicit numerical example only; not formal compliance, aircraft performance or M2 input
+    time_origin: aircraft_01 entry at relative 0 s; aircraft_02 entry supplied explicitly by CLI
+    final_descent_angle:
+      value: 3.0
+      unit: deg
+      status: CONDITIONAL_USE_OF_PUBLISHED_ANNOTATION
+      source_ref: [H01_5A, H01_9E, USER_CONDITIONAL_NOMINAL_20261108]
+    runways:
+      16L:
+        groundspeed:
+          value: 145.0
+          unit: kt
+          speed_type: horizontal_GS
+          status: EXPLORATORY_INPUT_NOT_IAS_OR_VAPP
+          source_ref: USER_CONDITIONAL_NOMINAL_20261108
+        initial_height:
+          value: 620.0
+          unit: m
+          status: RESEARCH_EXAMPLE_NOT_PUBLISHED_HEIGHT
+          source_ref: USER_CONDITIONAL_NOMINAL_20261108
+        threshold_elevation:
+          value: 1.3
+          unit: m
+          status: CONDITIONAL_MSL_USE_CROSS_DATE_UNRESOLVED
+          source_ref: H01_AD2025:AD2.12:p12
+        threshold_clearance:
+          value: 16.0
+          unit: m
+          kind: RDH
+          status: CONDITIONAL_USE_OF_PUBLISHED_ANNOTATION
+          source_ref: H01_5A
+      16R:
+        groundspeed:
+          value: 115.0
+          unit: kt
+          speed_type: horizontal_GS
+          status: EXPLORATORY_INPUT_NOT_KIAS
+          source_ref: USER_CONDITIONAL_NOMINAL_20261108
+        initial_height:
+          value: 3000.0
+          unit: ft
+          status: CONDITIONAL_USE_OF_PUBLISHED_ANNOTATION
+          source_ref: H01_9E
+        threshold_elevation:
+          value: 1.6
+          unit: m
+          status: CONDITIONAL_MSL_USE_LTP_IDENTITY_UNRESOLVED
+          source_ref: H01_2A_2025
+        threshold_clearance:
+          value: 52.0
+          unit: ft
+          kind: TCH
+          status: CONDITIONAL_USE_OF_PUBLISHED_ANNOTATION
+          source_ref: H01_9E
   synthetic_demo:
     status: CONDITIONAL_ASSUMPTION
     source_ref: synthetic_equation_and_interface_test_only

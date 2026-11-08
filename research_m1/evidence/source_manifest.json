@@ -230,15 +230,16 @@
     {
       "source_id": "AUTHORITY_DOC",
       "title": "M1_SINGLE_AUTHORITY.md",
-      "sha256": "e993583045b8351f862aab1ce2a53a96943a20894167f9f378ec70243c0f3a3b",
+      "sha256": "dcd7b63c8348e60afe63699ffa4f4b8eecc021924f4a79c180e1f8891312fd16",
       "status": "SUPPORTED",
       "role": "scientific authority",
       "original_sha256": "1395060aca2e337d77e2b2583f7033648cb12ad17c9e6533613552eac619b814",
-      "change_note": "Only P16R-RF-PRECISION/E15 evidence adjudication added under user instruction. Mathematical definitions and G1-G5 acceptance conditions unchanged. Current update changes only existing P16L evidence adjudication and adds E16 under explicit user instruction; model definitions and gate acceptance criteria unchanged.",
+      "change_note": "Only P16R-RF-PRECISION/E15 evidence adjudication added under user instruction. Mathematical definitions and G1-G5 acceptance conditions unchanged. Current update changes only existing P16L evidence adjudication and adds E16 under explicit user instruction; model definitions and gate acceptance criteria unchanged. E17 conditional demonstration record added under user scientific adjudication; no formal model equations or gate criteria changed.",
       "hash_scope": "distributed UTF-8 document with LF line endings",
       "pre_rf_audit_document_sha256": "56ab4b501ca5f12af163397634dbc73b4a15cc456db2c601f70e704a2b2b04e6",
       "pre_16l_adjudication_document_sha256": "e34684b9fb41fd182002b16623ba8cf7f36534f6fa4fdd80f28f93ba3e199934",
-      "pre_16l_source_closeout_sha256": "2f9eaa507dae579fddb8575b714403122f081b4054af60b851b4eba9b46ac984"
+      "pre_16l_source_closeout_sha256": "2f9eaa507dae579fddb8575b714403122f081b4054af60b851b4eba9b46ac984",
+      "pre_conditional_nominal_sha256": "e993583045b8351f862aab1ce2a53a96943a20894167f9f378ec70243c0f3a3b"
     },
     {
       "source_id": "EXECUTION_DOC",
@@ -413,6 +414,30 @@
         "484482e46c7880fb8e4071e26c4af5d2c5d912109ba040ad22250726f129ce98",
         "a71fc8268f1b965dcb7f2f6818a9b552616a15b4a5f38c497e965531ed44fd3b"
       ]
+    },
+    {
+      "source_id": "USER_CONDITIONAL_NOMINAL_20261108",
+      "evidence_id": "E17",
+      "title": "M1_条件四维标称_最小实现任务_20261108.md",
+      "sha256": "f10f30f9ed951ca21f87f608c0d7dba59ce10cad9af2c9a8bfda8867ca7c94fb",
+      "version": "2026-11-08",
+      "role": "user-adjudicated conditional numerical example, not a parallel scientific specification",
+      "status": "CONDITIONAL",
+      "allows": "accepted horizontal references plus specified low-degree height examples, constant exploratory GS and explicitly supplied entry-time difference",
+      "does_not_allow": "formal program compliance, aircraft performance or navigation approval, stochastic qualification or M2 risk use",
+      "parameter_namespace": "operations.conditional_nominal",
+      "unit_conversion": {
+        "kt_to_mps": "1852/3600",
+        "ft_to_m": 0.3048
+      },
+      "background_refs": [
+        "E06",
+        "E08",
+        "E09"
+      ],
+      "technical_text_verification_this_round": "user-cited context only; no aircraft performance limits certified or inferred",
+      "mq9_navigation_limitation": "user cites AFMAN INS/GPS instrument-approach certification limitation; research RNP AR assumption is not operational authorization",
+      "audit_record": "research_m1/docs/CONDITIONAL_NOMINAL_REVIEW.md"
     }
   ],
   "page_inventory": [

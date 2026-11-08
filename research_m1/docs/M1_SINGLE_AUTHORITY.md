@@ -121,6 +121,7 @@
 | E12 | EUROCONTROL BADA官方项目：https://www.eurocontrol.int/model/bada | 建模方法背景 | BADA用于机型几何/运动学/动力学模拟；无授权数据不得杜撰A320模型包线 |
 | E15 | 用户2026-11-08《M1-16R RF程序水平几何：公布精度核定与最小实施任务》；原始ZBTJ.pdf p23 ZBTJ-4Y01、p42 ZBTJ-4Z18（EFF2024-10-31）；计算记录docs/16R_RF_PRECISION_AUDIT.md | 经用户裁定的条件舍入假设与独立数学审计 | 仅支持公布精度区间内可存在连续、同向相切代表；±0.05角秒和[2.65,2.75)NM不冒充数据库精度，不证明唯一真实导航数据库航迹，不解决LTP/垂直/跨日期/性能/统计问题。 |
 | E16 | 用户2026-11-08《M1_16L_简化参考几何与Codex实施任务_20261108.md》；原始ZBTJ.pdf p23/43（EFF2024-10-31）、天津滨海.pdf AD2.12/2.19 p12/17/18（EFF2025-10-02）；计算记录docs/16L_LOC_REFERENCE_AUDIT.md。裁定引用Doc8168 Vol II Part II Sec1 Ch1 §1.3.2（同E01链接）及ICAO APAC FPP 2025培训p33：https://www.icao.int/sites/default/files/APAC/APAC-FPP/FPP%20Training/FPP%20Training%20in%202025/PANS-OPS%20Procedure%20Design%20Initial%20Course%202025/Presentations/Day11-General-Criteria.pdf | 经用户裁定的条件水平工程参考 | 仅支持以跑道真方位作为条件轴向的IF投影站位→THR单段参考、所选轴线/公布点偏差诊断及条件D6.2水平事件；不证明跨日期相容性、导航截获/真实执行、垂直或运行资格。规范定位由用户提供；2025链接本轮获取返回404，未冒充全文重新核证。 |
+| E17 | 用户2026-11-08《M1_条件四维标称_最小实现任务_20261108.md》；背景技术引用E06/E08/E09 | 经人工裁定的条件数值演示 | 仅授权下述低次数高度函数、145/115kt恒定GS和显式进入时差的数学/接口演示。GS不是由VAPP/KIAS换算的实测地速，620m是研究输入；不证明程序高度约束、机型性能、MQ9A RNP AR运行批准或M2风险资格。 |
 
 ## 附录B 仍待解决的最小证据事项（与科学口径区别开）
 
@@ -140,3 +141,13 @@
 | E14 | 用户授权本地 `天津滨海.pdf`，SHA256 `a71fc8268f1b965dcb7f2f6818a9b552616a15b4a5f38c497e965531ed44fd3b`，AD2.12/p12、AD2.19/p17–18，EFF2025-10-02；机场图ZBTJ-2A为EFF2025-09-04 | 可核对LOC/IM/DME各自坐标、入口相对距离与真方位；与2024进近页的版本相容性未核证。只支持明示跨日期的部分参考几何，不证明完整运行程序已通过。 |
 
 `case_001`为同一情景中的两项分配：`aircraft_01/A320/16L`及`aircraft_02/MQ9A/16R`。正式进入时刻仍未决；合成接口示例的相对时刻单独标注，不是航班UTC或机型性能证据。G1垂直/LTP、G2与G4未决，不因本次补录升级。
+
+## 2026-11-08 条件四维数值演示记录（E17，不改变正式Gate）
+
+仅在operations.conditional_nominal命名空间使用已核定条件水平路径，16L为IF参考站位→THR直线、16R为RF1/RF2/TF。常值水平GS分别145、115kt，精确转换为kt×1852/3600m/s，属于探索性输入，不是IAS/TAS/VAPP或机型速度限制。t_L_entry=0为相对时钟原点，delta_t_entry=t_R_entry−t_L_entry必须由调用者/CLI显式提供；不复用synthetic_demo数据。
+
+令m=tan(3°)。16R使用当前条件路径求L1=RF1长、LR=总长，HT=1.6+52×0.3048m、H0=3000×0.3048m，H1=HT+(LR−L1)m；RF1上h=H0+bs+as²，b=2(H1−H0)/L1+m，a=(−m−b)/(2L1)；此后h=HT+(LR−s)m。TJ906高度约1967.52ft，未强制匹配图注2000ft。取整可相容的解释不证明强制最低/定高约束符合。
+
+16L使用当前条件LL及sFAF，HT=1.3+16=17.3m，HF=HT+(LL−sFAF)m。本例H0=620m，D=2(H0−HF)/m，s0=sFAF−D；s<s0时h=H0，s0≤s≤sFAF时h=H0−m(s−s0)²/(2D)，其后为最终GP直线。D由此示例闭合推导，不是自由性能调参；FAF仍独立于FAP/GP_CAPTURE，后二者保持null。600m/2000ft的限制类型不因此获得认证。
+
+解析求h、h′、h″，使用第3章同一位置/速度/时间公式；只需必要连接点h和h′连续，允许h″及水平曲率阶跃。不设计截获器、控制律或额外平滑。模型输出CONDITIONAL_NOMINAL，资格输出FORMAL_NOT_QUALIFIED，generate_formal_scenario继续阻断；G1–G5现有正式状态、参数未知项及验收判据不变。用户引用的AFMAN仪表进近认证限制仍约束MQ9A研究场景的解释，不得宣称真实RNP AR授权。机型性能和统计资格均未建立。
