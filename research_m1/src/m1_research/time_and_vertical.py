@@ -96,6 +96,9 @@ class ConditionalHeightProfile:
     initial_height_m: float
     threshold_height_m: float
     final_angle_rad: float
+    fap_s_m: float | None = None
+    vertical_accel_reference_mps2: float | None = None
+    horizontal_speed_mps: float | None = None
 
     def __post_init__(self):
         values = [self.length_m, self.join_s_m, self.initial_height_m,
@@ -112,9 +115,19 @@ class ConditionalHeightProfile:
                 raise ValueError("CONDITIONAL_MODEL_CONFLICT: specified RF1 descent not feasible")
             self.boundaries_m = [self.join_s_m]
         elif self.runway_id == "16L":
-            self.transition_length_m = 2*(self.initial_height_m-self.join_height_m)/self.m
-            self.start_s_m = self.join_s_m-self.transition_length_m
-            if not 0 < self.start_s_m < self.join_s_m:
+            if (self.fap_s_m is None or self.vertical_accel_reference_mps2 is None
+                    or self.horizontal_speed_mps is None):
+                raise ValueError("CONDITIONAL_MODEL_CONFLICT: 16L FAP, speed and acceleration reference are required")
+            if (not 0. < self.fap_s_m < self.length_m
+                    or self.vertical_accel_reference_mps2 <= 0
+                    or self.horizontal_speed_mps <= 0):
+                raise ValueError("CONDITIONAL_MODEL_CONFLICT: invalid 16L FAP, speed or acceleration reference")
+            # For h=H0-m*x^2/(2D), |a_z|max = Vh^2*m/D.
+            self.transition_length_m = self.horizontal_speed_mps**2 * self.m / self.vertical_accel_reference_mps2
+            self.start_s_m = self.fap_s_m - self.transition_length_m/2
+            self.join_s_m = self.fap_s_m + self.transition_length_m/2
+            self.join_height_m = self.threshold_height_m+(self.length_m-self.join_s_m)*self.m
+            if not 0 < self.start_s_m < self.fap_s_m < self.join_s_m < self.length_m:
                 raise ValueError("CONDITIONAL_MODEL_CONFLICT: specified level/quadratic/GP closure not feasible")
             self.boundaries_m = [self.start_s_m, self.join_s_m]
         else:

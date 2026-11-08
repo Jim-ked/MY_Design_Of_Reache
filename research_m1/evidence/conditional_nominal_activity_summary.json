@@ -1,0 +1,10 @@
+{
+  "delta_t_entry_s": 12.0,
+  "common_activity_start_s": 12.0,
+  "common_activity_end_s": 224.44955955667098,
+  "common_activity_duration_s": 212.44955955667098,
+  "sign_definition": "t_R_entry minus t_L_entry; positive means 16R enters later",
+  "delta_is_independent_of_duration_difference": true,
+  "duration_difference_s": 94.13422543625154,
+  "row_count": 333
+}

@@ -3,7 +3,7 @@
   "qualification_status": "FORMAL_NOT_QUALIFIED",
   "scenario_id": "case_001",
   "time_scale": "scenario_relative_s",
-  "delta_t_entry_s": 0.0,
+  "delta_t_entry_s": 12.0,
   "delta_definition": "t_R_entry minus t_L_entry",
   "scope": "user-adjudicated conditional numerical example; not formal compliance, performance certification or M2 risk input",
   "diagnostics": {
@@ -77,8 +77,14 @@
           "source_ref": "H01_AD2025:p12,p17"
         },
         "FAP": {
-          "s_m": null,
-          "status": "UNRESOLVED"
+          "s_m": 5624.111852990891,
+          "xy_m": [
+            -3373.6147733375005,
+            11916.438598505581
+          ],
+          "status": "CONDITIONAL_GEOMETRY_CANDIDATE",
+          "definition": "600 m horizontal line and 3 deg GP line intersection; not formal FAP or GP capture",
+          "source_ref": "USER_CONDITIONAL_NOMINAL_20261108"
         },
         "GP_CAPTURE": {
           "s_m": null,
@@ -86,51 +92,53 @@
         }
       },
       "profile_boundaries_m": [
-        4905.261092244734,
-        5579.71714622792
+        5332.497614644496,
+        5915.726091337286
       ],
       "profile_parameters": {
-        "initial_height_m": 620.0,
+        "initial_height_m": 600.0,
         "threshold_height_m": 17.3,
-        "join_s_m": 5579.71714622792,
-        "join_height_m": 602.3266279933691,
+        "join_s_m": 5915.726091337286,
+        "join_height_m": 584.71714536095,
         "final_slope": -0.05240777928304121,
-        "transition_length_m": 674.456053983186,
-        "transition_start_s_m": 4905.261092244734,
-        "transition_duration_s": 9.041639213299582,
-        "height_constraint_status": "600 m annotation type unresolved; 620 m is an explicit research example"
+        "transition_length_m": 583.2284766927893,
+        "transition_start_s_m": 5332.497614644496,
+        "transition_duration_s": 7.818658360371049,
+        "fap_s_m": 5624.111852990891,
+        "vertical_accel_reference_mps2": 0.5,
+        "height_constraint_status": "600 m horizontal-line FAP candidate; transition scale from 0.5 m/s^2 research reference"
       },
       "extrema_at_analytic_one_sided_cuts": {
         "path_angle_rate_rad_s": {
-          "s_m": 4905.261092244734,
+          "s_m": 5332.497614644496,
           "side": "right",
-          "height_m": 620.0,
+          "height_m": 600.0,
           "dh_ds": -0.0,
-          "d2h_ds2_per_m": -7.770377176323443e-05,
+          "d2h_ds2_per_m": -8.985805970967115e-05,
           "path_angle_rad": -0.0,
           "vertical_speed_mps": -0.0,
-          "path_angle_rate_rad_s": -0.005796269685916382,
-          "vertical_accel_mps2": -0.432369517071107,
+          "path_angle_rate_rad_s": -0.006702912042898636,
+          "vertical_accel_mps2": -0.49999999999999994,
           "horizontal_curvature_per_m": 0.0,
           "zero_wind_gs_bank_proxy_rad": 0.0
         },
         "vertical_accel_mps2": {
-          "s_m": 4905.261092244734,
+          "s_m": 5332.497614644496,
           "side": "right",
-          "height_m": 620.0,
+          "height_m": 600.0,
           "dh_ds": -0.0,
-          "d2h_ds2_per_m": -7.770377176323443e-05,
+          "d2h_ds2_per_m": -8.985805970967115e-05,
           "path_angle_rad": -0.0,
           "vertical_speed_mps": -0.0,
-          "path_angle_rate_rad_s": -0.005796269685916382,
-          "vertical_accel_mps2": -0.432369517071107,
+          "path_angle_rate_rad_s": -0.006702912042898636,
+          "vertical_accel_mps2": -0.49999999999999994,
           "horizontal_curvature_per_m": 0.0,
           "zero_wind_gs_bank_proxy_rad": 0.0
         },
         "zero_wind_gs_bank_proxy_rad": {
           "s_m": 0.0,
           "side": "left",
-          "height_m": 620.0,
+          "height_m": 600.0,
           "dh_ds": -0.0,
           "d2h_ds2_per_m": 0.0,
           "path_angle_rad": -0.0,
@@ -145,7 +153,7 @@
         {
           "s_m": 0.0,
           "side": "left",
-          "height_m": 620.0,
+          "height_m": 600.0,
           "dh_ds": -0.0,
           "d2h_ds2_per_m": 0.0,
           "path_angle_rad": -0.0,
@@ -158,7 +166,7 @@
         {
           "s_m": 0.0,
           "side": "right",
-          "height_m": 620.0,
+          "height_m": 600.0,
           "dh_ds": -0.0,
           "d2h_ds2_per_m": 0.0,
           "path_angle_rad": -0.0,
@@ -169,9 +177,9 @@
           "zero_wind_gs_bank_proxy_rad": 0.0
         },
         {
-          "s_m": 4905.261092244734,
+          "s_m": 5332.497614644496,
           "side": "left",
-          "height_m": 620.0,
+          "height_m": 600.0,
           "dh_ds": -0.0,
           "d2h_ds2_per_m": 0.0,
           "path_angle_rad": -0.0,
@@ -182,35 +190,35 @@
           "zero_wind_gs_bank_proxy_rad": 0.0
         },
         {
-          "s_m": 4905.261092244734,
+          "s_m": 5332.497614644496,
           "side": "right",
-          "height_m": 620.0,
+          "height_m": 600.0,
           "dh_ds": -0.0,
-          "d2h_ds2_per_m": -7.770377176323443e-05,
+          "d2h_ds2_per_m": -8.985805970967115e-05,
           "path_angle_rad": -0.0,
           "vertical_speed_mps": -0.0,
-          "path_angle_rate_rad_s": -0.005796269685916382,
-          "vertical_accel_mps2": -0.432369517071107,
+          "path_angle_rate_rad_s": -0.006702912042898636,
+          "vertical_accel_mps2": -0.49999999999999994,
           "horizontal_curvature_per_m": 0.0,
           "zero_wind_gs_bank_proxy_rad": 0.0
         },
         {
-          "s_m": 5579.71714622792,
+          "s_m": 5915.726091337286,
           "side": "left",
-          "height_m": 602.3266279933691,
+          "height_m": 584.71714536095,
           "dh_ds": -0.05240777928304124,
-          "d2h_ds2_per_m": -7.770377176323443e-05,
+          "d2h_ds2_per_m": -8.985805970967115e-05,
           "path_angle_rad": -0.05235987755982992,
           "vertical_speed_mps": -3.909329180185526,
-          "path_angle_rate_rad_s": -0.005780393400009803,
-          "vertical_accel_mps2": -0.432369517071107,
+          "path_angle_rate_rad_s": -0.006684552416144506,
+          "vertical_accel_mps2": -0.49999999999999994,
           "horizontal_curvature_per_m": 0.0,
           "zero_wind_gs_bank_proxy_rad": 0.0
         },
         {
-          "s_m": 5579.71714622792,
+          "s_m": 5915.726091337286,
           "side": "right",
-          "height_m": 602.3266279933691,
+          "height_m": 584.71714536095,
           "dh_ds": -0.05240777928304121,
           "d2h_ds2_per_m": 0.0,
           "path_angle_rad": -0.05235987755982989,
@@ -249,18 +257,18 @@
       ],
       "connection_checks": [
         {
-          "s_m": 4905.261092244734,
-          "time_abs_s": 65.75906729753869,
+          "s_m": 5332.497614644496,
+          "time_abs_s": 71.48652495985769,
           "left": {
             "aircraft_id": "aircraft_01",
             "scenario_id": "case_001",
             "procedure_id": "ZBTJ_RWY16L_RNAV_ILS_DME",
             "aircraft_type": "A320",
-            "time_abs_s": 65.75906729753869,
-            "s_m": 4905.261092244734,
-            "east_m": -3683.8968475000715,
-            "north_m": 12564.876298426476,
-            "altitude_msl_m": 620.0,
+            "time_abs_s": 71.48652495985769,
+            "s_m": 5332.497614644496,
+            "east_m": -3499.4860607734877,
+            "north_m": 12179.48856145094,
+            "altitude_msl_m": 600.0,
             "velocity_e_mps": 32.19766912286826,
             "velocity_n_mps": -67.28774959106305,
             "velocity_u_mps": -0.0,
@@ -273,11 +281,11 @@
             "scenario_id": "case_001",
             "procedure_id": "ZBTJ_RWY16L_RNAV_ILS_DME",
             "aircraft_type": "A320",
-            "time_abs_s": 65.75906729753869,
-            "s_m": 4905.261092244734,
-            "east_m": -3683.8968475000715,
-            "north_m": 12564.876298426476,
-            "altitude_msl_m": 620.0,
+            "time_abs_s": 71.48652495985769,
+            "s_m": 5332.497614644496,
+            "east_m": -3499.4860607734877,
+            "north_m": 12179.48856145094,
+            "altitude_msl_m": 600.0,
             "velocity_e_mps": 32.19766912286826,
             "velocity_n_mps": -67.28774959106305,
             "velocity_u_mps": -0.0,
@@ -286,32 +294,32 @@
             "provenance_id": "USER_CONDITIONAL_NOMINAL_20261108"
           },
           "left_height_derivatives": {
-            "height_m": 620.0,
+            "height_m": 600.0,
             "dh_ds": -0.0,
             "d2h_ds2_per_m": 0.0
           },
           "right_height_derivatives": {
-            "height_m": 620.0,
+            "height_m": 600.0,
             "dh_ds": -0.0,
-            "d2h_ds2_per_m": -7.770377176323443e-05
+            "d2h_ds2_per_m": -8.985805970967115e-05
           },
           "position_gap_m": 0.0,
           "velocity_gap_mps": 0.0,
           "c1_consistent": true
         },
         {
-          "s_m": 5579.71714622792,
-          "time_abs_s": 74.80070651083828,
+          "s_m": 5915.726091337286,
+          "time_abs_s": 79.30518332022875,
           "left": {
             "aircraft_id": "aircraft_01",
             "scenario_id": "case_001",
             "procedure_id": "ZBTJ_RWY16L_RNAV_ILS_DME",
             "aircraft_type": "A320",
-            "time_abs_s": 74.80070651083828,
-            "s_m": 5579.71714622792,
-            "east_m": -3392.7771397819006,
-            "north_m": 11956.484743149238,
-            "altitude_msl_m": 602.3266279933691,
+            "time_abs_s": 79.30518332022875,
+            "s_m": 5915.726091337286,
+            "east_m": -3247.743485901513,
+            "north_m": 11653.38863556022,
+            "altitude_msl_m": 584.71714536095,
             "velocity_e_mps": 32.19766912286826,
             "velocity_n_mps": -67.28774959106305,
             "velocity_u_mps": -3.909329180185526,
@@ -324,11 +332,11 @@
             "scenario_id": "case_001",
             "procedure_id": "ZBTJ_RWY16L_RNAV_ILS_DME",
             "aircraft_type": "A320",
-            "time_abs_s": 74.80070651083828,
-            "s_m": 5579.71714622792,
-            "east_m": -3392.7771397819006,
-            "north_m": 11956.484743149238,
-            "altitude_msl_m": 602.3266279933691,
+            "time_abs_s": 79.30518332022875,
+            "s_m": 5915.726091337286,
+            "east_m": -3247.743485901513,
+            "north_m": 11653.38863556022,
+            "altitude_msl_m": 584.71714536095,
             "velocity_e_mps": 32.19766912286826,
             "velocity_n_mps": -67.28774959106305,
             "velocity_u_mps": -3.9093291801855243,
@@ -337,12 +345,12 @@
             "provenance_id": "USER_CONDITIONAL_NOMINAL_20261108"
           },
           "left_height_derivatives": {
-            "height_m": 602.3266279933691,
+            "height_m": 584.71714536095,
             "dh_ds": -0.05240777928304124,
-            "d2h_ds2_per_m": -7.770377176323443e-05
+            "d2h_ds2_per_m": -8.985805970967115e-05
           },
           "right_height_derivatives": {
-            "height_m": 602.3266279933691,
+            "height_m": 584.71714536095,
             "dh_ds": -0.05240777928304121,
             "d2h_ds2_per_m": 0.0
           },
@@ -361,9 +369,15 @@
           "source_ref": "USER_CONDITIONAL_NOMINAL_20261108"
         },
         "initial_height": {
-          "value": 620.0,
+          "value": 600.0,
           "unit": "m",
-          "status": "RESEARCH_EXAMPLE_NOT_PUBLISHED_HEIGHT",
+          "status": "CONDITIONAL_HORIZONTAL_LINE_FAP_CANDIDATE",
+          "source_ref": "USER_CONDITIONAL_NOMINAL_20261108"
+        },
+        "vertical_accel_reference": {
+          "value": 0.5,
+          "unit": "m/s^2",
+          "status": "RESEARCH_REFERENCE_NOT_AIRCRAFT_LIMIT",
           "source_ref": "USER_CONDITIONAL_NOMINAL_20261108"
         },
         "threshold_elevation": {
@@ -394,8 +408,8 @@
     "aircraft_02": {
       "duration_s": 318.5837849929225,
       "constant_horizontal_gs_mps": 59.16111111111111,
-      "entry_s": 0.0,
-      "exit_s": 318.5837849929225,
+      "entry_s": 12.0,
+      "exit_s": 330.5837849929225,
       "reference_status": "CONDITIONAL_REFERENCE_GEOMETRY",
       "reference_events": {
         "TJ907": 0.0,
@@ -568,13 +582,13 @@
       "connection_checks": [
         {
           "s_m": 7737.7719966294335,
-          "time_abs_s": 130.79152590790665,
+          "time_abs_s": 142.79152590790665,
           "left": {
             "aircraft_id": "aircraft_02",
             "scenario_id": "case_001",
             "procedure_id": "ZBTJ_RWY16R_RNP_Y_AR",
             "aircraft_type": "MQ9A",
-            "time_abs_s": 130.79152590790665,
+            "time_abs_s": 142.79152590790665,
             "s_m": 7737.7719966294335,
             "east_m": -8726.618050018322,
             "north_m": 6734.449682894083,
@@ -591,7 +605,7 @@
             "scenario_id": "case_001",
             "procedure_id": "ZBTJ_RWY16R_RNP_Y_AR",
             "aircraft_type": "MQ9A",
-            "time_abs_s": 130.79152590790665,
+            "time_abs_s": 142.79152590790665,
             "s_m": 7737.7719966294335,
             "east_m": -8726.618050018322,
             "north_m": 6734.449682894083,
@@ -619,13 +633,13 @@
         },
         {
           "s_m": 15514.619300718718,
-          "time_abs_s": 262.24354156534594,
+          "time_abs_s": 274.24354156534594,
           "left": {
             "aircraft_id": "aircraft_02",
             "scenario_id": "case_001",
             "procedure_id": "ZBTJ_RWY16R_RNP_Y_AR",
             "aircraft_type": "MQ9A",
-            "time_abs_s": 262.24354156534594,
+            "time_abs_s": 274.24354156534594,
             "s_m": 15514.619300718718,
             "east_m": -2121.971703840878,
             "north_m": 4441.242777314923,
@@ -642,7 +656,7 @@
             "scenario_id": "case_001",
             "procedure_id": "ZBTJ_RWY16R_RNP_Y_AR",
             "aircraft_type": "MQ9A",
-            "time_abs_s": 262.24354156534594,
+            "time_abs_s": 274.24354156534594,
             "s_m": 15514.619300718718,
             "east_m": -2121.971703841045,
             "north_m": 4441.242777314844,
@@ -718,7 +732,8 @@
     "first_time_s": 0.0,
     "last_time_s": 318.5837849929225,
     "overlap_row_count": 226,
-    "relative_states_only_when_both_active": true
+    "relative_states_only_when_both_active": true,
+    "duration_difference_s": 94.13422543625154
   },
   "endpoint_rows": [
     {

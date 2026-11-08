@@ -1,5 +1,6 @@
 """Explicit conditional nominal example; no formal, stochastic or risk output."""
 from dataclasses import dataclass
+import copy
 import math
 
 import numpy as np
@@ -98,7 +99,9 @@ class ConditionalFlight:
             profile_parameters.update(transition_length_m=self.profile.transition_length_m,
                 transition_start_s_m=self.profile.start_s_m,
                 transition_duration_s=self.profile.transition_length_m/self.speed_mps,
-                height_constraint_status="600 m annotation type unresolved; 620 m is an explicit research example")
+                fap_s_m=self.profile.fap_s_m,
+                vertical_accel_reference_mps2=self.profile.vertical_accel_reference_mps2,
+                height_constraint_status="600 m horizontal-line FAP candidate; transition scale from 0.5 m/s^2 research reference")
         else:
             profile_parameters.update(rf1_linear_coefficient=self.profile.b,
                 rf1_quadratic_coefficient_per_m=self.profile.a,
@@ -139,20 +142,36 @@ def build_conditional_flights(study, *, delta_entry_s):
         aid = assignment["aircraft_id"]
         if next(a["aircraft_type"] for a in study["aircraft"] if a["aircraft_id"]==aid) != aircraft_type:
             raise ValueError("CONDITIONAL_MODEL_CONFLICT: aircraft type mismatch")
-        reference = builder(study)
+        reference = copy.deepcopy(builder(study))
         if reference["status"] != {"16L":"CONDITIONAL_LOC_REFERENCE","16R":"CONDITIONAL_REFERENCE_GEOMETRY"}[runway]:
             raise ValueError("CONDITIONAL_MODEL_CONFLICT: accepted horizontal reference unavailable")
         params = example["runways"][runway]
         gs = params["groundspeed"]
         if gs["unit"] != "kt" or gs["speed_type"] != "horizontal_GS":
             raise ValueError("conditional speed must be explicitly horizontal GS in kt")
-        join = reference["events"]["FAF_D6P2_ICU"]["s_m"] if runway=="16L" else reference["events"]["TJ906"]
+        if runway == "16L":
+            threshold_height = _metres(params["threshold_elevation"])+_metres(params["threshold_clearance"])
+            final_m = math.tan(math.radians(float(example["final_descent_angle"]["value"])))
+            fap_s = reference["path"].length_m - (_metres(params["initial_height"])-threshold_height)/final_m
+            fap_state = reference["path"].evaluate(fap_s)
+            reference["events"]["FAP"] = {
+                "s_m": fap_s, "xy_m": [fap_state["east_m"], fap_state["north_m"]],
+                "status": "CONDITIONAL_GEOMETRY_CANDIDATE",
+                "definition": "600 m horizontal line and 3 deg GP line intersection; not formal FAP or GP capture",
+                "source_ref": "USER_CONDITIONAL_NOMINAL_20261108",
+            }
+            join = fap_s
+        else:
+            join = reference["events"]["TJ906"]
         angle = example["final_descent_angle"]
         if angle["unit"] != "deg":
             raise ValueError("conditional final angle must be in deg")
         profile = ConditionalHeightProfile(runway,reference["path"].length_m,join,
             _metres(params["initial_height"]),_metres(params["threshold_elevation"])+_metres(params["threshold_clearance"]),
-            math.radians(float(angle["value"])))
+            math.radians(float(angle["value"])),
+            fap_s_m=(fap_s if runway == "16L" else None),
+            vertical_accel_reference_mps2=(float(params["vertical_accel_reference"]["value"]) if runway == "16L" else None),
+            horizontal_speed_mps=(float(gs["value"])*1852./3600. if runway == "16L" else None))
         flights[aid] = ConditionalFlight(aid,aircraft_type,assignment["procedure_id"],entry,
             float(gs["value"])*1852./3600.,reference,profile,{**params,"final_descent_angle":angle})
     return flights

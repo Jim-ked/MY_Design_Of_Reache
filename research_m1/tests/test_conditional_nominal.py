@@ -20,9 +20,10 @@ class ConditionalNominalTests(unittest.TestCase):
 
     def test_heights_slopes_and_one_sided_continuity(self):
         left, right = self.flights.values()
-        self.assertAlmostEqual(left.profile.evaluate(0.)["height_m"], 620.)
-        self.assertAlmostEqual(left.profile.evaluate(left.profile.join_s_m)["height_m"], 602.326628, delta=1e-5)
-        self.assertAlmostEqual(left.profile.transition_length_m, 674.456, delta=.01)
+        self.assertAlmostEqual(left.profile.evaluate(0.)["height_m"], 600.)
+        self.assertAlmostEqual(left.profile.fap_s_m, 5623.99, delta=1.)
+        self.assertAlmostEqual(left.profile.evaluate(left.profile.join_s_m)["dh_ds"], -np.tan(np.deg2rad(3.)), delta=1e-12)
+        self.assertAlmostEqual(left.profile.transition_length_m, left.speed_mps**2*np.tan(np.deg2rad(3.))/0.5, delta=1e-9)
         self.assertAlmostEqual(left.profile.evaluate(left.path.length_m)["height_m"], 17.3)
         self.assertAlmostEqual(right.profile.evaluate(right.profile.join_s_m)["height_m"], 599.69996, delta=1e-5)
         self.assertAlmostEqual(right.profile.evaluate(right.path.length_m)["height_m"], 17.4496)
@@ -66,6 +67,16 @@ class ConditionalNominalTests(unittest.TestCase):
             with self.assertRaisesRegex(ValueError, "CONDITIONAL_MODEL_CONFLICT"):
                 f.state_at_s(0., time_abs_s=f.entry_s+1.)
 
+    def test_faf_is_preserved_and_fap_is_a_distinct_geometry_event(self):
+        left = self.flights["aircraft_01"]
+        events = left.reference["events"]
+        self.assertEqual(events["FAF_D6P2_ICU"]["status"], "CONDITIONAL_DME_HORIZONTAL_EVENT")
+        self.assertEqual(events["FAP"]["status"], "CONDITIONAL_GEOMETRY_CANDIDATE")
+        self.assertAlmostEqual(events["FAP"]["s_m"], left.profile.fap_s_m, delta=1e-9)
+        self.assertLess(left.profile.start_s_m, left.profile.fap_s_m)
+        self.assertLess(left.profile.fap_s_m, left.profile.join_s_m)
+        self.assertIsNone(events["GP_CAPTURE"]["s_m"])
+
     def test_entry_sign_activity_identity_and_formal_block(self):
         for delta in (-20., 20.):
             output = generate_conditional_nominal(delta_entry_s=delta)
@@ -94,7 +105,7 @@ class ConditionalNominalTests(unittest.TestCase):
         for aid, f in other.items():
             self.assertEqual(f.path.length_m, self.flights[aid].path.length_m)
             self.assertEqual(f.speed_mps, self.flights[aid].speed_mps)
-        study["operations"]["conditional_nominal"]["runways"]["16L"]["initial_height"]["value"] = 600.
+        study["operations"]["conditional_nominal"]["runways"]["16L"]["vertical_accel_reference"]["value"] = -0.1
         with self.assertRaisesRegex(ValueError, "CONDITIONAL_MODEL_CONFLICT"):
             build_conditional_flights(study, delta_entry_s=0.)
 

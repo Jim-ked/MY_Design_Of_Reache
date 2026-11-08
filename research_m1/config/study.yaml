@@ -352,9 +352,14 @@ operations:
           status: EXPLORATORY_INPUT_NOT_IAS_OR_VAPP
           source_ref: USER_CONDITIONAL_NOMINAL_20261108
         initial_height:
-          value: 620.0
+          value: 600.0
           unit: m
-          status: RESEARCH_EXAMPLE_NOT_PUBLISHED_HEIGHT
+          status: CONDITIONAL_HORIZONTAL_LINE_FAP_CANDIDATE
+          source_ref: USER_CONDITIONAL_NOMINAL_20261108
+        vertical_accel_reference:
+          value: 0.5
+          unit: m/s^2
+          status: RESEARCH_REFERENCE_NOT_AIRCRAFT_LIMIT
           source_ref: USER_CONDITIONAL_NOMINAL_20261108
         threshold_elevation:
           value: 1.3
